@@ -7,12 +7,11 @@ npm run eject
 
 
 
-
 set http_proxy=http://localhost:56534
 
 
 
-
+npm config set registry https://registry.npm.taobao.org
 
 
 
@@ -20,14 +19,5 @@ set http_proxy=http://localhost:56534
 
 npm i -g react-native-cli
 react-native init tmpl
-
-
-
-
-
-
-
-
-
-
-
+react-native run-ios
+react-native run-android
