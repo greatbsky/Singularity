@@ -20,12 +20,13 @@ export default class extends Component<{}> {
         super(props);
         // this.props.getInitialData();
 
-        setTimeout(() => {this.props.hideWelcome()}, 3000);
+        setTimeout(() => {this.props.hideWelcome()}, 9000);
     }
 
     render() {
         return (
             <View style={styles.container}>
+                <Text>当前store.app.welcome：{this.props.welcome}</Text>
                 <Text style={styles.welcome}>
                     Welcome to React Native!
                 </Text>

@@ -24,7 +24,7 @@ export default class extends Component<{}> {
         this.store = store;
         this.persistor = persistor;
         this.store.subscribe(() => {
-            //this.setState({welcome: this.store.getState().app.welcome});
+            this.setState({welcome: this.store.getState().app.welcome});
         });
     }
 

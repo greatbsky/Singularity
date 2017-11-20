@@ -9,7 +9,7 @@ export default class App extends Component<{}> {
     return (
       <View>
         <Text>
-          hi, world!
+          hi, world! {this.props.flag}
         </Text>
       </View>
     );

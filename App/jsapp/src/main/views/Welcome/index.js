@@ -4,9 +4,9 @@ import {initialDataAsync, hideWelcome} from '../../dao/actions';
 import v from './view';
 
 const mapStateToProps = (rootState, ownProps) => {
-    console.log('store.state changed..............................');
-    console.log(rootState);
-    return rootState;
+    return {
+        welcome: rootState.app.welcome ? 'true' : 'false'
+    };
 }
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
