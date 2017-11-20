@@ -1,2 +1,4 @@
 *.log
 .DS_Store
+App/package-lock.json
+App/package-lock.json
