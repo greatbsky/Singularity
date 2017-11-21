@@ -14,7 +14,13 @@ export const integrateRedux = (persistedCB) => {
         const { logger } = require(`redux-logger`);
         middlewares.push(logger);
     }
-    let store = createStore(persistCombineReducers({key: 'root', storage/*, debug: true*/}, reducers), initStore, compose(
+    const persistConfig = {
+        key: 'root',
+        storage,
+        blacklist: [''],
+        debug: true
+    };
+    let store = createStore(persistCombineReducers(persistConfig, reducers), initStore, compose(
         applyMiddleware(...middlewares)
     ));
     let persistor = persistStore(store, null, persistedCB);

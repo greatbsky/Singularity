@@ -8,9 +8,8 @@ export default class App extends Component<{}> {
   render() {
     return (
       <View>
-        <Text>
-          hi, world! {this.props.flag}
-        </Text>
+        <Text>hi, world!</Text>
+        <Text>lastTime:{this.props.video.lastTime}</Text>
       </View>
     );
   }

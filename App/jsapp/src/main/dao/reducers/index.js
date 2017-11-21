@@ -6,7 +6,9 @@ root = RootState
 ele = ElementState
 */
 import app from './AppReducer';
+import video from './VideoReducer';
 
 export default {
-    app: app
+    app: app,
+    video: video
 };

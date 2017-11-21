@@ -1,24 +1,16 @@
 import React, { Component } from 'react';
 import {
-  Platform,
   Text,
   View
 } from 'react-native';
 
 import styles from './styles/index';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-
 export default class extends Component<{}> {
 
     constructor(props) {
         super(props);
-        // this.props.getInitialData();
+        // this.props.initAppDataOnBoot();
 
         setTimeout(() => {this.props.hideWelcome()}, 9000);
     }
@@ -26,15 +18,8 @@ export default class extends Component<{}> {
     render() {
         return (
             <View style={styles.container}>
-                <Text>当前store.app.welcome：{this.props.welcome}</Text>
                 <Text style={styles.welcome}>
                     Welcome to React Native!
-                </Text>
-                <Text style={styles.instructions}>
-                    To get started, edit App.js
-                </Text>
-                <Text style={styles.instructions}>
-                    {instructions}
                 </Text>
             </View>
         );

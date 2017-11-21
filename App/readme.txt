@@ -11,9 +11,12 @@ npm run eject
 set http_proxy=http://localhost:56534
 
 
+npm config list
 npm config set proxy http://username:password@server:port
 npm config set https-proxy http://username:pawword@server:port
 npm config set registry https://registry.npm.taobao.org
+$cat /Users/great/.npmrc
+registry=http://registry.npm.taobao.org/
 npm config delete proxy
 npm config delete https-proxy
 vi /etc/profile

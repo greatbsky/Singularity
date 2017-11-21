@@ -7,8 +7,7 @@ const mapStateToProps = (rootState, ownProps) => {
     return rootState;
 }
 const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-    }
+    return {}
 }
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
     return Object.assign({}, ownProps, stateProps, dispatchProps);

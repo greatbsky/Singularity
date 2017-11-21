@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import {initialDataAsync, hideWelcome} from '../../dao/actions';
+import {initAppDataOnBoot, hideWelcome} from '../../dao/actions';
 import v from './view';
 
 const mapStateToProps = (rootState, ownProps) => {
@@ -11,7 +11,7 @@ const mapStateToProps = (rootState, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         hideWelcome: () => dispatch(hideWelcome()),
-        // getInitialData: () => dispatch(initialDataAsync()),
+        // initAppDataOnBoot: () => dispatch(initAppDataOnBoot()),
     }
 }
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
