@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
     View,
     Text,
+    StatusBar,
     AsyncStorage
 } from 'react-native';
 import {Provider} from 'react-redux';
@@ -37,11 +38,14 @@ export default class extends Component<{}> {
     }
 
     render() {
-        let loading = <View><Text>loading......</Text></View>;
-        let content = this.state.loading ? loading : (this.store.getState().app.welcome ? <Welcome /> : <App />);
+        if(this.state.loading) {
+            return <View><Text>loading......</Text></View>;
+        }
+        let content =  this.store.getState().app.welcome ? <Welcome /> : <App />;
         return (
             <Provider store={this.store}>
                 <PersistGate persistor={this.persistor}>
+                    <StatusBar backgroundColor='#1c73b6' translucent={false} />
                     {content}
                 </PersistGate>
             </Provider>

@@ -29,6 +29,7 @@ npm i -g react-native-cli
 react-native init tmpl
 react-native run-ios
 react-native run-android
+react-native start
 
 调试：
 npm install -g react-devtools
