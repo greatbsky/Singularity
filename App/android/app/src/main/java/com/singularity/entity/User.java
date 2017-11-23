@@ -27,6 +27,7 @@ public class User extends BaseEntity {
 
     public void setName(String name) {
         this.name = name;
+        notifyPropertyChanged(BR.name);
     }
 
     public String getDesc() {
@@ -35,11 +36,6 @@ public class User extends BaseEntity {
 
     public void setDesc(String desc) {
         this.desc = desc;
-    }
-
-    public void changeName() {
-        this.name = "New Name";
-        notifyPropertyChanged(BR.name);
     }
 
 }

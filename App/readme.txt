@@ -38,3 +38,8 @@ react-devtools
 更新：
 react-native-git-upgrade
 react-native upgrade
+
+通过AndroidStudio启动：
+1. 启动模拟机
+2. 执行react-native start
+3. Run 'App'

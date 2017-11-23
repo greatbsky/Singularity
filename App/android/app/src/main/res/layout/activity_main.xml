@@ -5,12 +5,10 @@
     <data>
 
         <variable
-            name="user"
-            type="com.singularity.entity.User" />
+            name="vm"
+            type="com.singularity.viewmodel.UserModel" />
 
-        <variable
-            name="action"
-            type="com.singularity.activity.MainActivity" />
+        <!--<import tycom.singularity.utils.ActivityUtilils" />-->
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -21,18 +19,14 @@
             android:id="@+id/txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{user.name}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:text="@{vm.user.name}"
+            android:gravity="center"/>
 
         <Button
             android:id="@+id/btn1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> action.click()}"
+            android:onClick="@{() -> vm.click()}"
             android:text="Click me"
             android:textAllCaps="false"
             app:layout_constraintTop_toBottomOf="@id/txt"/>
@@ -40,7 +34,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> user.changeName()}"
+            android:onClick="@{() -> vm.changeName()}"
             android:text="change name"
             android:textAllCaps="false"
             app:layout_constraintTop_toBottomOf="@id/btn1"/>

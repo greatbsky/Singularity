@@ -11,7 +11,7 @@ import java.util.Objects;
  * @author architect.bian
  * @date 2017-11-22 6:16 PM
  */
-public class ActivityUtils {
+public class ActivityUtil {
 
     /**
      * The {@code fragment} is added to the container view with id {@code frameId}. The operation is

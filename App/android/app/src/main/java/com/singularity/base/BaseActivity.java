@@ -17,11 +17,4 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     protected abstract void initView();
 
-    protected void showToast(CharSequence text) {
-        showToast(text, Toast.LENGTH_SHORT);
-    }
-
-    protected void showToast(CharSequence text, int duration) {
-        Toast.makeText(this, text, duration).show();
-    }
 }

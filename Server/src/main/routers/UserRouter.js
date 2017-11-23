@@ -14,6 +14,10 @@ module.exports = function(router) {
         ctx.body = "user pag";
     });
 
+    router.get('/user/:uid', (ctx, next) =>{
+        ctx.body = ctx.params.uid;
+    });
+
     /**
      * /user/register?name=hi
      */
