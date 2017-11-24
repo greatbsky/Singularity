@@ -37,7 +37,6 @@ public class HttpUtil {
      * 通过url及参数发送get请求
      *
      * @param url
-     * @param params
      * @return
      */
     public Response get(String url) {
@@ -111,7 +110,7 @@ public class HttpUtil {
     public void upload(String url, List<MultipartBody.Part> parts, Callback cbk) {
         MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM);
         for (int i = 0; i < parts.size(); i++) {
-            builder.addPart(parts[i]); //addFormDataPart("image", "logo-square.png", RequestBody.create(MEDIA_TYPE_PNG, file))
+            builder.addPart(parts.get(i)); //addFormDataPart("image", "logo-square.png", RequestBody.create(MEDIA_TYPE_PNG, file))
         }
         RequestBody requestBody = builder.build();
         Request request = new Request.Builder().url(url).post(requestBody).build();

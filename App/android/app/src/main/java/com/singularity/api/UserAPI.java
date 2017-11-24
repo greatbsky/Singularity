@@ -2,17 +2,8 @@ package com.singularity.api;
 
 import com.singularity.entity.User;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
-import retrofit2.Call;
+import io.reactivex.Flowable;
 import retrofit2.http.GET;
-import retrofit2.http.Multipart;
-import retrofit2.http.POST;
-import retrofit2.http.Part;
-import retrofit2.http.PartMap;
 import retrofit2.http.Path;
 
 /**
@@ -23,7 +14,7 @@ import retrofit2.http.Path;
 public interface UserAPI {
 
     @GET("user/{uid}")
-    Call<User> get(@Path("uid") String uid);
+    Flowable<User> get(@Path("uid") String uid);
 
     /*
     @Multipart

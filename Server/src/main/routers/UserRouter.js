@@ -15,7 +15,9 @@ module.exports = function(router) {
     });
 
     router.get('/user/:uid', (ctx, next) =>{
-        ctx.body = ctx.params.uid;
+        //ctx.body = ctx.params.uid;
+        let data = require('../mocks/user');
+        return data;
     });
 
     /**

@@ -3,6 +3,7 @@ package com.singularity.api;
 import com.singularity.conf.APIConf;
 
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -22,10 +23,13 @@ public class APIFactory {
     }
 
     public static Retrofit getRetrofit(String url) {
-        return new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create()).build();
+        return new Retrofit.Builder().baseUrl(url)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
     }
 
-    public static <T> T get(Class<T> clazz) {
+    public static <T> T create(Class<T> clazz) {
         return getRetrofit().create(clazz);
     }
 

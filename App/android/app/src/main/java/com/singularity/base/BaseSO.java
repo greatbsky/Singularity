@@ -9,7 +9,7 @@ import com.singularity.api.APIFactory;
 
 public class BaseSO {
 
-    protected <T> T getAPI(Class<T> clazz) {
-        return APIFactory.get(clazz);
+    protected <T> T newAPI(Class<T> clazz) {
+        return APIFactory.create(clazz);
     }
 }
