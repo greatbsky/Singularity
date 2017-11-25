@@ -14,7 +14,7 @@ import java.util.Objects;
 public class ActivityUtil {
 
     /**
-     * The {@code fragment} is added to the container view with id {@code frameId}. The operation is
+     * The {@code fragment} is added to the container view with daotxt {@code frameId}. The operation is
      * performed by the {@code fragmentManager}.
      *
      */
@@ -27,7 +27,7 @@ public class ActivityUtil {
     }
 
     /**
-     * The {@code fragment} is added to the container view with id {@code frameId}. The operation is
+     * The {@code fragment} is added to the container view with daotxt {@code frameId}. The operation is
      * performed by the {@code fragmentManager}.
      *
      */

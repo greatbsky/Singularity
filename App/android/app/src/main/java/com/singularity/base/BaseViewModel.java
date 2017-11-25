@@ -13,7 +13,7 @@ import com.singularity.api.APIFactory;
 
 public class BaseViewModel extends BaseObservable {
 
-    private final Context context;
+    protected final Context context;
 
     public BaseViewModel(Context context) {
         this.context = context;

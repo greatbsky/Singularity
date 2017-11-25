@@ -1,10 +1,12 @@
 package com.singularity.service;
 
 import android.databinding.ObservableField;
+import android.util.Log;
 
 import com.singularity.api.UserAPI;
 import com.singularity.base.BaseSO;
 import com.singularity.entity.User;
+import com.singularity.global.Global;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
@@ -27,6 +29,7 @@ public class UserSO extends BaseSO {
                         user.set(u);
                     }
                 });
+
 //        userAPI.create("uid0000001").enqueue(new Callback<User>() {
 //            @Override
 //            public void onResponse(Call<User> call, Response<User> response) {
@@ -47,5 +50,16 @@ public class UserSO extends BaseSO {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
+    }
+
+    public long add(String lucy) {
+        User user = new User(lucy);
+        Global.getDaoSession().getUserDao().insert(user);
+        Log.d("dao", "Inserted new user, ID: " + user.getId());
+        return user.getId();
+    }
+
+    public User get(Long id) {
+        return Global.getDaoSession().getUserDao().load(id);
     }
 }

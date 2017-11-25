@@ -5,19 +5,57 @@ import android.databinding.Bindable;
 import com.singularity.BR;
 import com.singularity.base.BaseEntity;
 
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Index;
+import org.greenrobot.greendao.annotation.Keep;
+import org.greenrobot.greendao.annotation.NotNull;
+import org.greenrobot.greendao.annotation.Transient;
+import org.greenrobot.greendao.annotation.Unique;
+
 /**
  * @author architect.bian
  * @date 2017-11-22 6:05 PM
  */
-
+@Entity
 public class User extends BaseEntity {
 
+    @NotNull
+//    @Unique //没起作用
     private String name;
+    @Transient
     private String desc;
+
+    @Id(autoincrement = true)
+    private Long id;
+
+    @Generated(hash = 586692638)
+    public User() {
+    }
+
+    @Generated(hash = 969448858)
+    public User(@NotNull String name, Long id) {
+        this.name = name;
+        this.id = id;
+    }
+
+    @Keep
+    public User(String name) {
+        this.name = name;
+    }
 
     public User(String name, String desc) {
         this.name = name;
         this.desc = desc;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Bindable

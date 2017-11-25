@@ -9,12 +9,17 @@ import com.singularity.viewmodel.UserModel;
 
 public class MainActivity extends BaseActivity {
 
+    protected UserModel viewModel = new UserModel(this);
+
     @Override
     protected void initView() {
-
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        binding.setVm(new UserModel(this));
+        binding.setVm(viewModel);
+    }
 
+    @Override
+    protected Object getListener() {
+        return viewModel;
     }
 
 }
