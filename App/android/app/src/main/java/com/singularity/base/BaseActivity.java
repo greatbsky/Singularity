@@ -15,7 +15,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         registerEventBus();
         initView();
-
+        ((BaseApplication)getApplication()).watcher.watch(this);
     }
 
     @Override
@@ -53,6 +53,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 初始化视图
      */
-    protected abstract void initView();
+    protected void initView() {
+
+    }
 
 }

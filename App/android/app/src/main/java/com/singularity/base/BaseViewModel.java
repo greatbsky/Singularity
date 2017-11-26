@@ -2,9 +2,12 @@ package com.singularity.base;
 
 import android.content.Context;
 import android.databinding.BaseObservable;
+import android.databinding.BindingAdapter;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.singularity.api.APIFactory;
+import com.singularity.utils.ImageUtil;
 
 /**
  * @author architect.bian
@@ -13,18 +16,21 @@ import com.singularity.api.APIFactory;
 
 public class BaseViewModel extends BaseObservable {
 
-    protected final Context context;
+    protected Context context;
 
     public BaseViewModel(Context context) {
         this.context = context;
     }
 
-    protected void showToast(CharSequence text) {
-        showToast(text, Toast.LENGTH_SHORT);
+    @BindingAdapter({"app:url"})
+    public static void loadImage (ImageView view, String url) {
+        ImageUtil.show(view, url);
     }
 
-    protected void showToast(CharSequence text, int duration) {
-        Toast.makeText(context, text, duration).show();
+    /**
+     * activity释放时调用此方法释放其引用
+     */
+    public void destroy() {
+        this.context = null;
     }
-
 }

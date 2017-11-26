@@ -7,6 +7,7 @@ import android.view.View;
 import com.singularity.base.BaseViewModel;
 import com.singularity.entity.User;
 import com.singularity.event.Events;
+import com.singularity.global.G;
 import com.singularity.service.UserSO;
 
 import org.greenrobot.eventbus.EventBus;
@@ -23,6 +24,7 @@ public class UserModel extends BaseViewModel {
     public final ObservableField<User> user = new ObservableField<>();
     public final ObservableField<String> daotxt = new ObservableField<>();
     public final ObservableField<String> notifyContent = new ObservableField<>();
+    public final ObservableField<String> imgSrc = new ObservableField<>("http://www.imgup.bid/images/2017/10/29/4232422e8314489c0bb668a9b6fd1be9.jpg");
 
     private UserSO userSO = new UserSO();
 
@@ -45,7 +47,7 @@ public class UserModel extends BaseViewModel {
     }
 
     public void click(View view) {
-        showToast("U click me");
+        G.showToast("U click me");
     }
 
     public void notifyHandler() {
@@ -59,10 +61,12 @@ public class UserModel extends BaseViewModel {
 
     public void userAdd() {
         daotxt.set(String.valueOf(userSO.add("lucy")));
+        imgSrc.set("https://n.sinaimg.cn/ent/4_img/upload/1f0ce517/20171024/0uxJ-fymzzpw0580729.jpg");
     }
 
     public void userGet() {
         User u = userSO.get(Long.parseLong(daotxt.get()));
         daotxt.set(u.getName());
     }
+
 }

@@ -1,6 +1,7 @@
 package com.singularity.activity;
 
 import android.databinding.DataBindingUtil;
+import android.widget.Toast;
 
 import com.singularity.R;
 import com.singularity.base.BaseActivity;
@@ -15,6 +16,7 @@ public class MainActivity extends BaseActivity {
     protected void initView() {
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setVm(viewModel);
+//        Toast.makeText(this, "hihihihi world", Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -22,4 +24,9 @@ public class MainActivity extends BaseActivity {
         return viewModel;
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        viewModel.destroy();
+    }
 }
