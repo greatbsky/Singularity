@@ -1,9 +1,9 @@
 package com.singularity.viewmodel;
 
-import android.content.Context;
 import android.databinding.ObservableField;
 import android.view.View;
 
+import com.singularity.activity.MainActivity;
 import com.singularity.base.BaseViewModel;
 import com.singularity.entity.User;
 import com.singularity.event.Events;
@@ -26,15 +26,12 @@ public class UserModel extends BaseViewModel {
     public final ObservableField<String> notifyContent = new ObservableField<>();
     public final ObservableField<String> imgSrc = new ObservableField<>("http://www.imgup.bid/images/2017/10/29/4232422e8314489c0bb668a9b6fd1be9.jpg");
 
+    private MainActivity activity = null;
+
     private UserSO userSO = new UserSO();
 
-    public UserModel(Context context) {
-        super(context);
-    }
-
-    public UserModel(Context context, String name, String desc) {
-        super(context);
-//        user = new User(name, desc);
+    public UserModel(MainActivity activity) {
+        this.activity = activity;
     }
 
     public void getUser() {

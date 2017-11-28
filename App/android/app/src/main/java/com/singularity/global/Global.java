@@ -18,7 +18,7 @@ public class Global {
 
     private static DaoSession daoSession = null;
 
-    private static Context appContext = null;
+    public static Context appContext = null;
 
     public static synchronized void daoSetUp(Context context) {
         DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(context, "mydb", null);

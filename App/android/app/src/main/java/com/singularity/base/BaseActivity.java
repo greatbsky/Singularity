@@ -1,9 +1,11 @@
 package com.singularity.base;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import com.singularity.global.GlideApp;
 import com.singularity.viewmodel.UserModel;
 
 import org.greenrobot.eventbus.EventBus;
@@ -22,6 +24,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         unregisterEventBus();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
     }
 
     /**

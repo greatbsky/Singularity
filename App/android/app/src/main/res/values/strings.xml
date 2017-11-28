@@ -3,4 +3,5 @@
     <string name="title_activity_splash">SplashActivity</string>
     <string name="action_settings">Settings</string>
     <string name="hiworld">hi world</string>
+    <string name="skipover">跳过</string>
 </resources>

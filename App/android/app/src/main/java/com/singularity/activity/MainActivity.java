@@ -6,6 +6,7 @@ import android.widget.Toast;
 import com.singularity.R;
 import com.singularity.base.BaseActivity;
 import com.singularity.databinding.ActivityMainBinding;
+import com.singularity.global.GlideApp;
 import com.singularity.viewmodel.UserModel;
 
 public class MainActivity extends BaseActivity {
@@ -22,11 +23,5 @@ public class MainActivity extends BaseActivity {
     @Override
     protected Object getListener() {
         return viewModel;
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        viewModel.destroy();
     }
 }
