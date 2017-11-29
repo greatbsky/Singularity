@@ -1,5 +1,7 @@
 package com.singularity.base;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.databinding.BaseObservable;
 import android.databinding.BindingAdapter;
 import android.widget.ImageView;
@@ -18,4 +20,11 @@ public class BaseViewModel extends BaseObservable {
         ImageUtil.show(view, url);
     }
 
+    protected void startActivity(Activity activity, Class<?>  clz) {
+        activity.startActivity(new Intent(activity, clz));
+    }
+
+    protected void startActivityForResult(Activity activity, Class<?> clz, int requestCode) {
+        activity.startActivityForResult(new Intent(activity, clz), requestCode);
+    }
 }

@@ -3,6 +3,7 @@ package com.singularity.base;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.singularity.global.GlideApp;
@@ -64,4 +65,17 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * toolbar的事件处理
+     * @param item
+     * @return
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }

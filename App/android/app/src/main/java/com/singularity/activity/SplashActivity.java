@@ -2,16 +2,10 @@ package com.singularity.activity;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 import com.singularity.*;
 import com.singularity.base.BaseActivity;
 import com.singularity.databinding.ActivitySplashBinding;
-import com.singularity.global.GlideApp;
 import com.singularity.viewmodel.SplashModel;
 
 public class SplashActivity extends BaseActivity {
@@ -41,7 +35,7 @@ public class SplashActivity extends BaseActivity {
     public synchronized void goMain() {
         if (!showMain) {
             showMain = true;
-            startActivity(new Intent(this, MainActivity.class));
+            startActivity(new Intent(this, TestActivity.class));
             finish();
         }
     }

@@ -1,9 +1,12 @@
 package com.singularity.viewmodel;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.databinding.ObservableField;
 import android.view.View;
 
-import com.singularity.activity.MainActivity;
+import com.singularity.activity.SettingActivity;
+import com.singularity.activity.TestActivity;
 import com.singularity.base.BaseViewModel;
 import com.singularity.entity.User;
 import com.singularity.event.Events;
@@ -26,11 +29,11 @@ public class UserModel extends BaseViewModel {
     public final ObservableField<String> notifyContent = new ObservableField<>();
     public final ObservableField<String> imgSrc = new ObservableField<>("http://www.imgup.bid/images/2017/10/29/4232422e8314489c0bb668a9b6fd1be9.jpg");
 
-    private MainActivity activity = null;
+    private TestActivity activity = null;
 
     private UserSO userSO = new UserSO();
 
-    public UserModel(MainActivity activity) {
+    public UserModel(TestActivity activity) {
         this.activity = activity;
     }
 
@@ -64,6 +67,10 @@ public class UserModel extends BaseViewModel {
     public void userGet() {
         User u = userSO.get(Long.parseLong(daotxt.get()));
         daotxt.set(u.getName());
+    }
+
+    public void goSetting(View v) {
+        startActivity(activity, SettingActivity.class);
     }
 
 }

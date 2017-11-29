@@ -101,6 +101,17 @@ E:\MyWork6\Android>gradlew clean assembleRelease -info
 
 
 
+------------------------------------ClassyShark反编译
+java -jar ClassyShark.jar   //可视化界面，查看大概结构，所用到的库
+------------------------------------APKTool反编译
+java -jar apktool_2.3.0.jar d 1834431.apk  //获得素材
+java -jar apktool_2.3.0.jar b 1834431   //重新打包，测试安装不行
+F:\apk\apktool\1834431dex>d2j-dex2jar.bat classes.dex   //得到class文件，jd-gui可查看详细代码
+
+
+
+
+
 ------------------------------------其他
 
 
