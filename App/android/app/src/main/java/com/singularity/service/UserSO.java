@@ -4,9 +4,11 @@ import android.databinding.ObservableField;
 import android.util.Log;
 
 import com.singularity.api.UserAPI;
-import com.singularity.base.BaseSO;
+import xyz.xysc.core.base.BaseSO;
 import com.singularity.entity.User;
-import com.singularity.global.Global;
+import com.singularity.global.G;
+
+import xyz.xysc.core.global.Global;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
@@ -54,12 +56,12 @@ public class UserSO extends BaseSO {
 
     public long add(String lucy) {
         User user = new User(lucy);
-        Global.getDaoSession().getUserDao().insert(user);
+        G.getDaoSession().getUserDao().insert(user);
         Log.d("dao", "Inserted new user, ID: " + user.getId());
         return user.getId();
     }
 
     public User get(Long id) {
-        return Global.getDaoSession().getUserDao().load(id);
+        return G.getDaoSession().getUserDao().load(id);
     }
 }

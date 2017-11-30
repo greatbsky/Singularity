@@ -3,16 +3,14 @@ package com.singularity.entity;
 import android.databinding.Bindable;
 
 import com.singularity.BR;
-import com.singularity.base.BaseEntity;
+import xyz.xysc.databinding.base.BaseEntity;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
-import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.Keep;
 import org.greenrobot.greendao.annotation.NotNull;
 import org.greenrobot.greendao.annotation.Transient;
-import org.greenrobot.greendao.annotation.Unique;
 
 /**
  * @author architect.bian

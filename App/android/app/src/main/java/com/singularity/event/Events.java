@@ -1,6 +1,6 @@
 package com.singularity.event;
 
-import com.singularity.base.BaseEvent;
+import xyz.xysc.core.base.BaseEvent;
 
 /**
  * @author architect.bian

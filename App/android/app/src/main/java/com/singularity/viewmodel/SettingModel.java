@@ -3,7 +3,7 @@ package com.singularity.viewmodel;
 import android.view.View;
 
 import com.singularity.activity.SettingActivity;
-import com.singularity.base.BaseViewModel;
+import xyz.xysc.databinding.base.BaseViewModel;
 
 /**
  * @author architect.bian

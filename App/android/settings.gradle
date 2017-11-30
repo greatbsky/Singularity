@@ -1,3 +1,3 @@
 rootProject.name = 'Singularity'
 
-include ':app', ':library'
+include ':app', ':core', ':databinding', ':component'

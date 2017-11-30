@@ -1,10 +1,9 @@
 package com.singularity.viewmodel;
 
-import android.content.Context;
 import android.view.View;
 
 import com.singularity.activity.SplashActivity;
-import com.singularity.base.BaseViewModel;
+import xyz.xysc.databinding.base.BaseViewModel;
 
 /**
  * @author architect.bian

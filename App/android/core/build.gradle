@@ -1,0 +1,21 @@
+apply plugin: 'com.android.library'
+
+dependencies {
+    compile guava
+    compile okhttp3.okhttp
+    compile(retrofit2.retrofit) {
+        exclude group: okhttp3.group
+    }
+    compile(retrofit2.adapter_rxjava2) {
+        exclude group: rxjava2.group
+        exclude group: okhttp3.group
+    }
+    compile(retrofit2.converter_gson) {
+        exclude group: gson.group
+        exclude group: okhttp3.group
+    }
+    compile glide.glide
+    annotationProcessor glide.annotation
+    compile eventbus.eventbus
+    annotationProcessor eventbus.annotation
+}

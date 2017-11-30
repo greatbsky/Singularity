@@ -3,7 +3,7 @@ package com.singularity.activity;
 import android.databinding.DataBindingUtil;
 
 import com.singularity.R;
-import com.singularity.base.BaseActivity;
+import xyz.xysc.core.base.BaseActivity;
 import com.singularity.databinding.ActivitySettingBinding;
 import com.singularity.viewmodel.SettingModel;
 

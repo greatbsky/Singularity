@@ -1,0 +1,84 @@
+// external 全局变量
+println("${project.name}: apply global.gradle")
+
+// 以下写法为闭包, 可能不会立即赋值
+project.ext {
+
+    println("${project.name}: initializing project.ext")
+
+    def versionAndroidPlugin = "2.3.3"
+
+    a = [
+            plugin           : "com.android.tools.build:gradle:$versionAndroidPlugin",
+
+            compileSdkVersion: 23,
+            buildToolsVersion: "27.0.1",
+
+            minSdkVersion    : 19,
+            targetSdkVersion : 23,
+    ]
+
+    app = [
+            applicationId: "com.singularity",
+            versionCode  : 1,
+            versionName  : "1.0",
+            eventBusIndex: 'com.singularity.event.EventIndex'
+    ]
+
+    def versionSupport = "23.4.0"
+    support = [
+            group       : "com.android.support",
+            appcompat   : "com.android.support:appcompat-v7:$versionSupport",
+            recyclerview: "com.android.support:recyclerview-v7:$versionSupport",
+            constraint  : "com.android.support.constraint:constraint-layout:1.0.2",
+            design      : "com.android.support:design:$versionSupport",
+            multidex    : "com.android.support:multidex:1.0.1"
+    ]
+
+    greenrobot = [
+            plugin       : "org.greenrobot:greendao-gradle-plugin:3.2.2",
+            schemaVersion: 1,
+            greendao     : 'org.greenrobot:greendao:3.2.2'
+    ]
+
+    retrofit2 = [
+            retrofit       : 'com.squareup.retrofit2:retrofit:2.3.0',
+            adapter_rxjava2: 'com.squareup.retrofit2:adapter-rxjava2:2.3.0',
+            converter_gson : 'com.squareup.retrofit2:converter-gson:2.3.0',
+            protobuf: 'com.squareup.retrofit2:converter-protobuf:2.3.0'
+    ]
+
+    okhttp3 = [
+            group      : 'com.squareup.okhttp3',
+            okhttp     : 'com.squareup.okhttp3:okhttp:3.9.1',
+            integration: "com.github.bumptech.glide:okhttp3-integration:4.3.1"
+    ]
+
+    rxjava2 = [
+            group    : "io.reactivex.rxjava2",
+            rxjava   : 'io.reactivex.rxjava2:rxjava:2.1.6',
+            rxandroid: 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    ]
+
+    gson = [
+            group: 'com.google.code.gson',
+            gson : 'com.google.code.gson:gson:2.8.2'
+    ]
+
+    guava = 'com.google.guava:guava:23.5-android'
+
+    eventbus = [
+            eventbus  : 'org.greenrobot:eventbus:3.1.1',
+            annotation: 'org.greenrobot:eventbus-annotation-processor:3.1.1'
+    ]
+
+    glide = [
+            glide     : 'com.github.bumptech.glide:glide:4.3.1',
+            annotation: 'com.github.bumptech.glide:compiler:4.3.1'
+    ]
+
+    lottie = 'com.airbnb.android:lottie:2.3.0'
+    okio = 'com.squareup.okio:okio:1.13.0'
+    joda_time = 'joda-time:joda-time:2.9.9'
+
+}

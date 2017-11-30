@@ -1,10 +1,9 @@
 package com.singularity.activity;
 
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 
 import com.singularity.R;
-import com.singularity.base.BaseActivity;
+import xyz.xysc.core.base.BaseActivity;
 import com.singularity.databinding.ActivityTestBinding;
 import com.singularity.viewmodel.UserModel;
 

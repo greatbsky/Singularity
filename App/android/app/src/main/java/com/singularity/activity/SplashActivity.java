@@ -3,9 +3,11 @@ package com.singularity.activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 
-import com.singularity.*;
-import com.singularity.base.BaseActivity;
+import com.singularity.R;
+import xyz.xysc.core.base.BaseActivity;
 import com.singularity.databinding.ActivitySplashBinding;
+import com.singularity.global.G;
+import xyz.xysc.core.utils.NetworkUtil;
 import com.singularity.viewmodel.SplashModel;
 
 public class SplashActivity extends BaseActivity {
@@ -23,6 +25,9 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        if (!NetworkUtil.isConnected(this)) {
+            G.showToast(R.string.no_network);
+        }
         binding.getRoot().postDelayed(new Runnable() {
             @Override
             public void run() {

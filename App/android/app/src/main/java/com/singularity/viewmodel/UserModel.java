@@ -1,13 +1,11 @@
 package com.singularity.viewmodel;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.databinding.ObservableField;
 import android.view.View;
 
 import com.singularity.activity.SettingActivity;
 import com.singularity.activity.TestActivity;
-import com.singularity.base.BaseViewModel;
+import xyz.xysc.databinding.base.BaseViewModel;
 import com.singularity.entity.User;
 import com.singularity.event.Events;
 import com.singularity.global.G;

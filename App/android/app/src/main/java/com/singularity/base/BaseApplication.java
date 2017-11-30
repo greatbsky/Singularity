@@ -2,7 +2,7 @@ package com.singularity.base;
 
 import android.support.multidex.MultiDexApplication;
 
-import com.singularity.global.Global;
+import com.singularity.global.G;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
@@ -18,7 +18,9 @@ public class BaseApplication extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        Global.daoSetUp(this);
+
+        G.initialize(this);
+
         if (LeakCanary.isInAnalyzerProcess(this)) {
             return;
         }
