@@ -25,4 +25,6 @@ public class ImgUtil {
                 .skipMemoryCache(true)
                 .diskCacheStrategy(DiskCacheStrategy.NONE).into(view);
     }
+
+
 }

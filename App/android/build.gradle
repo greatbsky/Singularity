@@ -47,7 +47,7 @@ subprojects {
 
     apply plugin: isAppModule? 'com.android.application': 'com.android.library'
 
-    if(!isAppModule) {
+    if(!isAppModule) { //仅作用于子模块
         android {
             compileSdkVersion a.compileSdkVersion as Integer
             buildToolsVersion a.buildToolsVersion as String

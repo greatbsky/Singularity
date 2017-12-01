@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>openapp demo</title>
+</head>
+<body onLoad="openApp()">
+    <a href="">下载App</a>
+</body>
+</html>
+<script>
+    function openApp() {
+        var appstoreFail = "www.baidu.com";
+        //Check is device is iOS
+        var iOS = /(iPad|iPhone|iPod)/.test(navigator.userAgent);
+        var appUrlScheme = "singularity://home/channel1?id=15897552";
+
+        if (iOS) {
+            // If the app is not installed the script will wait for 2sec and redirect to web.
+            var loadedAt = +new Date;
+            setTimeout(function() {
+                if (+new Date - loadedAt < 2000)
+                    window.location = appstoreFail;
+            } ,25);
+            // Try launching the app using URL schemes
+            window.open(appUrlScheme, "_self");
+        } else {
+            var ifr = document.createElement('iframe');
+            ifr.src = appUrlScheme;
+            ifr.style.display = 'none';
+            document.body.appendChild(ifr);
+            window.setTimeout(function(){
+                document.body.removeChild(ifr);
+                //window.location.href = "https://itunes.apple.com/cn/app/id477927812";//打开app下载地址，有app同事提供
+            },2000);
+        }
+    }
+</script>

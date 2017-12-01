@@ -11,7 +11,7 @@ import xyz.xysc.core.utils.ImgUtil;
  */
 public class ImageViewAdapter {
 
-    @BindingAdapter({"app:url"})
+    @BindingAdapter(value = {"app:url"}, requireAll = false)
     public static void loadImage (ImageView view, String url) {
         ImgUtil.show(view, url);
     }

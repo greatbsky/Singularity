@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 
 dependencies {
     compile guava
+    compile gson.gson
     compile okhttp3.okhttp
     compile(retrofit2.retrofit) {
         exclude group: okhttp3.group
