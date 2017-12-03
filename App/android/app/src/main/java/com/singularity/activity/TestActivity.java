@@ -1,8 +1,6 @@
 package com.singularity.activity;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 
@@ -18,7 +16,7 @@ public class TestActivity extends BaseActivity {
     protected UserModel viewModel = new UserModel(this);
 
     @Override
-    protected void initView() {
+    protected void initView(Bundle savedInstanceState) {
         ActivityTestBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_test);
         binding.setVm(viewModel);
     }
@@ -27,6 +25,17 @@ public class TestActivity extends BaseActivity {
     protected Object getListener() {
         return viewModel;
     }
+
+    /**
+     * 是否根activity
+     * @return
+     */
+    @Override
+    protected boolean isRootActivity() {
+        return true;
+    }
+
+    /*----------------------------------------自定义方法----------------------------------------*/
 
     public static void start(Activity activity, Bundle bundle) {
         ActivityUtil.start(activity, bundle, TestActivity.class);

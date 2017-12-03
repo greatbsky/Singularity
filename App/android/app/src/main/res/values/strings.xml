@@ -11,4 +11,5 @@
     <string name="accept">接受</string>
     <string name="copyright">\@奇点科技 singularity.com</string>
     <string name="no_network">当前网络未连接！</string>
+    <string name="new_msgs">您有新的消息</string>
 </resources>

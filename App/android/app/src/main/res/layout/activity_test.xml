@@ -6,109 +6,158 @@
 
         <variable
             name="vm"
-            type="com.singularity.viewmodel.UserModel" />
+            type="com.singularity.viewmodel.UserModel"/>
 
         <!--<import tycom.singularity.utils.ActivityUtilils" />-->
     </data>
 
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btnsetting"
-            android:layout_width="wrap_content"
+        <include
+            android:id="@+id/top"
+            layout="@layout/include_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="@{(view) -> vm.goSetting(view)}"
-            android:text="Go Setting"
-            android:textAllCaps="false"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:orientation="horizontal">
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Send"/>
+        </LinearLayout>
 
-        <TextView
-            android:id="@+id/txt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{vm.user.name}"
-            app:layout_constraintTop_toBottomOf="@id/btnsetting"/>
+        <ScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/btn1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{(view) -> vm.click(view)}"
-            android:text="Click me"
-            android:textAllCaps="false"
-            app:layout_constraintTop_toBottomOf="@id/txt"/>
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/btn2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{() -> vm.changeName()}"
-            android:text="change name"
-            android:textAllCaps="false"
-            app:layout_constraintTop_toBottomOf="@id/btn1"/>
+                <Button
+                    android:id="@+id/btnsetting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{(view) -> vm.goSetting(view)}"
+                    android:text="Go Setting"
+                    android:textAllCaps="false"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
-        <Button
-            android:id="@+id/btn3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{() -> vm.getUser()}"
-            android:text="get user"
-            android:textAllCaps="false"
-            app:layout_constraintTop_toBottomOf="@id/btn2"/>
+                <TextView
+                    android:id="@+id/txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{vm.user.name}"
+                    app:layout_constraintTop_toBottomOf="@id/btnsetting"/>
 
-        <Button
-            android:id="@+id/btn4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{() -> vm.notifyHandler()}"
-            android:text="Notify content"
-            android:textAllCaps="false"
-            app:layout_constraintTop_toBottomOf="@id/btn3"/>
+                <Button
+                    android:id="@+id/btn1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{(view) -> vm.click(view)}"
+                    android:text="Click me"
+                    android:textAllCaps="false"
+                    app:layout_constraintTop_toBottomOf="@id/txt"/>
 
-        <TextView
-            android:id="@+id/txt2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{vm.notifyContent}"
-            android:gravity="center"
-            app:layout_constraintLeft_toRightOf="@id/btn4"
-            app:layout_constraintTop_toBottomOf="@id/btn3"/>
+                <Button
+                    android:id="@+id/btn2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> vm.changeName()}"
+                    android:text="change name"
+                    android:textAllCaps="false"
+                    app:layout_constraintTop_toBottomOf="@id/btn1"/>
 
-        <Button
-            android:id="@+id/btn5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{() -> vm.userAdd()}"
-            android:text="User Add"
-            android:textAllCaps="false"
-            app:layout_constraintTop_toBottomOf="@id/btn4"/>
+                <Button
+                    android:id="@+id/btn3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> vm.getUser()}"
+                    android:text="get user"
+                    android:textAllCaps="false"
+                    app:layout_constraintTop_toBottomOf="@id/btn2"/>
 
-        <Button
-            android:id="@+id/btn6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="@{() -> vm.userGet()}"
-            android:text="User get"
-            android:textAllCaps="false"
-            app:layout_constraintTop_toBottomOf="@id/btn5"/>
+                <Button
+                    android:id="@+id/btn4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> vm.notifyHandler()}"
+                    android:text="Notify content"
+                    android:textAllCaps="false"
+                    app:layout_constraintTop_toBottomOf="@id/btn3"/>
 
-        <TextView
-            android:id="@+id/txt3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{vm.daotxt}"
-            android:gravity="center"
-            app:layout_constraintLeft_toRightOf="@id/btn6"
-            app:layout_constraintTop_toBottomOf="@id/btn5"/>
+                <TextView
+                    android:id="@+id/txt2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@{vm.notifyContent}"
+                    app:layout_constraintLeft_toRightOf="@id/btn4"
+                    app:layout_constraintTop_toBottomOf="@id/btn3"/>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:url="@{vm.imgSrc}"
-            app:layout_constraintTop_toBottomOf="@id/btn6" />
+                <Button
+                    android:id="@+id/btn5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> vm.userAdd()}"
+                    android:text="User Add"
+                    android:textAllCaps="false"
+                    app:layout_constraintTop_toBottomOf="@id/btn4"/>
 
-    </android.support.constraint.ConstraintLayout>
+                <Button
+                    android:id="@+id/btn6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{() -> vm.userGet()}"
+                    android:text="User get"
+                    android:textAllCaps="false"
+                    app:layout_constraintTop_toBottomOf="@id/btn5"/>
+
+                <TextView
+                    android:id="@+id/txt3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@{vm.daotxt}"
+                    app:layout_constraintLeft_toRightOf="@id/btn6"
+                    app:layout_constraintTop_toBottomOf="@id/btn5"/>
+
+                <EditText
+                    android:id="@+id/edit1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/app_name"
+                    android:maxLines="2"
+                    app:layout_constraintTop_toBottomOf="@id/btn6"/>
+
+                <Button
+                    android:id="@+id/btn7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{(v) -> vm.alert(v)}"
+                    android:text="Alert"
+                    android:textAllCaps="false"
+                    app:layout_constraintTop_toBottomOf="@id/edit1"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/edit1"
+                    app:url="@{vm.imgSrc}"/>
+
+            </android.support.constraint.ConstraintLayout>
+        </ScrollView>
+    </LinearLayout>
 </layout>
 

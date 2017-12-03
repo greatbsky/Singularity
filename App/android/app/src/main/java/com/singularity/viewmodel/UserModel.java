@@ -1,8 +1,11 @@
 package com.singularity.viewmodel;
 
+import android.content.DialogInterface;
 import android.databinding.ObservableField;
+import android.util.Log;
 import android.view.View;
 
+import com.singularity.R;
 import com.singularity.activity.SettingActivity;
 import com.singularity.activity.TestActivity;
 import xyz.xysc.databinding.base.BaseViewModel;
@@ -29,14 +32,12 @@ public class UserModel extends BaseViewModel {
 
     private TestActivity activity = null;
 
-    private UserSO userSO = new UserSO();
-
     public UserModel(TestActivity activity) {
         this.activity = activity;
     }
 
     public void getUser() {
-        userSO.get("uid0000001", user);
+        UserSO.get("uid0000001", user);
     }
 
     public void changeName() {
@@ -58,17 +59,31 @@ public class UserModel extends BaseViewModel {
     }
 
     public void userAdd() {
-        daotxt.set(String.valueOf(userSO.add("lucy")));
+        daotxt.set(String.valueOf(UserSO.add("lucy")));
         imgSrc.set("https://n.sinaimg.cn/ent/4_img/upload/1f0ce517/20171024/0uxJ-fymzzpw0580729.jpg");
     }
 
     public void userGet() {
-        User u = userSO.get(Long.parseLong(daotxt.get()));
+        User u = UserSO.get(Long.parseLong(daotxt.get()));
         daotxt.set(u.getName());
     }
 
     public void goSetting(View v) {
-        startActivity(activity, SettingActivity.class);
+        SettingActivity.start(activity);
+    }
+
+    public void alert(View view) {
+        G.alert(activity, R.string.new_msgs, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Log.e("Alert", "onClick: " + which);
+            }
+        }, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Log.e("Alert", "onClick: " + which);
+            }
+        });
     }
 
 }

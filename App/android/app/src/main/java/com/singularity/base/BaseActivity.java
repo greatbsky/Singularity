@@ -12,6 +12,6 @@ public class BaseActivity extends xyz.xysc.core.base.BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ((BaseApplication)getApplication()).watcher.watch(this);
+//        ((BaseApplication)getApplication()).watcher.watch(this);
     }
 }

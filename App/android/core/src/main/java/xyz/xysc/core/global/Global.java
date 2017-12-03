@@ -1,22 +1,31 @@
 package xyz.xysc.core.global;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.content.DialogInterface.*;
+import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
 
+import xyz.xysc.core.R;
 import xyz.xysc.core.api.APIFactory;
+import xyz.xysc.core.base.BaseGlobal;
 
 /**
  * @author architect.bian
  * @date 2017-11-25 7:15 PM
  */
 
-public class Global {
+public class Global extends BaseGlobal {
 
-    public static Context appContext = null;
+    /*
+    处理全局的存储
+     */
     public static Store store;
 
     protected static final String dbName = "global"; //存数据的名称，不一定是数据库名
+    public static boolean shouldExit = false; //是否应该退出
 
     public static void initialize(Application application, String hostDefault) {
         appContext = application;
@@ -32,20 +41,20 @@ public class Global {
         store = new Store(context, dbName);
     }
 
-    public static void showToast(int resID) {
-        showToast(resID, Toast.LENGTH_SHORT);
+    /**
+     * 延迟重置shouldExit
+     */
+    public static void shouldExitInvalideDelay() {
+        setTimeout(new Runnable() {
+            @Override
+            public void run() {
+                shouldExit = false;
+            }
+        }, 2000);
+        // do sth...example post logs to server
     }
 
-    public static void showToast(int resID, int duration) {
-        Toast.makeText(appContext, resID, duration).show();
+    public static void setTimeout(Runnable runnable, long delayMillis) {
+        new Handler().postDelayed(runnable, delayMillis);
     }
-
-    public static void showToast(CharSequence text) {
-        showToast(text, Toast.LENGTH_SHORT);
-    }
-
-    public static void showToast(CharSequence text, int duration) {
-        Toast.makeText(appContext, text, duration).show();
-    }
-
 }

@@ -8,16 +8,7 @@ import com.google.gson.GsonBuilder;
  * @date 2017-12-01 6:56 PM
  */
 
-public class JsonUtil {
-
-    private static Gson engine;
-
-    private static Gson getEngine() {
-        if (engine == null) {
-            engine = new GsonBuilder().create();
-        }
-        return engine;
-    }
+public class JsonUtil extends BaseGsonUtil {
 
     public static String toJson(Object object) {
         return getEngine().toJson("Hello");

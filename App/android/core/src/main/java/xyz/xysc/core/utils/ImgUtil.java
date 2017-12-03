@@ -23,7 +23,7 @@ public class ImgUtil {
     public static void fresh(ImageView view, String url) {
         GlideApp.with(Global.appContext).load(url)
                 .skipMemoryCache(true)
-                .diskCacheStrategy(DiskCacheStrategy.NONE).into(view);
+                .diskCacheStrategy(DiskCacheStrategy.NONE).centerCrop().into(view);
     }
 
 

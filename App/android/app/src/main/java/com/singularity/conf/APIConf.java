@@ -7,6 +7,6 @@ package com.singularity.conf;
 
 public class APIConf {
 
-    public final static String hostDefault = "http://192.168.2.1:9000/";
+    public final static String hostDefault = "http://192.168.56.1:9000/";
 
 }

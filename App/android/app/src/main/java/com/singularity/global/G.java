@@ -4,13 +4,17 @@ import android.app.Application;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.singularity.BR;
 import com.singularity.base.BaseApplication;
 import com.singularity.conf.APIConf;
 import com.singularity.entity.DaoMaster;
 import com.singularity.entity.DaoSession;
+import com.singularity.event.Events;
+import com.singularity.event.EventsHandler;
 
 import xyz.xysc.core.api.APIFactory;
 import xyz.xysc.core.global.Global;
+import xyz.xysc.databinding.adapters.RecyclerViewAdapter;
 
 /**
  * @author architect.bian
@@ -19,6 +23,8 @@ import xyz.xysc.core.global.Global;
 public class G extends Global {
 
     private static DaoSession daoSession = null;
+
+    private static EventsHandler eventsHandler = new EventsHandler();
 
     public static DaoSession getDaoSession() {
         return daoSession;
@@ -31,8 +37,17 @@ public class G extends Global {
         daoSession = daoMaster.newSession();
     }
 
-    public static void initialize(Application application) {
+    public static void onCreate(Application application) {
         Global.initialize(application, APIConf.hostDefault);
+        Events.registerEventBus(eventsHandler);
         G.daoSetUp(application);
+
+        RecyclerViewAdapter.BR.item = BR.item;
+        RecyclerViewAdapter.BR.vm = BR.vm;
+        RecyclerViewAdapter.BR.position = BR.position;
+    }
+
+    public static void onTerminate() {
+        Events.unregisterEventBus(eventsHandler);
     }
 }

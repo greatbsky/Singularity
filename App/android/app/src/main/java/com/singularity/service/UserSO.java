@@ -21,9 +21,9 @@ import io.reactivex.schedulers.Schedulers;
 
 public class UserSO extends BaseSO {
 
-    private UserAPI userAPI = newAPI(UserAPI.class);
+    private static UserAPI userAPI = newAPI(UserAPI.class);
 
-    public void get(String uid, final ObservableField<User> user) {
+    public static void get(String uid, final ObservableField<User> user) {
         userAPI.get("uid0000001").subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<User>() {
@@ -54,14 +54,14 @@ public class UserSO extends BaseSO {
 //        }
     }
 
-    public long add(String lucy) {
+    public static long add(String lucy) {
         User user = new User(lucy);
         G.getDaoSession().getUserDao().insert(user);
         Log.d("dao", "Inserted new user, ID: " + user.getId());
         return user.getId();
     }
 
-    public User get(Long id) {
+    public static User get(Long id) {
         return G.getDaoSession().getUserDao().load(id);
     }
 }

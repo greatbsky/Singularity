@@ -1,10 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     tools:context="com.singularity.activity.MainActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <data>
+        <variable
+            name="vm"
+            type="com.singularity.viewmodel.MainModel" />
+
+        <variable
+            name="videoVM"
+            type="com.singularity.viewmodel.VideoItemModel" />
+    </data>
+
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            data="@{vm.list}"
+            layoutItem="@{@layout/item_video}"
+            viewModel="@{videoVM}"
+            />
+
+    </android.support.v7.widget.LinearLayoutCompat>
+</layout>
+

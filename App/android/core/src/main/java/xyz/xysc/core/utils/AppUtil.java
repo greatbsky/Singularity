@@ -2,6 +2,7 @@ package xyz.xysc.core.utils;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.support.annotation.StringDef;
 import android.support.v4.content.ContextCompat;
 
 /**

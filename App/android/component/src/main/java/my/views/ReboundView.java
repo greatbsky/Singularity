@@ -3,10 +3,13 @@ package my.views;
 import android.content.Context;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.TranslateAnimation;
 import android.widget.ScrollView;
+
+import my.R;
 
 /**
  * @author architect.bian
@@ -27,6 +30,7 @@ public class ReboundView extends ScrollView {
 
     public ReboundView(Context context, AttributeSet attrs) {
         super(context, attrs);
+//        LayoutInflater.from(context).inflate(R.layout.xxxx, this);
     }
 
     @Override

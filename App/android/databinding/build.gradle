@@ -3,6 +3,5 @@ apply plugin: 'com.android.library'
 dependencies {
     compile support.appcompat
     compile support.recyclerview
-
     compile project(':core')
 }

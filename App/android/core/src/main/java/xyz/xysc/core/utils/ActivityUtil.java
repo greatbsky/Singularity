@@ -17,12 +17,21 @@ import java.util.Objects;
 public class ActivityUtil {
 
 
+    public static void start(Activity activity, Class<?> clzTarget) {
+        start(activity, null, clzTarget);
+    }
+
     public static void start(Activity activity, Bundle bundle, Class<?> clzTarget) {
         Intent i = new Intent(activity, clzTarget);
         if (bundle != null) {
             i.putExtras(bundle);
         }
         activity.startActivity(i);
+    }
+
+
+    public static void startForResult(Activity activity, Class<?> clzTarget, int requestCode) {
+        startForResult(activity, clzTarget, requestCode);
     }
 
     public static void startForResult(Activity activity, Bundle bundle, Class<?> clzTarget, int requestCode) {

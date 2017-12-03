@@ -7,9 +7,9 @@ import xyz.xysc.core.api.APIFactory;
  * @date 2017-11-23 6:56 PM
  */
 
-public class BaseSO {
+public abstract class BaseSO {
 
-    protected <T> T newAPI(Class<T> clazz) {
+    protected static <T> T newAPI(Class<T> clazz) {
         return APIFactory.create(clazz);
     }
 }

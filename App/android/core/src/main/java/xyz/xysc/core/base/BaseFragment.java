@@ -5,5 +5,5 @@ package xyz.xysc.core.base;
  * @date 2017-11-30 4:26 PM
  */
 
-public class BaseFragment {
+public abstract class BaseFragment {
 }

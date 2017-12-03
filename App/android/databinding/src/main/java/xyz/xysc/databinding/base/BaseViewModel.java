@@ -10,11 +10,4 @@ import android.databinding.BaseObservable;
  */
 public class BaseViewModel extends BaseObservable {
 
-    protected void startActivity(Activity activity, Class<?>  clz) {
-        activity.startActivity(new Intent(activity, clz));
-    }
-
-    protected void startActivityForResult(Activity activity, Class<?> clz, int requestCode) {
-        activity.startActivityForResult(new Intent(activity, clz), requestCode);
-    }
 }

@@ -3,8 +3,6 @@ package com.singularity.base;
 import android.support.multidex.MultiDexApplication;
 
 import com.singularity.global.G;
-import com.squareup.leakcanary.LeakCanary;
-import com.squareup.leakcanary.RefWatcher;
 
 /**
  * @author architect.bian
@@ -13,17 +11,23 @@ import com.squareup.leakcanary.RefWatcher;
 
 public class BaseApplication extends MultiDexApplication {
 
-    public RefWatcher watcher;
+//    public RefWatcher watcher;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-        G.initialize(this);
+        G.onCreate(this);
 
-        if (LeakCanary.isInAnalyzerProcess(this)) {
-            return;
-        }
-        watcher = LeakCanary.install(this); //TODO Release版本要去掉leak
+//        if (LeakCanary.isInAnalyzerProcess(this)) {
+//            return;
+//        }
+//        watcher = LeakCanary.install(this); //TODO Release版本要去掉leak
+    }
+
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
+        G.onTerminate();
     }
 }

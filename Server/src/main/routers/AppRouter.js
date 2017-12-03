@@ -9,6 +9,7 @@ const log = Log(__filename);
 
 module.exports = function(router) {
 
+    // rn
     router.get('/api/:version/app/initialdata', (ctx, next) => {
         let data = require('../mocks/initialdata');
         // let random = Math.random();
@@ -16,4 +17,10 @@ module.exports = function(router) {
         return data;
     });
 
+    // android
+    router.get('/api/initialize', (ctx, next) => {
+        let data = require('../mocks/initialize');
+        // let data = require('../mocks/initialdata');
+        return data;
+    });
 }

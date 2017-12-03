@@ -173,22 +173,23 @@ dependencies {
     compile project(':core')
     compile project(':databinding')
     compile project(':component')
-    compile 'com.facebook.react:react-native:+' // From node_modules
+    compile 'com.facebook.react:react-native:+'
+    // From node_modules
     compile support.appcompat
     compile support.recyclerview
     compile support.constraint
     compile support.design
     compile support.multidex
-
-//    compile retrofit2.protobuf
+    compile support.percent
+    //    compile retrofit2.protobuf
     compile rxjava2.rxandroid
     compile rxjava2.rxjava
     compile okio
     compile greenrobot.greendao
     compile okhttp3.integration
     //    compile lottie
-    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
-    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    //    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+    //    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
     compile joda_time
 }
 

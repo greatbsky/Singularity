@@ -19,7 +19,7 @@
 
         <include
             android:id="@+id/include"
-            layout="@layout/common_toolbar"
+            layout="@layout/include_toolbar"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <my.views.ReboundView

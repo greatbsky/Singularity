@@ -36,4 +36,7 @@
         <!--<item name="dropDownListViewStyle">@style/dropDownStyle</item>-->
     </style>
 
+    <style name="Theme.Dialog" parent="Theme.AppCompat.Dialog">
+    </style>
+
 </resources>

@@ -12,10 +12,10 @@ import java.io.ObjectOutputStream;
 import java.io.StreamCorruptedException;
 
 /**
+ * sharedpreferences存储类
  * @author architect.bian
  * @date 2017-11-30 3:28 PM
  */
-
 public class Store {
 
     private SharedPreferences engine;
