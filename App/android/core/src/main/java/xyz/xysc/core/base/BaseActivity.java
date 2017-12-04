@@ -10,6 +10,7 @@ import org.greenrobot.eventbus.EventBus;
 
 import xyz.xysc.core.R;
 import xyz.xysc.core.event.Events;
+import xyz.xysc.core.global.ActivityHistory;
 import xyz.xysc.core.global.Global;
 
 public abstract class BaseActivity extends AppCompatActivity {
@@ -19,6 +20,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Events.registerEventBus(getListener());
         initView(savedInstanceState);
+        ActivityHistory.add(this);
     }
 
     @Override
@@ -55,6 +57,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Events.unregisterEventBus(getListener());
+        ActivityHistory.remove(this);
     }
 
     @Override
@@ -78,8 +81,8 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 是否根activity
      * @return
      */
-    protected boolean isRootActivity() {
-        return false;
+    private boolean isRootActivity() {
+        return ActivityHistory.getCount() == 1;
     }
 
     /**

@@ -2,39 +2,27 @@ package com.singularity.activity;
 
 import android.app.Activity;
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
-import com.singularity.BR;
 import com.singularity.R;
+import com.singularity.activity.video.VideoFragment;
 import com.singularity.base.BaseActivity;
 import com.singularity.databinding.ActivityMainBinding;
-import com.singularity.databinding.ActivityTestBinding;
 import com.singularity.viewmodel.MainModel;
-import com.singularity.viewmodel.UserModel;
-import com.singularity.viewmodel.VideoItemModel;
 
 import xyz.xysc.core.utils.ActivityUtil;
 
 public class MainActivity extends BaseActivity {
 
     protected MainModel viewModel = new MainModel(this);
-    protected VideoItemModel videoVM = new VideoItemModel(this);
 
     @Override
     protected void initView(Bundle savedInstanceState) {
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setVm(viewModel);
-        binding.setVideoVM(videoVM);
-    }
 
-    /**
-     * 是否根activity
-     * @return
-     */
-    @Override
-    protected boolean isRootActivity() {
-        return true;
+        ActivityUtil.replaceFragment(this, new VideoFragment(), R.id.container);
     }
 
     /*----------------------------------------自定义方法----------------------------------------*/

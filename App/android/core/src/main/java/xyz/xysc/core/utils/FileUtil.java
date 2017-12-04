@@ -1,6 +1,7 @@
 package xyz.xysc.core.utils;
 
 import android.content.Context;
+import android.os.Environment;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -20,6 +21,10 @@ import java.util.List;
  */
 
 public class FileUtil {
+
+    public static File getSDCardDirectory() {
+        return Environment.getExternalStorageDirectory();
+    }
 
     /**
      * 递归创建文件夹

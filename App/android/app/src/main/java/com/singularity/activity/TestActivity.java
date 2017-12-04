@@ -26,15 +26,6 @@ public class TestActivity extends BaseActivity {
         return viewModel;
     }
 
-    /**
-     * 是否根activity
-     * @return
-     */
-    @Override
-    protected boolean isRootActivity() {
-        return true;
-    }
-
     /*----------------------------------------自定义方法----------------------------------------*/
 
     public static void start(Activity activity, Bundle bundle) {

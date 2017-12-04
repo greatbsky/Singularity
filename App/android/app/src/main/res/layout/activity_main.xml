@@ -10,23 +10,16 @@
             name="vm"
             type="com.singularity.viewmodel.MainModel" />
 
-        <variable
-            name="videoVM"
-            type="com.singularity.viewmodel.VideoItemModel" />
     </data>
 
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerview"
+        <FrameLayout
+            android:id="@+id/container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            data="@{vm.list}"
-            layoutItem="@{@layout/item_video}"
-            viewModel="@{videoVM}"
-            />
+            android:layout_height="match_parent"></FrameLayout>
 
     </android.support.v7.widget.LinearLayoutCompat>
 </layout>

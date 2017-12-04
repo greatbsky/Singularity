@@ -6,8 +6,12 @@ import android.util.Log;
 import android.view.View;
 
 import com.singularity.R;
+import com.singularity.activity.LoginActivity;
 import com.singularity.activity.SettingActivity;
 import com.singularity.activity.TestActivity;
+
+import xyz.xysc.core.global.ActivityHistory;
+import xyz.xysc.core.utils.ActivityUtil;
 import xyz.xysc.databinding.base.BaseViewModel;
 import com.singularity.entity.User;
 import com.singularity.event.Events;
@@ -84,6 +88,11 @@ public class UserModel extends BaseViewModel {
                 Log.e("Alert", "onClick: " + which);
             }
         });
+    }
+
+    public void relogin(View v) {
+        ActivityHistory.finishAll();
+        ActivityUtil.start(this.activity, LoginActivity.class);
     }
 
 }

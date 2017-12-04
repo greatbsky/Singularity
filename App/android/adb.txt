@@ -1,0 +1,31 @@
+Architect:~ great$ cd /Users/great/Library/Android/sdk/platform-tools
+
+Architect:platform-tools great$ ./adb devices
+List of devices attached
+192.168.56.101:5555	device
+
+Architect:platform-tools great$ ./adb shell
+1|root@vbox86p:/ #
+1|root@vbox86p:/ #
+1|root@vbox86p:/ #
+1|root@vbox86p:/ # cd /data/data/com.singularity/databases/
+app_webview/    code_cache/     files/          lib/
+cache/          databases/      lib-main/       shared_prefs/
+root@vbox86p:/data/data/com.singularity/databases # ls
+RKStorage
+RKStorage-journal
+global
+global-journal
+mydb
+mydb-journal
+root@vbox86p:/data/data/com.singularity/databases # sqlite3 global
+SQLite version 3.8.10.2 2015-05-20 18:17:19
+Enter ".help" for usage hints.
+sqlite> .tables
+USER              VIDEO             android_metadata
+sqlite> select * from VIDEO;
+sqlite>
+
+
+
+

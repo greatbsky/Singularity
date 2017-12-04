@@ -1,8 +1,9 @@
 package com.singularity.viewmodel;
 
+import android.app.Activity;
 import android.databinding.Bindable;
+import android.support.v4.app.FragmentActivity;
 
-import com.singularity.activity.MainActivity;
 import com.singularity.entity.Video;
 import com.singularity.service.VideoSO;
 
@@ -14,14 +15,14 @@ import xyz.xysc.databinding.base.BaseViewModel;
  * @author architect.bian
  * @date 2017-12-03 2:15 PM
  */
-public class MainModel extends BaseViewModel {
+public class VideoModel extends BaseViewModel {
 
-    private MainActivity activity;
+    private FragmentActivity activity;
     private VideoSO videoSO = new VideoSO();
 
     public VideoItemModel videoVM;
 
-    public MainModel(MainActivity activity) {
+    public VideoModel(FragmentActivity activity) {
         this.activity = activity;
         videoVM = new VideoItemModel(activity);
     }

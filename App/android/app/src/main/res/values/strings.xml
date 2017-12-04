@@ -12,4 +12,10 @@
     <string name="copyright">\@奇点科技 singularity.com</string>
     <string name="no_network">当前网络未连接！</string>
     <string name="new_msgs">您有新的消息</string>
+    <string name="relogin">请重新登录</string>
+    <string name="request_permission_title">缺少权限</string>
+    <string name="request_permission_message">本应用缺少必要权限，请先授予允许权限！</string>
+    <string name="setting_permission">设置权限</string>
+    <string name="setting_permission_to_appsetting"><![CDATA[应用缺少必要权限，请前往“设置->应用管理->权限”授予允许权限]]></string>
+    <string name="goto_setting">去设置</string>
 </resources>

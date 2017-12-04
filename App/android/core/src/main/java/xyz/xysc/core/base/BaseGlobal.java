@@ -71,6 +71,17 @@ public abstract class BaseGlobal {
         builder.show();
     }
 
+    public static AlertDialog.Builder createAlertBuilder(Activity activity, int title, int message) {
+        return createAlertBuilder(activity, activity.getText(title), activity.getText(message));
+    }
+
+    public static AlertDialog.Builder createAlertBuilder(Activity activity, CharSequence title, CharSequence message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        return builder;
+    }
+
     private static AlertDialog.Builder createAlertBuilder(Activity activity, DialogInterface.OnClickListener positiveListener, DialogInterface.OnClickListener negativeListener) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         if (positiveListener != null || negativeListener != null) {

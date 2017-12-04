@@ -191,6 +191,7 @@ dependencies {
     //    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     //    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
     compile joda_time
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }
 
 // Run this once to be able to run the application with BUCK
