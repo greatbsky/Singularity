@@ -5,11 +5,11 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 
 import com.singularity.R;
-import xyz.xysc.core.base.BaseActivity;
-import xyz.xysc.core.utils.ActivityUtil;
-
 import com.singularity.databinding.ActivityTestBinding;
 import com.singularity.viewmodel.UserModel;
+
+import xyz.xysc.core.base.BaseActivity;
+import xyz.xysc.core.utils.ActivityUtil;
 
 public class TestActivity extends BaseActivity {
 

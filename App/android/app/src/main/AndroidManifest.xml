@@ -29,7 +29,7 @@
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
     <uses-permission android:name="android.permission.WAKE_LOCK"/> <!-- 保持CPU 运转，屏幕和键盘灯有可能是关闭的,用于文件上传和下载 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/><!-- 这个权限用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/> <!-- 这个权限用于进行网络定位 -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.BATTERY_STATS"/>
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
@@ -93,10 +93,24 @@
         <activity
             android:name=".activity.MainActivity"
             android:launchMode="singleTask">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN"/> -->
+            <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity android:name=".activity.SettingActivity">
         </activity>
         <activity android:name=".activity.LoginActivity">
+        </activity>
+
+        <activity android:name=".activity.my.NotifyActivity">
+        </activity>
+        <activity android:name=".activity.my.NotifyDetailActivity" android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
         </activity>
 
         <receiver
@@ -122,6 +136,12 @@
             android:enabled="true"
             android:exported="true">
         </receiver>
+
+        <service
+            android:name=".global.service.ForeverService"
+            android:enabled="true"
+            android:exported="true">
+        </service>
     </application>
 
 </manifest>

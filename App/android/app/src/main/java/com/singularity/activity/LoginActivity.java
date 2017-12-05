@@ -13,4 +13,7 @@ public class LoginActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
     }
+
+    /*----------------------------------------自定义方法----------------------------------------*/
+
 }

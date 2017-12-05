@@ -38,7 +38,7 @@ project.ext {
 
     greenrobot = [
             plugin       : "org.greenrobot:greendao-gradle-plugin:3.2.2",
-            schemaVersion: 3,
+            schemaVersion: 11,
             greendao     : 'org.greenrobot:greendao:3.2.2'
     ]
 

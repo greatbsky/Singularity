@@ -1,6 +1,7 @@
 package com.singularity.base;
 
 import android.support.multidex.MultiDexApplication;
+import android.util.Log;
 
 import com.singularity.global.G;
 
@@ -16,6 +17,7 @@ public class BaseApplication extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        Log.e("BaseApplication", "......................onCreate................ ");
 
         G.onCreate(this);
 
@@ -29,5 +31,7 @@ public class BaseApplication extends MultiDexApplication {
     public void onTerminate() {
         super.onTerminate();
         G.onTerminate();
+
+        Log.e("BaseApplication", "......................onTerminate................ ");
     }
 }

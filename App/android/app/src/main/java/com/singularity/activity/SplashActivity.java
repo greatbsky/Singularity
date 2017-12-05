@@ -23,6 +23,7 @@ import com.singularity.databinding.ActivitySplashBinding;
 import com.singularity.event.Events;
 import com.singularity.global.G;
 
+import xyz.xysc.core.utils.ActivityUtil;
 import xyz.xysc.core.utils.JsonUtil;
 import xyz.xysc.core.utils.NetworkUtil;
 

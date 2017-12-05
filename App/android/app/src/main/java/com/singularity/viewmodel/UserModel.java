@@ -1,6 +1,7 @@
 package com.singularity.viewmodel;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.databinding.ObservableField;
 import android.util.Log;
 import android.view.View;
@@ -9,18 +10,19 @@ import com.singularity.R;
 import com.singularity.activity.LoginActivity;
 import com.singularity.activity.SettingActivity;
 import com.singularity.activity.TestActivity;
-
-import xyz.xysc.core.global.ActivityHistory;
-import xyz.xysc.core.utils.ActivityUtil;
-import xyz.xysc.databinding.base.BaseViewModel;
 import com.singularity.entity.User;
 import com.singularity.event.Events;
 import com.singularity.global.G;
+import com.singularity.global.service.ForeverService;
 import com.singularity.service.UserSO;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
+import xyz.xysc.core.global.ActivityHistory;
+import xyz.xysc.core.utils.ActivityUtil;
+import xyz.xysc.databinding.base.BaseViewModel;
 
 /**
  * @author architect.bian
@@ -93,6 +95,10 @@ public class UserModel extends BaseViewModel {
     public void relogin(View v) {
         ActivityHistory.finishAll();
         ActivityUtil.start(this.activity, LoginActivity.class);
+    }
+
+    public void startService(View v) {
+        ForeverService.start(activity);
     }
 
 }

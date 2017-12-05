@@ -36,6 +36,12 @@
                 android:text="Send"/>
         </LinearLayout>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="start service"
+            android:onClick="@{(v) -> vm.startService(v)}"/>
+
         <ScrollView
             android:id="@+id/scroll"
             android:layout_width="match_parent"

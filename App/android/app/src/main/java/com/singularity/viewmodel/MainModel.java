@@ -26,6 +26,8 @@ public class MainModel extends BaseViewModel {
         videoVM = new VideoItemModel(activity);
     }
 
+    /*----------------------------------------自定义方法----------------------------------------*/
+
     @Bindable
     public List<Video> getList() {
         return videoSO.getList();
