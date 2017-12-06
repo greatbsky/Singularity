@@ -1,12 +1,19 @@
 package xyz.xysc.core.base;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 
 import org.greenrobot.eventbus.EventBus;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import xyz.xysc.core.R;
 import xyz.xysc.core.event.Events;
@@ -14,6 +21,9 @@ import xyz.xysc.core.global.ActivityHistory;
 import xyz.xysc.core.global.Global;
 
 public abstract class BaseActivity extends AppCompatActivity {
+
+    protected int rcPerms = 1000001; // 父类定义的requestcode要大于1000000一百万
+    protected int rcSetting = 1000002;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

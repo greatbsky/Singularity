@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -313,4 +314,57 @@ public class FileUtil {
         }
     }
 
+    public static FileInputStream getInputStream(Context context, String name) {
+        try {
+            return context.openFileInput(name);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static FileOutputStream getOutputStream(Context context, String name, int mode) {
+        try {
+            return context.openFileOutput(name, mode);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * 用于获取/data/data/<package name>/cache目录
+     * @param context
+     * @return
+     */
+    public static File getCacheDir(Context context) {
+        return context.getCacheDir();
+    }
+
+    /**
+     * 用于获取/data/data/<package name>/files目录
+     * @param context
+     * @return
+     */
+    public static File getFilesDir(Context context) {
+        return context.getFilesDir();
+    }
+
+    public static File getExternalCacheFile(Context context, String name) {
+        return recreateFile(context.getExternalCacheDir(), name);
+    }
+
+    private static File recreateFile(File dir, String name) {
+        File out = new File(dir, name);
+        try {
+            if (out.exists()) {
+                out.delete();
+            }
+            out.createNewFile();
+            return out;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

@@ -1,11 +1,10 @@
 package com.singularity.viewmodel;
 
-import android.app.Activity;
 import android.databinding.Bindable;
 import android.support.v4.app.FragmentActivity;
 
 import com.singularity.entity.Video;
-import com.singularity.service.VideoSO;
+import com.singularity.so.VideoSO;
 
 import java.util.List;
 

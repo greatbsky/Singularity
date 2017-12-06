@@ -35,6 +35,8 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
     <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.RECORD_VIDEO"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
 
     <application
         android:name=".MainApplication"
@@ -103,16 +105,21 @@
         </activity>
         <activity android:name=".activity.LoginActivity">
         </activity>
-
         <activity android:name=".activity.my.NotifyActivity">
         </activity>
-        <activity android:name=".activity.my.NotifyDetailActivity" android:launchMode="singleTop">
+        <activity
+            android:name=".activity.my.NotifyDetailActivity"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
+
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
 
+        <activity android:name=".activity.DynamicActivity">
+        </activity>
+        
         <receiver
             android:name=".global.broadcast.receiver.BootCompletedReceiver"
             android:enabled="true"
@@ -142,6 +149,14 @@
             android:enabled="true"
             android:exported="true">
         </service>
+
+        <provider
+            android:authorities="com.singularity.fileprovider"
+            android:name="android.support.v4.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

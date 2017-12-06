@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -25,6 +26,66 @@ import java.util.Objects;
  * @date 2017-11-22 6:16 PM
  */
 public class ActivityUtil {
+
+    /*----------------------------------------各种Intent启动----------------------------------------*/
+
+    public static void startTel(Activity activity, String telNum) {
+        Intent i = new Intent(Intent.ACTION_DIAL);
+        i.setData(Uri.parse("tel:" + telNum));
+        activity.startActivity(i);
+    }
+
+    public static void startCamera(Activity activity, Uri imageUri, int requestCode) {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+        if (intent.resolveActivity(activity.getPackageManager()) != null) {
+            activity.startActivityForResult(intent, requestCode);
+        }
+    }
+
+    public static void startVideoRecord(Activity activity, Uri imageUri, int requestCode) {
+        Intent intent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+        if (intent.resolveActivity(activity.getPackageManager()) != null) {
+            activity.startActivityForResult(intent, requestCode);
+        }
+    }
+
+    public static void startAlbum(Activity activity, int requestCode) {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("image/*");
+        activity.startActivityForResult(intent, requestCode);
+    }
+
+    public static void startChooseVideo(Activity activity, int requestCode) {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("video/*");
+        activity.startActivityForResult(intent, requestCode);
+    }
+
+    public static void startChooseFile(Activity activity, int requestCode) {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.setType("*/*");
+        activity.startActivityForResult(intent, requestCode);
+    }
+
+    public static void startBrowser(Activity activity, String url) {
+        Uri uri = Uri.parse(url);
+        startUri(activity, uri);
+    }
+
+    public static void startUri(Activity activity, Uri uri) {
+        Intent i = new Intent(Intent.ACTION_VIEW, uri);
+        activity.startActivity(i);
+    }
+
+    public static void startSMS(Activity activity, String body) {
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.putExtra("sms_body", body);
+        activity.startActivity(i);
+    }
+
+    /*----------------------------------------启动某个activity----------------------------------------*/
 
     /**
      * 启动某个activity
@@ -72,11 +133,7 @@ public class ActivityUtil {
         activity.startActivityForResult(i, requestCode);
     }
 
-    public static void startTel(Context context, String telNum) {
-        Intent i = new Intent(Intent.ACTION_DIAL);
-        i.setData(Uri.parse("tel:" + telNum));
-        context.startActivity(i);
-    }
+    /*----------------------------------------Fragment操作----------------------------------------*/
 
     /**
      * 添加一个fragment到containerID
@@ -103,39 +160,4 @@ public class ActivityUtil {
         return activity.getSupportFragmentManager().findFragmentById(id);
     }
 
-    public static FileInputStream getInputStream(Context context, String name) {
-        try {
-            return context.openFileInput(name);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    public static FileOutputStream getOutputStream(Context context, String name, int mode) {
-        try {
-            return context.openFileOutput(name, mode);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    /**
-     * 用于获取/data/data/<package name>/cache目录
-     * @param context
-     * @return
-     */
-    public static File getCacheDir(Context context) {
-        return context.getCacheDir();
-    }
-
-    /**
-     * 用于获取/data/data/<package name>/files目录
-     * @param context
-     * @return
-     */
-    public static File getFilesDir(Context context) {
-        return context.getFilesDir();
-    }
 }

@@ -1,12 +1,8 @@
-package com.singularity.service;
-
-import android.databinding.ObservableField;
+package com.singularity.so;
 
 import com.singularity.api.NotifyAPI;
-import com.singularity.api.UserAPI;
 import com.singularity.entity.Notify;
 import com.singularity.entity.NotifyDao;
-import com.singularity.entity.User;
 import com.singularity.global.G;
 
 import org.greenrobot.greendao.query.QueryBuilder;
@@ -14,9 +10,6 @@ import org.greenrobot.greendao.query.QueryBuilder;
 import java.io.IOException;
 import java.util.List;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
 import xyz.xysc.core.base.BaseSO;
 
 /**

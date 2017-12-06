@@ -18,4 +18,5 @@
     <string name="setting_permission">设置权限</string>
     <string name="setting_permission_to_appsetting"><![CDATA[应用缺少必要权限，请前往“设置->应用管理->权限”授予允许权限]]></string>
     <string name="goto_setting">去设置</string>
+    <string name="err_get_img">获取图片失败</string>
 </resources>

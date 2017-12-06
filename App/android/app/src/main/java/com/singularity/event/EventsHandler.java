@@ -2,8 +2,7 @@ package com.singularity.event;
 
 import android.util.Log;
 
-import com.singularity.global.G;
-import com.singularity.service.MainSO;
+import com.singularity.so.MainSO;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;

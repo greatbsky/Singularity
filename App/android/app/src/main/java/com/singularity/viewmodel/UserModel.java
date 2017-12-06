@@ -1,12 +1,12 @@
 package com.singularity.viewmodel;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.databinding.ObservableField;
 import android.util.Log;
 import android.view.View;
 
 import com.singularity.R;
+import com.singularity.activity.DynamicActivity;
 import com.singularity.activity.LoginActivity;
 import com.singularity.activity.SettingActivity;
 import com.singularity.activity.TestActivity;
@@ -14,7 +14,7 @@ import com.singularity.entity.User;
 import com.singularity.event.Events;
 import com.singularity.global.G;
 import com.singularity.global.service.ForeverService;
-import com.singularity.service.UserSO;
+import com.singularity.so.UserSO;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -71,7 +71,9 @@ public class UserModel extends BaseViewModel {
 
     public void userGet() {
         User u = UserSO.get(Long.parseLong(daotxt.get()));
-        daotxt.set(u.getName());
+        if (!daotxt.get().equals(u.getName())) {
+            daotxt.set(u.getName());
+        }
     }
 
     public void goSetting(View v) {
@@ -101,4 +103,7 @@ public class UserModel extends BaseViewModel {
         ForeverService.start(activity);
     }
 
+    public void takePhoto(View v) {
+        DynamicActivity.start(activity);
+    }
 }

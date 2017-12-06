@@ -4,7 +4,7 @@ import android.databinding.Bindable;
 
 import com.singularity.activity.MainActivity;
 import com.singularity.entity.Video;
-import com.singularity.service.VideoSO;
+import com.singularity.so.VideoSO;
 
 import java.util.List;
 

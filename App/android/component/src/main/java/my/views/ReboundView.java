@@ -73,7 +73,11 @@ public class ReboundView extends ScrollView {
                 contentView.layout(originalRect.left, originalRect.top, originalRect.right, originalRect.bottom);
                 break;
         }
+//        this.invalidate();
+//        this.requestLayout();
 
+//        this.getRootView().invalidate();
+        this.getParent().requestLayout();
         return super.dispatchTouchEvent(e);
     }
 }

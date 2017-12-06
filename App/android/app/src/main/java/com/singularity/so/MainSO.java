@@ -1,4 +1,4 @@
-package com.singularity.service;
+package com.singularity.so;
 
 import android.util.Log;
 
@@ -10,7 +10,6 @@ import com.singularity.global.G;
 import java.util.List;
 import java.util.Map;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 import xyz.xysc.core.base.BaseSO;

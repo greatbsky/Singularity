@@ -1,15 +1,11 @@
 package com.singularity.viewmodel;
 
 import android.app.Activity;
-import android.content.Context;
-import android.databinding.Observable;
 import android.databinding.ObservableField;
-import android.util.Log;
 
 import com.singularity.activity.TestActivity;
-import com.singularity.activity.my.NotifyDetailActivity;
 import com.singularity.entity.Notify;
-import com.singularity.service.NotifySO;
+import com.singularity.so.NotifySO;
 
 import xyz.xysc.databinding.base.BaseViewModel;
 

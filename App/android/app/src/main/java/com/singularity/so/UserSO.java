@@ -1,4 +1,4 @@
-package com.singularity.service;
+package com.singularity.so;
 
 import android.databinding.ObservableField;
 import android.util.Log;
@@ -7,8 +7,6 @@ import com.singularity.api.UserAPI;
 import xyz.xysc.core.base.BaseSO;
 import com.singularity.entity.User;
 import com.singularity.global.G;
-
-import xyz.xysc.core.global.Global;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;

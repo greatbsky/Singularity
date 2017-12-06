@@ -14,7 +14,7 @@ import com.singularity.activity.my.NotifyDetailActivity;
 import com.singularity.conf.KeyConsts;
 import com.singularity.entity.Notify;
 import com.singularity.global.G;
-import com.singularity.service.NotifySO;
+import com.singularity.so.NotifySO;
 
 import java.util.List;
 

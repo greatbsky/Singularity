@@ -1,8 +1,5 @@
-package com.singularity.service;
+package com.singularity.so;
 
-import android.util.Log;
-
-import com.singularity.entity.User;
 import com.singularity.entity.Video;
 import com.singularity.global.G;
 
