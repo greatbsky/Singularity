@@ -1,19 +1,42 @@
 package com.singularity.activity;
 
+import android.Manifest;
 import android.app.Activity;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.os.IBinder;
 
 import com.singularity.R;
+import com.singularity.base.BaseActivity;
 import com.singularity.databinding.ActivityTestBinding;
-import com.singularity.viewmodel.UserModel;
+import com.singularity.global.service.DownLoadService;
+import com.singularity.vm.UserModel;
 
-import xyz.xysc.core.base.BaseActivity;
 import xyz.xysc.core.utils.ActivityUtil;
 
 public class TestActivity extends BaseActivity {
 
-    protected UserModel viewModel = new UserModel(this);
+    private UserModel viewModel = new UserModel(this);
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        DownLoadService.bind(this, new ServiceConnection() {
+
+            @Override
+            public void onServiceDisconnected(ComponentName name) {
+            }
+
+            @Override
+            public void onServiceConnected(ComponentName name, IBinder service) {
+                DownLoadService.Binder binder = (DownLoadService.Binder) service;
+                viewModel.binder = binder;
+            }
+
+        }, BIND_AUTO_CREATE);
+    }
 
     @Override
     protected void initView(Bundle savedInstanceState) {
@@ -35,4 +58,5 @@ public class TestActivity extends BaseActivity {
     public static void startForResult(Activity activity, Bundle bundle, int requestCode) {
         ActivityUtil.startForResult(activity, bundle, TestActivity.class, requestCode);
     }
+
 }

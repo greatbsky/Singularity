@@ -14,7 +14,7 @@
 
         <variable
             name="vm"
-            type="com.singularity.viewmodel.VideoItemModel"/>
+            type="com.singularity.vm.VideoItemModel"/>
     </data>
 
     <LinearLayout

@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import com.singularity.R;
 import com.singularity.databinding.FragmentVideoBinding;
-import com.singularity.viewmodel.VideoModel;
+import com.singularity.vm.VideoModel;
 
 import xyz.xysc.core.base.BaseFragment;
 

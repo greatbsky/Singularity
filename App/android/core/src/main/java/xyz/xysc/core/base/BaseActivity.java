@@ -24,6 +24,9 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected int rcPerms = 1000001; // 父类定义的requestcode要大于1000000一百万
     protected int rcSetting = 1000002;
+    protected static int rcDefault = 100;
+    protected static int rc101 = 101;
+    protected static int rc102 = 102;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -4,6 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
+import com.singularity.global.service.ForeverService;
+
 public class BatteryReceiver extends BroadcastReceiver {
 
     @Override
@@ -16,6 +18,7 @@ public class BatteryReceiver extends BroadcastReceiver {
         }
         if (Intent.ACTION_BATTERY_CHANGED.equals(intent.getAction())) {
             //TODO 充电时下载安装包，上传设备数据
+            ForeverService.start(context);
 //            Bundle bundle = intent.getExtras();
 //            // 获取当前电量
 //            int level = batteryStatus.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);

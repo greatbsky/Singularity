@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-
+    <data>
+        <variable
+            name="progress"
+            type="Integer" />
+    </data>
     <FrameLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent">
@@ -15,6 +19,14 @@
             android:theme="@style/Theme.ToolBar"
             />
 
+        <ProgressBar
+            android:id="@+id/progress"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:progress="@{progress}"
+            android:visibility="invisible"/>
     </FrameLayout>
 
 </layout>

@@ -11,7 +11,8 @@ import com.singularity.conf.AppConf;
 import com.singularity.databinding.ActivitySplashBinding;
 import com.singularity.event.Events;
 import com.singularity.global.G;
-import com.singularity.viewmodel.SplashModel;
+import com.singularity.global.service.UpdateService;
+import com.singularity.vm.SplashModel;
 
 import xyz.xysc.core.utils.JsonUtil;
 import xyz.xysc.core.utils.NetworkUtil;
@@ -38,6 +39,7 @@ public class SplashActivity extends BaseActivity {
             G.showToast(R.string.no_network);
         } else {
             Events.post(new Events.InitializeDataEvent()); //触发事件加载数据
+            UpdateService.start(this);
         }
         if (!this.requestingPermissions) {
             goWhere();

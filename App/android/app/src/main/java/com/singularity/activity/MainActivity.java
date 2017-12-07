@@ -3,13 +3,12 @@ package com.singularity.activity;
 import android.app.Activity;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.singularity.R;
 import com.singularity.activity.video.VideoFragment;
 import com.singularity.base.BaseActivity;
 import com.singularity.databinding.ActivityMainBinding;
-import com.singularity.viewmodel.MainModel;
+import com.singularity.vm.MainModel;
 
 import xyz.xysc.core.utils.ActivityUtil;
 

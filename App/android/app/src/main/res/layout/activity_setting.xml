@@ -8,7 +8,7 @@
 
         <variable
             name="vm"
-            type="com.singularity.viewmodel.SettingModel"/>
+            type="com.singularity.vm.SettingModel"/>
 
     </data>
 
@@ -20,7 +20,8 @@
         <include
             android:id="@+id/include"
             layout="@layout/include_toolbar"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            progress="@{vm.progress}"/>
 
         <my.views.ReboundView
             android:layout_width="0dp"
@@ -93,12 +94,13 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/bgtouch"
                         android:clickable="true"
-                        android:padding="8dp">
+                        android:padding="8dp"
+                        android:onClick="@{(v) -> vm.showAboutus(v)}">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="关于我们"
+                            android:text="@string/aboutus"
                             />
                     </FrameLayout>
 
@@ -117,7 +119,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="意见反馈"
+                            android:text="@string/suggest"
                             />
                     </FrameLayout>
 
@@ -136,13 +138,34 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="清除缓存"
+                            android:text="@string/clear_cache"
+                            />
+                    </FrameLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="@color/divider"/>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bgtouch"
+                        android:clickable="true"
+                        android:padding="8dp"
+                        android:onClick="@{(v) -> vm.checkUpdate(v)}">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/check_update"
                             />
                     </FrameLayout>
 
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/copyright"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="50dp"

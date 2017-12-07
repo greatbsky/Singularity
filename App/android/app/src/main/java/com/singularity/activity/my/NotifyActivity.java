@@ -6,7 +6,7 @@ import android.os.Bundle;
 import com.singularity.R;
 import com.singularity.base.BaseActivity;
 import com.singularity.databinding.ActivityNotifyDetailBinding;
-import com.singularity.viewmodel.NotifyModel;
+import com.singularity.vm.NotifyModel;
 
 public class NotifyActivity extends BaseActivity {
 

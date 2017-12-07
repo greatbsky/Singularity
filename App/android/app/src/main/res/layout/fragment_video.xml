@@ -5,7 +5,7 @@
 
         <variable
             name="vm"
-            type="com.singularity.viewmodel.VideoModel" />
+            type="com.singularity.vm.VideoModel" />
     </data>
 
     <android.support.v7.widget.RecyclerView

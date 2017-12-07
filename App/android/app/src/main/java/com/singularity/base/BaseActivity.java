@@ -24,6 +24,7 @@ import java.util.List;
 public class BaseActivity extends xyz.xysc.core.base.BaseActivity {
 
     private int showRationaleCount = 0; //弹窗引导设置权限显示次数
+    protected Runnable runnableAfterPermissionsGranted; //获得权限后执行的runnable
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +50,10 @@ public class BaseActivity extends xyz.xysc.core.base.BaseActivity {
                 }
             } else {
                 onGrantedPermissions(requestCode, permissions, grantResults);
+                return;
             }
         }
+        this.runnableAfterPermissionsGranted = null; //拒绝权限，置空接下来的执行操作
     }
 
     /**
@@ -123,6 +126,23 @@ public class BaseActivity extends xyz.xysc.core.base.BaseActivity {
      * 已获得权限
      */
     protected void onGrantedPermissions(int requestCode, String[] permissions, int[] grantResults) {
+        if (this.runnableAfterPermissionsGranted != null) {
+            runnableAfterPermissionsGranted.run();
+            runnableAfterPermissionsGranted = null;
+        }
     }
 
+    /**
+     * 使用permissions执行runnable
+     * @param runnable
+     * @param permissions
+     */
+    public void runWithPermissions(Runnable runnable, String[] permissions) {
+        if (getPermissionsToRequest(permissions).length == 0) {
+            runnable.run();
+        } else {
+            this.runnableAfterPermissionsGranted = runnable;
+            requestPermissionsHandler(rcPerms, false, permissions);
+        }
+    }
 }

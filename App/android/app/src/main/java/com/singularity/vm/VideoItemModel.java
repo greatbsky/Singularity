@@ -1,14 +1,10 @@
-package com.singularity.viewmodel;
+package com.singularity.vm;
 
-import android.app.Activity;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.view.View;
 
-import com.singularity.R;
 import com.singularity.global.G;
 
-import xyz.xysc.core.utils.ActivityUtil;
 import xyz.xysc.databinding.base.BaseViewModel;
 
 /**

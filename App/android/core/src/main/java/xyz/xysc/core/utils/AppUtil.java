@@ -9,6 +9,7 @@ import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.provider.ContactsContract;
+import android.support.annotation.NonNull;
 import android.support.annotation.StringDef;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.app.NotificationCompat;
@@ -64,8 +65,9 @@ public class AppUtil {
      * @param icon
      */
     public static void sendNotification(Context context, int id, String title, String content, int icon, PendingIntent intent) {
-        sendNotification(context, id, title, content, icon, intent, NotificationCompat.PRIORITY_DEFAULT, false);
+        sendNotification(context, id, title, content, icon, intent, NotificationCompat.PRIORITY_DEFAULT,false);
     }
+
     /**
      * 发送通知
      *
@@ -77,20 +79,56 @@ public class AppUtil {
      */
     public static void sendNotification(Context context, int id, String title, String content, int icon, PendingIntent intent, int priority, boolean vibrate) {
         NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationCompat.Builder builder = getNotificationBuilder(context, title, content, icon, intent, -1, priority, vibrate);
+        manager.notify(id, builder.build());
+    }
+
+    /**
+     * 获取Notification
+     * @param context
+     * @param title
+     * @param icon
+     * @param progress
+     * @param intent
+     * @return
+     */
+    public Notification getNotification(Context context, String title, String content, int icon, int progress, PendingIntent intent) {
+        NotificationCompat.Builder builder = getNotificationBuilder(context, title, content, icon, intent, progress, NotificationCompat.PRIORITY_DEFAULT, false);
+        return builder.build();
+    }
+    /**
+     * 获取NotificationCompat.Builder
+     * @param context
+     * @param title
+     * @param content
+     * @param icon
+     * @param intent
+     * @param progress
+     * @param priority
+     * @param vibrate
+     * @return
+     */
+    public static NotificationCompat.Builder getNotificationBuilder(Context context, String title, String content, int icon, PendingIntent intent,int progress, int priority, boolean vibrate) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
                 .setContentTitle(title)
-//                .setContentText(content)
                 .setWhen(System.currentTimeMillis())
                 .setSmallIcon(icon)
                 .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), icon))
                 .setContentIntent(intent)
                 .setPriority(priority)
                 .setAutoCancel(true);
-        builder.setStyle(new NotificationCompat.BigTextStyle().bigText(content));
+        if (progress >= 0) {
+            builder.setContentText(progress + "%");
+            builder.setProgress(100, progress, false);
+        }
+        if (content != null && content.length() > 0) {
+            builder.setStyle(new NotificationCompat.BigTextStyle().bigText(content));
+        }
         builder.setDefaults(NotificationCompat.DEFAULT_ALL);
         if (vibrate) {
             builder.setVibrate(new long[]{0, 1000, 1000, 1000});
         }
-        manager.notify(id, builder.build());
+        return builder;
     }
+
 }

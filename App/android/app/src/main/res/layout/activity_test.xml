@@ -6,7 +6,7 @@
 
         <variable
             name="vm"
-            type="com.singularity.viewmodel.UserModel"/>
+            type="com.singularity.vm.UserModel"/>
 
         <!--<import tycom.singularity.utils.ActivityUtilils" />-->
     </data>
@@ -48,10 +48,29 @@
             android:text="takePhoto"
             android:onClick="@{(v) -> vm.takePhoto(v)}"/>
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="start download"
+            android:onClick="@{(v) -> vm.startDownload(v)}"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="stop download"
+            android:onClick="@{(v) -> vm.stopDownload(v)}"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="cancel download"
+            android:onClick="@{(v) -> vm.cancelDownload(v)}"/>
+
         <ScrollView
             android:id="@+id/scroll"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
@@ -179,6 +198,12 @@
 
             </android.support.constraint.ConstraintLayout>
         </ScrollView>
+        <ProgressBar
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:progress="@{vm.progress}"/>
     </LinearLayout>
 </layout>
 

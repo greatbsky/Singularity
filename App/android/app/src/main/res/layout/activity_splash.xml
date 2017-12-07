@@ -5,7 +5,7 @@
     <data>
         <variable
             name="vm"
-            type="com.singularity.viewmodel.SplashModel" />
+            type="com.singularity.vm.SplashModel" />
     </data>
 
     <android.support.constraint.ConstraintLayout

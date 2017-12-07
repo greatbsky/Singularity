@@ -8,7 +8,7 @@
     <data>
         <variable
             name="vm"
-            type="com.singularity.viewmodel.MainModel" />
+            type="com.singularity.vm.MainModel" />
 
     </data>
 

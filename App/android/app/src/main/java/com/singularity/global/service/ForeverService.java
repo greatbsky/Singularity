@@ -28,8 +28,8 @@ public class ForeverService extends Service {
         super.onCreate();
         runningContext = this;
 
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
+//        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+//        StrictMode.setThreadPolicy(policy);
     }
 
     public int onStartCommand(Intent intent, int flags, int startId) {
@@ -39,6 +39,7 @@ public class ForeverService extends Service {
 
     public void onDestroy() {
         super.onDestroy();
+        runningContext = null;
     }
 
     @Nullable

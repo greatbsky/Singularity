@@ -1,4 +1,4 @@
-package com.singularity.viewmodel;
+package com.singularity.vm;
 
 import android.databinding.Bindable;
 

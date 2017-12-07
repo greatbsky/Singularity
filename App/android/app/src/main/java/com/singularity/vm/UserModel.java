@@ -1,6 +1,8 @@
-package com.singularity.viewmodel;
+package com.singularity.vm;
 
+import android.Manifest;
 import android.content.DialogInterface;
+import android.databinding.Observable;
 import android.databinding.ObservableField;
 import android.util.Log;
 import android.view.View;
@@ -13,12 +15,15 @@ import com.singularity.activity.TestActivity;
 import com.singularity.entity.User;
 import com.singularity.event.Events;
 import com.singularity.global.G;
+import com.singularity.global.service.DownLoadService;
 import com.singularity.global.service.ForeverService;
 import com.singularity.so.UserSO;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
+import java.io.File;
 
 import xyz.xysc.core.global.ActivityHistory;
 import xyz.xysc.core.utils.ActivityUtil;
@@ -35,8 +40,11 @@ public class UserModel extends BaseViewModel {
     public final ObservableField<String> daotxt = new ObservableField<>();
     public final ObservableField<String> notifyContent = new ObservableField<>();
     public final ObservableField<String> imgSrc = new ObservableField<>("http://www.imgup.bid/images/2017/10/29/4232422e8314489c0bb668a9b6fd1be9.jpg");
+    public final ObservableField<Integer> progress = new ObservableField<>();
+    public final ObservableField<File> file = new ObservableField<>();
 
     private TestActivity activity = null;
+    public DownLoadService.Binder binder;
 
     public UserModel(TestActivity activity) {
         this.activity = activity;
@@ -105,5 +113,32 @@ public class UserModel extends BaseViewModel {
 
     public void takePhoto(View v) {
         DynamicActivity.start(activity);
+    }
+
+    public void startDownload(View v) {
+        String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        activity.runWithPermissions(new Runnable() {
+            @Override
+            public void run() {
+                binder.start("http://gdown.baidu.com/data/wisegame/fc5895c68ec02729/weibo_3516.apk", progress, file);
+                progress.addOnPropertyChangedCallback(new OnPropertyChangedCallback() {
+                    @Override
+                    public void onPropertyChanged(Observable sender, int propertyId) {
+                        Log.d("onPropertyChanged", "sender:" + ((ObservableField<Integer>)sender).get());
+                        if (((ObservableField<Integer>)sender).get() == 100) {
+                            ActivityUtil.startAPK(activity, file.get());
+                        }
+                    }
+                });
+            }
+        }, permissions);
+    }
+
+    public void stopDownload(View v) {
+        binder.stop();
+    }
+
+    public void cancelDownload(View v) {
+        binder.cancel();
     }
 }

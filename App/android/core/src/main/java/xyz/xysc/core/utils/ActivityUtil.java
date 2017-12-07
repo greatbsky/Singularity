@@ -85,10 +85,24 @@ public class ActivityUtil {
         activity.startActivity(i);
     }
 
+    public static void startAPK(Activity activity, File file) {
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setDataAndType(Uri.fromFile(file), FileUtil.getMIMEType(file));
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        activity.startActivity(i);
+    }
+
+    public static void startAPKUninstall(Activity activity, String ssp) {
+        Uri uninstallUri = Uri.fromParts("package", ssp, null);
+        Intent i = new Intent(Intent.ACTION_DELETE);
+        activity.startActivity(i);
+    }
+
     /*----------------------------------------启动某个activity----------------------------------------*/
 
     /**
      * 启动某个activity
+     *
      * @param context
      * @param clzTarget
      */
@@ -97,10 +111,9 @@ public class ActivityUtil {
     }
 
     /**
-     *
      * @param context
      * @param clzTarget
-     * @param flags > 0
+     * @param flags     > 0
      */
     public static void start(Context context, Class<?> clzTarget, int flags) {
         start(context, null, clzTarget, flags);
@@ -137,6 +150,7 @@ public class ActivityUtil {
 
     /**
      * 添加一个fragment到containerID
+     *
      * @param activity
      * @param fragment
      * @param containerId
@@ -152,6 +166,7 @@ public class ActivityUtil {
 
     /**
      * 使用ID获取Fragment对象
+     *
      * @param activity
      * @param id
      * @return

@@ -116,10 +116,12 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-
         <activity android:name=".activity.DynamicActivity">
         </activity>
-        
+
+        <activity android:name=".activity.WebViewActivity">
+        </activity>
+        <!--=================================receiver=================================-->
         <receiver
             android:name=".global.broadcast.receiver.BootCompletedReceiver"
             android:enabled="true"
@@ -144,19 +146,34 @@
             android:exported="true">
         </receiver>
 
+        <!--=================================provider=================================-->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.singularity.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+        </provider>
+
+        <!--=================================service=================================-->
+
         <service
             android:name=".global.service.ForeverService"
             android:enabled="true"
             android:exported="true">
         </service>
-
-        <provider
-            android:authorities="com.singularity.fileprovider"
-            android:name="android.support.v4.content.FileProvider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths" />
-        </provider>
+        <service
+            android:name=".global.service.UpdateService"
+            android:enabled="true"
+            android:exported="true">
+        </service>
+        <service
+            android:name=".global.service.DownLoadService"
+            android:enabled="true"
+            android:exported="true">
+        </service>
     </application>
 
 </manifest>

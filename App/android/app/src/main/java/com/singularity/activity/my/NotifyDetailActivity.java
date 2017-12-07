@@ -8,7 +8,7 @@ import com.singularity.R;
 import com.singularity.base.BaseActivity;
 import com.singularity.conf.KeyConsts;
 import com.singularity.databinding.ActivityNotifyDetailBinding;
-import com.singularity.viewmodel.NotifyModel;
+import com.singularity.vm.NotifyModel;
 
 public class NotifyDetailActivity extends BaseActivity {
 

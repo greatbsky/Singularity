@@ -1,4 +1,4 @@
-package com.singularity.viewmodel;
+package com.singularity.vm;
 
 import android.databinding.Bindable;
 import android.support.v4.app.FragmentActivity;
