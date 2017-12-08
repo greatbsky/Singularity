@@ -1,13 +1,16 @@
 package xyz.xysc.core.utils;
 
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
+import android.os.SystemClock;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringDef;
@@ -129,6 +132,20 @@ public class AppUtil {
             builder.setVibrate(new long[]{0, 1000, 1000, 1000});
         }
         return builder;
+    }
+
+    /**
+     * 设置过timeElapsed这么长时间请求执行clz
+     * @param context
+     * @param clz
+     * @param timeElapsed
+     */
+    public static void alarm(Context context, Class clz, int timeElapsed) {
+        AlarmManager manager= (AlarmManager) context.getSystemService(context.ALARM_SERVICE);
+        long triggerAtTime = SystemClock.elapsedRealtime() + timeElapsed;
+        Intent i = new Intent(context, clz);
+        PendingIntent pi = PendingIntent.getService(context, 0, i, 0);
+        manager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, triggerAtTime, pi);
     }
 
 }

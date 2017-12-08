@@ -3,6 +3,7 @@ package xyz.xysc.core.base;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -88,10 +89,19 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            // Nothing need to be done here
+        } else {
+            // Nothing need to be done here
+        }
+    }
     /*----------------------------------------自定义方法----------------------------------------*/
 
     /**
      * 是否根activity
+     *
      * @return
      */
     private boolean isRootActivity() {
@@ -100,6 +110,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /**
      * 两次返回退出
+     *
      * @return
      */
     protected boolean exitWithConfirm() {
@@ -117,6 +128,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /**
      * EventBus的Listener
+     *
      * @return
      */
     protected Object getListener() {
@@ -125,6 +137,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /**
      * 初始化视图，初始或还原组件数据
+     *
      * @param savedInstanceState
      */
     protected void initView(Bundle savedInstanceState) {
@@ -133,6 +146,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /**
      * toolbar的事件处理
+     *
      * @param item
      * @return
      */

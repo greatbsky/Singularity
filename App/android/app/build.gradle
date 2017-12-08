@@ -127,6 +127,12 @@ android {
             include "armeabi-v7a", "x86"
         }
     }
+
+    productFlavors {
+        baidu {
+            applicationId 'com.xx.yy.baidu'
+        }
+    }
 //    signingConfigs {
 //        release {
 //            storeFile file("release.keystore")

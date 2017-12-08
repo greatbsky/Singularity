@@ -1,11 +1,13 @@
 package com.singularity.global.service;
 
+import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 import android.os.StrictMode;
+import android.os.SystemClock;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
@@ -49,8 +51,32 @@ public class ForeverService extends Service {
     }
 
     /*----------------------------------------自定义方法----------------------------------------*/
-
     private void doExecute() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Log.e("ForeverService", String.valueOf(System.currentTimeMillis()));
+                List<Notify> notifyList = NotifySO.getList(3659859);
+                if (notifyList != null) {
+                    for (Notify n : notifyList) {
+                        Intent i = new Intent(runningContext, NotifyDetailActivity.class);
+                        i.putExtra(KeyConsts.id, n.getId());
+                        PendingIntent pi = PendingIntent.getActivity(runningContext, 0, i, 0);
+                        AppUtil.sendNotification(runningContext, (int) (long) n.getId(), n.getTitle(), n.getContent(), R.mipmap.ic_launcher, pi);
+                    }
+                }
+                try {
+                    Thread.currentThread().join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+        AppUtil.alarm(this, ForeverService.class, 6 * 1000);
+
+    }
+
+    private void doExecute2() {
         Runnable handler = new Runnable() {
             @Override
             public void run() {
