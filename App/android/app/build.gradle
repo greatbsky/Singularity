@@ -129,8 +129,24 @@ android {
     }
 
     productFlavors {
+        main {
+            applicationId app.applicationId
+            manifestPlaceholders = [UMC:"xxxxx"]
+            versionCode app.versionCode
+            versionName app.versionName
+        }
         baidu {
-            applicationId 'com.xx.yy.baidu'
+            applicationId app.applicationId
+            manifestPlaceholders = [UMC:"xxxxx"]
+            buildConfigField "boolean", "AUTO_UPDATES", "false"
+            versionCode app.versionCode
+            versionName app.versionName
+        }
+    }
+
+    sourceSets {
+        baidu {
+            java.srcDirs = ['src/baidu']
         }
     }
 //    signingConfigs {
@@ -182,11 +198,11 @@ dependencies {
     compile 'com.facebook.react:react-native:+'
     // From node_modules
     compile support.appcompat
-    compile support.recyclerview
-    compile support.constraint
     compile support.design
-    compile support.multidex
+    compile support.constraint
+    compile support.recyclerview
     compile support.percent
+    compile support.multidex
     //    compile retrofit2.protobuf
     compile rxjava2.rxandroid
     compile rxjava2.rxjava

@@ -1,6 +1,11 @@
 apply plugin: 'com.android.library'
 
 dependencies {
+    compile support.appcompat
+    compile support.design
+    compile support.constraint
+    compile support.recyclerview
+    compile support.percent
 }
 
 android {

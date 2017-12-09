@@ -18,7 +18,7 @@ module.exports = {
         }
     },
     web: {
-        staticRegexs : [/^\/js\/.*/i, /^\/css\/.*/i, /^\/imgs\/.*/i, /.*\.ico$/i, /.*\.html$/i]
+        staticRegexs : [/^\/js\/.*/i, /^\/css\/.*/i, /^\/imgs\/.*/i, /^\/files\/.*/i, /.*\.ico$/i, /.*\.html$/i]
     },
     sys: {
 

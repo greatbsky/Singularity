@@ -8,7 +8,7 @@
             type="com.singularity.vm.VideoModel" />
     </data>
 
-    <android.support.v7.widget.RecyclerView
+    <my.views.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
