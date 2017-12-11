@@ -9,7 +9,7 @@ import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/lib/integration/react';
 //import codePush from "react-native-code-push";
 
-import _ from './Global';
+import G from './Global';
 import {integrateRedux} from './Integrator';
 import {initAppDataOnBoot} from './dao/actions';
 import Welcome from './views/Welcome';
@@ -20,7 +20,8 @@ export default class extends Component<{}> {
     constructor() {
         super();
         this.state = {
-            loading: true
+            loading: true,
+            newMsg: {}
         };
 
         const {store, persistor} = integrateRedux(() => {
@@ -35,6 +36,9 @@ export default class extends Component<{}> {
 
     componentDidMount() {
         this.store.dispatch(initAppDataOnBoot());
+        G.init();
+        G.startNotify(this);
+        // G.imagePicker();
     }
 
     render() {
@@ -42,11 +46,20 @@ export default class extends Component<{}> {
             return <View><Text>loading......</Text></View>;
         }
         let content =  this.store.getState().app.welcome ? <Welcome /> : <App />;
+        let newMsg = <View><Text>no message!</Text></View>;
+        if (this.state.newMsg.title) {
+            newMsg = (<View>
+            <Text>Title: {this.state.newMsg.title}</Text>
+            <Text>content: {this.state.newMsg.content}</Text>
+            <Text>createTime: {this.state.newMsg.createTime}</Text>
+            </View>);
+        }
         return (
             <Provider store={this.store}>
                 <PersistGate persistor={this.persistor}>
                     <StatusBar backgroundColor='#1c73b6' translucent={false} />
                     {content}
+                    {newMsg}
                 </PersistGate>
             </Provider>
         );

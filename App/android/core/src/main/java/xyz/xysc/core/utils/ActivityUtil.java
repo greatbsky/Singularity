@@ -21,6 +21,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.Objects;
 
+import xyz.xysc.core.R;
+
 /**
  * @author architect.bian
  * @date 2017-11-22 6:16 PM
@@ -96,6 +98,13 @@ public class ActivityUtil {
         Uri uninstallUri = Uri.fromParts("package", ssp, null);
         Intent i = new Intent(Intent.ACTION_DELETE);
         activity.startActivity(i);
+    }
+
+    public static void startImgChooserForResult(Activity activity, int requestCode) {
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK);
+        galleryIntent.setType("image/*");
+        Intent chooserIntent = Intent.createChooser(galleryIntent, activity.getResources().getString(R.string.pick_image));
+        activity.startActivityForResult(chooserIntent, requestCode);
     }
 
     /*----------------------------------------启动某个activity----------------------------------------*/

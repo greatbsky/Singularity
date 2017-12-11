@@ -38,7 +38,9 @@
     <uses-permission android:name="android.permission.RECORD_VIDEO"/>
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
 
-    <meta-data android:name="UMENG_CHANNEL" android:value="${UMC}"/>
+    <meta-data
+        android:name="UMENG_CHANNEL"
+        android:value="${UMC}"/>
 
     <application
         android:name=".MainApplication"
@@ -51,11 +53,10 @@
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustResize">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN"/> -->
-            <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
-            <!-- </intent-filter> -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
         <activity android:name="com.facebook.react.devsupport.DevSettingsActivity"/>
         <activity
@@ -74,9 +75,9 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar.FullScreen">
             <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN"/>-->
+            <!--<action android:name="android.intent.action.MAIN"/>-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+            <!--<category android:name="android.intent.category.LAUNCHER"/>-->
             <!--</intent-filter>-->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
@@ -127,12 +128,10 @@
 
 
         <activity android:name=".activity.BookTestActivity">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN"/>-->
+                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+            <!--</intent-filter>-->
         </activity>
 
         <!-- =================================receiver================================= -->
@@ -188,6 +187,10 @@
             android:enabled="true"
             android:exported="true">
         </service>
+
+        <service android:name="com.singularity.rn.MyTaskService"
+                 android:enabled="true"
+                 android:exported="true" />
 
     </application>
 

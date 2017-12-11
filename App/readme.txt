@@ -27,6 +27,9 @@ vi /etc/profile
 sudo chmod 777 /usr/local/lib/node_modules
 npm i -g react-native-cli
 react-native init tmpl
+
+启动：
+/Users/great/Library/Android/sdk/platform-tools/adb reverse tcp:8081 tcp:8081	#physical device
 react-native run-ios
 react-native run-android
 react-native start
