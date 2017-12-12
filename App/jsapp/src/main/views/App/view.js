@@ -22,7 +22,7 @@ export default class App extends Component<{}> {
       <View>
         <Text>hi, world!</Text>
         <Text>lastTime:{this.props.video.lastTime}</Text>
-        <ImageView src={[{uri: 'https://www.baidu.com/img/bd_logo1.png'}]} onClick={this.onClick} resizeMode={"centerCrop"} style={{width: 200, height: 50}} />
+        <ImageView src={[{uri: 'http://wx3.sinaimg.cn/crop.0.0.2000.1124.1000/75894373gy1ffeqzm3kydj21jk0v97wh.jpg'}]} onClick={this.onClick} resizeMode={"centerCrop"} radius={300} style={{width: 200, height: 50}} />
       </View>
     );
   }

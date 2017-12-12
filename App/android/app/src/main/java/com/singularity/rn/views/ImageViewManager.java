@@ -40,17 +40,15 @@ public class ImageViewManager extends SimpleViewManager<ImageDemo> {
             if(sources.size() == 1) {
                 ReadableMap source = sources.getMap(0);
                 String uri = source.getString("uri");
-                ImgUtil.show(view, uri);
-//                view.setImageURI(Uri.parse(uri));
-//                view.invalidate();
+                view.setUri(uri);
             }
         }
     }
 
-//    @ReactProp(name = "borderRadius", defaultFloat = 0f)
-//    public void setBorderRadius(ImageView view, float borderRadius) {
-//        view.setBorderRadius(borderRadius);
-//    }
+    @ReactProp(name = "radius", defaultInt = 0)
+    public void setBorderRadius(ImageDemo view, int radius) {
+        view.setBorderRadius(radius);
+    }
 
     @ReactProp(name = ViewProps.RESIZE_MODE)
     public void setResizeMode(ImageDemo view, @Nullable String resizeMode) {

@@ -11,11 +11,11 @@ project.ext {
     a = [
             plugin           : "com.android.tools.build:gradle:$versionAndroidPlugin",
 
-            compileSdkVersion: 23,
+            compileSdkVersion: 26,
             buildToolsVersion: "27.0.1",
 
             minSdkVersion    : 19,
-            targetSdkVersion : 23,
+            targetSdkVersion : 26,
     ]
 
     app = [
@@ -25,7 +25,7 @@ project.ext {
             eventBusIndex: "com.singularity.event.EventIndex"
     ]
 
-    def versionSupport = "23.4.0"
+    def versionSupport = "26.1.0"
     support = [
             group       : "com.android.support",
             appcompat   : "com.android.support:appcompat-v7:$versionSupport",

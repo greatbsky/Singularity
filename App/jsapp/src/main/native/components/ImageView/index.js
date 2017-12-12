@@ -6,6 +6,7 @@ var componentInterface = {
   propTypes: {
     src: PropTypes.string,
     resizeMode: PropTypes.oneOf(['center', 'centerCrop', 'centerInside']),
+    radius: PropTypes.number,
     ...ViewPropTypes, // include the default view properties
   },
 };

@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -37,9 +38,31 @@ public class ActivityUtil {
         activity.startActivity(i);
     }
 
+    /**
+     * 进入系统拍照
+     *
+     * @param activity
+     * @param imageUri 照片输出路径 Uri.fromFile(new File(Environment.getExternalStorageDirectory() + "/image.jpg"))
+     */
     public static void startCamera(Activity activity, Uri imageUri, int requestCode) {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+        if (intent.resolveActivity(activity.getPackageManager()) != null) {
+            activity.startActivityForResult(intent, requestCode);
+        }
+    }
+
+    /**
+     * 进入系统拍照 (输出为Bitmap)<br>
+     * <p>
+     * 获得输出
+     * 在 @<code>onActivityResult</code>中<br>
+     * 通过@<code>Bitmap bitmap = (Bitmap)intent.data.getExtras().get("data")</code>获取<br>
+     * <p>
+     * Tips: 返回的Bitmap并非原图的Bitmap而是经过压缩的Bitmap
+     */
+    public static void startCamera(Activity activity, int requestCode) {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (intent.resolveActivity(activity.getPackageManager()) != null) {
             activity.startActivityForResult(intent, requestCode);
         }
@@ -105,6 +128,34 @@ public class ActivityUtil {
         galleryIntent.setType("image/*");
         Intent chooserIntent = Intent.createChooser(galleryIntent, activity.getResources().getString(R.string.pick_image));
         activity.startActivityForResult(chooserIntent, requestCode);
+    }
+
+    /**
+     * 进入系统裁剪
+     *
+     * @param inputUri  需裁剪的图片路径 Uri.fromFile(new File(Environment.getExternalStorageDirectory() + "/image.jpg")
+     * @param outputUri 裁剪后图片路径 Uri.fromFile(new File(Environment.getExternalStorageDirectory() + "/image_cut.jpg")
+     * @param width     裁剪后宽度(px)
+     * @param height    裁剪后高度(px)
+     */
+    public static void startActivityForImageCut(Activity activity, int requestCode, Uri inputUri, Uri outputUri, int width, int height) {
+        Intent intent = new Intent("com.android.camera.action.CROP");
+        intent.setDataAndType(inputUri, "image/*");
+        // 下面这个crop=true是设置在开启的Intent中设置显示的VIEW可裁剪
+        intent.putExtra("crop", "true");
+        intent.putExtra("scale", true); // 去黑边
+        intent.putExtra("scaleUpIfNeeded", true); // 去黑边
+        // aspectX aspectY 裁剪框宽高比例
+        intent.putExtra("aspectX", width); // 输出是X方向的比例
+        intent.putExtra("aspectY", height);
+        // outputX outputY 输出图片宽高，切忌不要再改动下列数字，会卡死
+        intent.putExtra("outputX", width); // 输出X方向的像素
+        intent.putExtra("outputY", height);
+        intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
+        intent.putExtra("noFaceDetection", true);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, outputUri);
+        intent.putExtra("return-data", false); // 设置为不返回数据
+        activity.startActivityForResult(intent, requestCode);
     }
 
     /*----------------------------------------启动某个activity----------------------------------------*/
