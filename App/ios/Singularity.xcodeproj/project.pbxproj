@@ -361,6 +361,11 @@
 			children = (
 				058053DE1FEA360E00530661 /* base */,
 				058053E11FEA37B500530661 /* views */,
+				058053FD1FEA5E8400530661 /* conf */,
+				058053FA1FEA5DCF00530661 /* entity */,
+				058053FB1FEA5E0400530661 /* so */,
+				058053FE1FEA5E9600530661 /* utils */,
+				058053FC1FEA5E4800530661 /* rn */,
 				058053D11FEA191A00530661 /* AppDelegate.swift */,
 			);
 			path = swift;
@@ -380,6 +385,41 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 			);
 			path = resources;
+			sourceTree = "<group>";
+		};
+		058053FA1FEA5DCF00530661 /* entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = entity;
+			sourceTree = "<group>";
+		};
+		058053FB1FEA5E0400530661 /* so */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = so;
+			sourceTree = "<group>";
+		};
+		058053FC1FEA5E4800530661 /* rn */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = rn;
+			sourceTree = "<group>";
+		};
+		058053FD1FEA5E8400530661 /* conf */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = conf;
+			sourceTree = "<group>";
+		};
+		058053FE1FEA5E9600530661 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = utils;
 			sourceTree = "<group>";
 		};
 		139105B71AF99BAD00B5F7CC /* Products */ = {
