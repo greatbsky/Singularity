@@ -19,6 +19,7 @@
 		058053E71FEA39A800530661 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 058053E51FEA39A700530661 /* AppDelegate.m */; };
 		058053F21FEA3EF600530661 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 058053F01FEA3EF500530661 /* LaunchScreen.xib */; };
 		058053F41FEA3F7D00530661 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 058053F31FEA3F7D00530661 /* main.m */; };
+		058053F91FEA467700530661 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 058053F81FEA467700530661 /* Info.plist */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
@@ -251,11 +252,11 @@
 		058053E61FEA39A700530661 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Singularity/AppDelegate.h; sourceTree = "<group>"; };
 		058053F11FEA3EF500530661 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		058053F31FEA3F7D00530661 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Singularity/main.m; sourceTree = "<group>"; };
+		058053F81FEA467700530661 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Singularity/Info.plist; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* Singularity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Singularity.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Singularity/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Singularity/Info.plist; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
@@ -350,6 +351,7 @@
 			isa = PBXGroup;
 			children = (
 				058053EC1FEA3D3A00530661 /* swift */,
+				058053F61FEA42E000530661 /* resources */,
 			);
 			path = main;
 			sourceTree = "<group>";
@@ -357,8 +359,8 @@
 		058053EC1FEA3D3A00530661 /* swift */ = {
 			isa = PBXGroup;
 			children = (
-				058053E11FEA37B500530661 /* views */,
 				058053DE1FEA360E00530661 /* base */,
+				058053E11FEA37B500530661 /* views */,
 				058053D11FEA191A00530661 /* AppDelegate.swift */,
 			);
 			path = swift;
@@ -370,6 +372,14 @@
 				058053EA1FEA3CFA00530661 /* main */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		058053F61FEA42E000530661 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				13B07FB51A68108700A75B9A /* Images.xcassets */,
+			);
+			path = resources;
 			sourceTree = "<group>";
 		};
 		139105B71AF99BAD00B5F7CC /* Products */ = {
@@ -395,8 +405,7 @@
 		13B07FAE1A68108700A75B9A /* Singularity */ = {
 			isa = PBXGroup;
 			children = (
-				13B07FB51A68108700A75B9A /* Images.xcassets */,
-				13B07FB61A68108700A75B9A /* Info.plist */,
+				058053F81FEA467700530661 /* Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				058053E61FEA39A700530661 /* AppDelegate.h */,
 				058053E51FEA39A700530661 /* AppDelegate.m */,
@@ -815,6 +824,7 @@
 				058053F21FEA3EF600530661 /* LaunchScreen.xib in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				058053D81FEA1FAF00530661 /* Podfile in Resources */,
+				058053F91FEA467700530661 /* Info.plist in Resources */,
 				058053D61FEA1F0B00530661 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
