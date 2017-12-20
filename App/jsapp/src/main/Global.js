@@ -1,4 +1,4 @@
-import { DeviceEventEmitter } from 'react-native';
+import { DeviceEventEmitter, Platform } from 'react-native';
 
 import Notify from './native/modules/Notify';
 import RNBridge from './native/modules/RNBridge';
@@ -8,22 +8,26 @@ export default class {
 
     //处理需要全局初始化的逻辑
     static init(target) {
-        RNBridge.init(); //初始化java端的RNBridge
+        if (Platform.OS === 'android') {
+            RNBridge.init(); //初始化java端的RNBridge
+        }
     }
 
     //开启通知
     static startNotify(target) {
-        DeviceEventEmitter.addListener('Notify', (params) => {
-            console.log(params);
-            target.setState({
-                    newMsg: {
-                        title: params.title,
-                        content: params.content,
-                        createTime: params.createTime
-                    }
-                });
-        });
-        Notify.start();
+        if (Platform.OS === 'android') {
+            DeviceEventEmitter.addListener('Notify', (params) => {
+                console.log(params);
+                target.setState({
+                        newMsg: {
+                            title: params.title,
+                            content: params.content,
+                            createTime: params.createTime
+                        }
+                    });
+            });
+            Notify.start();
+        }
         // let callbk = (title, content, createTime) => {
         //     target.setState({
         //         newMsg: {
@@ -48,9 +52,12 @@ export default class {
     }
 
     static imagePicker() {
-        ImagePicker.pickImage().then((p) => {
-            console.log(p);
-        });
+
+        if (Platform.OS === 'android') {
+            ImagePicker.pickImage().then((p) => {
+                console.log(p);
+            });
+        }
     }
 }
 
