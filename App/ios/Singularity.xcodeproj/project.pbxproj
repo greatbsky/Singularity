@@ -928,6 +928,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Singularity;
 				PRODUCT_NAME = Singularity;
 				SWIFT_OBJC_BRIDGING_HEADER = "Singularity-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -949,6 +950,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Singularity;
 				PRODUCT_NAME = Singularity;
 				SWIFT_OBJC_BRIDGING_HEADER = "Singularity-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
