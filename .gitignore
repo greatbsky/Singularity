@@ -3,3 +3,4 @@
 App/package-lock.json
 App/package-lock.json
 Server/node_modules/*
+App/ios/Pods/*

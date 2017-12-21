@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import core
 
 @UIApplicationMain
 class AppDelegate: BaseAppDelegate {
