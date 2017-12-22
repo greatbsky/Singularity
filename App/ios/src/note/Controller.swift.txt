@@ -80,5 +80,11 @@ func didTappedAvatarButton() {
 }
 
 
+@IBAction func followMe()
+{
+  let urlString = "http://weibo.com/yangreal"
+  let url =  URL(string: urlString)
+  UIApplication.shared.openURL(url!)
+}
 
 
