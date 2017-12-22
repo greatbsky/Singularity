@@ -1,0 +1,33 @@
+
+
+
+
+
+
+// MARK: - Life Cycle
+override func viewDidLoad() {
+  super.viewDidLoad()
+NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive(ntf:)), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+}
+// MARK: - 从后台进入前台，更新数据
+extension NewsMainViewController {
+  
+  @objc fileprivate func applicationDidBecomeActive(ntf: Notification) {
+    //        if let contentScrollView = bodyScrollView {
+    //            contentScrollView.startPullToRefresh()
+    //        }
+  }
+}
+
+
+
+// MARK: Alert
+extension ViewController {
+  
+  func showAlertController(result: LoginResult) {
+    let alertController = UIAlertController(title: "提示", message: result.description, preferredStyle: .alert)
+    let alertAction = UIAlertAction(title: "确定", style: .default, handler: nil)
+    alertController.addAction(alertAction)
+    self.present(alertController, animated: true, completion: nil)
+  }
+}

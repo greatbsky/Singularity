@@ -1,0 +1,50 @@
+
+self.window = UIWindow.init(frame: UIScreen.main.bounds)
+self.window?.backgroundColor = UIColor.white
+let mainViewController = MainTableViewController()
+let navigationController = UINavigationController(rootViewController: mainViewController)
+self.window?.rootViewController = navigationController
+self.window?.makeKeyAndVisible()
+
+
+self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
+
+self.navigationController?.pushViewController(sharedViewController, animated: true)
+
+override func viewDidLoad() {
+  super.viewDidLoad()
+  self.view.backgroundColor = UIColor.white
+  let button = UIButton(frame: CGRect(adX: 10, adY: 60, adWidth: 100, adHeight: 100))
+  button.setTitle("点击", for: .normal)
+  button.backgroundColor = UIColor.gray
+  button.addTarget(self, action: #selector(click), for: .touchUpInside)
+  self.view.addSubview(button)
+}
+
+DispatchQueue.main.asyncAfter(deadline: .now() + showTime) {
+  MBProgressHUD.hide(for: self.view, animated: true)
+}
+
+
+internal func show() {
+self.isHidden = false
+UIView.animate(withDuration: animationTime) {
+  self.backgroundView.alpha = self.backgroundViewAlpha
+  self.sharedView.frame = CGRect(x: 0, y: ScreenHeight - self.sharedViewHeight, width: ScreenWidth, height: self.sharedViewHeight)
+}
+}
+
+@objc internal func hide() {
+UIView.animate(withDuration: animationTime, animations: {
+  self.backgroundView.alpha = 0
+  self.sharedView.frame = CGRect(x: 0, y: ScreenHeight, width: ScreenWidth, height: self.sharedViewHeight)
+  }) { isCompleted in
+  self.isHidden = true
+}
+}
+
+internal func hideWithoutAnimataion() {
+  self.backgroundView.alpha = 0
+  self.sharedView.frame = CGRect(x: 0, y: ScreenHeight, width: ScreenWidth, height: self.sharedViewHeight)
+  self.isHidden = true
+}
