@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0523EDE71FED04CC00DDE140 /* VersionUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523EDE61FED04CC00DDE140 /* VersionUtil.swift */; };
 		057F4A611FEBD07700848CDF /* core.h in Headers */ = {isa = PBXBuildFile; fileRef = 057F4A5F1FEBD07700848CDF /* core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		057F4AE21FEBE4B200848CDF /* BaseAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057F4AE11FEBE4B200848CDF /* BaseAppDelegate.swift */; };
 		EE1E96BE337E9911190640B9 /* Pods_core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A742BAAACAE119D757AEF211 /* Pods_core.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0523EDE61FED04CC00DDE140 /* VersionUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionUtil.swift; sourceTree = "<group>"; };
 		057F4A5C1FEBD07700848CDF /* core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		057F4A5F1FEBD07700848CDF /* core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = core.h; sourceTree = "<group>"; };
 		057F4A601FEBD07700848CDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -34,6 +36,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0523EDE51FED04A300DDE140 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				0523EDE61FED04CC00DDE140 /* VersionUtil.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
 		057F4A521FEBD07700848CDF = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +91,7 @@
 		057F4ACF1FEBDA5400848CDF /* swift */ = {
 			isa = PBXGroup;
 			children = (
+				0523EDE51FED04A300DDE140 /* utils */,
 				057F4AD01FEBDA5A00848CDF /* base */,
 			);
 			path = swift;
@@ -229,6 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0523EDE71FED04CC00DDE140 /* VersionUtil.swift in Sources */,
 				057F4AE21FEBE4B200848CDF /* BaseAppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

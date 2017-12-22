@@ -14,11 +14,20 @@
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		0523EDCC1FECB0C300DDE140 /* global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523EDCB1FECB0C300DDE140 /* global.swift */; };
 		0523EDCE1FECB2E500DDE140 /* note.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0523EDCD1FECB2E500DDE140 /* note.txt */; };
-		0523EDD31FECB91500DDE140 /* WebView.swift.txt in Sources */ = {isa = PBXBuildFile; fileRef = 0523EDD21FECB91500DDE140 /* WebView.swift.txt */; };
 		0523EDD51FECB99100DDE140 /* js.html in Resources */ = {isa = PBXBuildFile; fileRef = 0523EDD41FECB99100DDE140 /* js.html */; };
-		0523EDD71FECBC4100DDE140 /* Controller.swift.txt in Sources */ = {isa = PBXBuildFile; fileRef = 0523EDD61FECBC4100DDE140 /* Controller.swift.txt */; };
-		0523EDD91FECC78700DDE140 /* enum.swift.txt in Sources */ = {isa = PBXBuildFile; fileRef = 0523EDD81FECC78700DDE140 /* enum.swift.txt */; };
 		0523EDDC1FECD47300DDE140 /* ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523EDDB1FECD47300DDE140 /* ext.swift */; };
+		0523EDE01FED02BC00DDE140 /* APIConf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523EDDF1FED02BC00DDE140 /* APIConf.swift */; };
+		0523EDE21FED02CE00DDE140 /* Consts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523EDE11FED02CE00DDE140 /* Consts.swift */; };
+		0523EDE91FED133B00DDE140 /* WebView.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0523EDE81FED133A00DDE140 /* WebView.txt */; };
+		0523EDEB1FED135000DDE140 /* Controller.swift.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0523EDEA1FED135000DDE140 /* Controller.swift.txt */; };
+		0523EDEF1FED136600DDE140 /* global.swift.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0523EDEC1FED136500DDE140 /* global.swift.txt */; };
+		0523EDF01FED136600DDE140 /* Storage.swift.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0523EDED1FED136600DDE140 /* Storage.swift.txt */; };
+		0523EDF11FED136600DDE140 /* enum.swift.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0523EDEE1FED136600DDE140 /* enum.swift.txt */; };
+		0523EDF71FED164300DDE140 /* empty.m in Sources */ = {isa = PBXBuildFile; fileRef = 0523EDF61FED164300DDE140 /* empty.m */; };
+		0523EDFB1FED167700DDE140 /* FileUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523EDFA1FED167700DDE140 /* FileUtil.swift */; };
+		0523EE031FED16B500DDE140 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523EE021FED16B500DDE140 /* MainController.swift */; };
+		0523EE051FED16C100DDE140 /* VideoSO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523EE041FED16C100DDE140 /* VideoSO.swift */; };
+		0523EE071FED16CE00DDE140 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523EE061FED16CE00DDE140 /* Video.swift */; };
 		057F4B161FEBE69A00848CDF /* core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 057F4B151FEBE69A00848CDF /* core.framework */; };
 		057F4B171FEBE69A00848CDF /* core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 057F4B151FEBE69A00848CDF /* core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		058053D21FEA191A00530661 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058053D11FEA191A00530661 /* AppDelegate.swift */; };
@@ -27,6 +36,10 @@
 		058053E71FEA39A800530661 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 058053E51FEA39A700530661 /* AppDelegate.m */; };
 		058053F21FEA3EF600530661 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 058053F01FEA3EF500530661 /* LaunchScreen.xib */; };
 		058053F41FEA3F7D00530661 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 058053F31FEA3F7D00530661 /* main.m */; };
+		05B1AD141FED1AC100E2CAAE /* readme in Resources */ = {isa = PBXBuildFile; fileRef = 05B1AD131FED1AC100E2CAAE /* readme */; };
+		05B1AD161FED1AD300E2CAAE /* readme in Resources */ = {isa = PBXBuildFile; fileRef = 05B1AD151FED1AD300E2CAAE /* readme */; };
+		05B1AD181FED1AE300E2CAAE /* readme in Resources */ = {isa = PBXBuildFile; fileRef = 05B1AD171FED1AE300E2CAAE /* readme */; };
+		05B1AD1A1FED1B2900E2CAAE /* readme in Resources */ = {isa = PBXBuildFile; fileRef = 05B1AD191FED1B2900E2CAAE /* readme */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
@@ -309,11 +322,20 @@
 		00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTVibration.xcodeproj; path = "../node_modules/react-native/Libraries/Vibration/RCTVibration.xcodeproj"; sourceTree = "<group>"; };
 		0523EDCB1FECB0C300DDE140 /* global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = global.swift; sourceTree = "<group>"; };
 		0523EDCD1FECB2E500DDE140 /* note.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = note.txt; sourceTree = "<group>"; };
-		0523EDD21FECB91500DDE140 /* WebView.swift.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = WebView.swift.txt; sourceTree = "<group>"; };
 		0523EDD41FECB99100DDE140 /* js.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = js.html; sourceTree = "<group>"; };
-		0523EDD61FECBC4100DDE140 /* Controller.swift.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Controller.swift.txt; sourceTree = "<group>"; };
-		0523EDD81FECC78700DDE140 /* enum.swift.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = enum.swift.txt; sourceTree = "<group>"; };
 		0523EDDB1FECD47300DDE140 /* ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ext.swift; sourceTree = "<group>"; };
+		0523EDDF1FED02BC00DDE140 /* APIConf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConf.swift; sourceTree = "<group>"; };
+		0523EDE11FED02CE00DDE140 /* Consts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consts.swift; sourceTree = "<group>"; };
+		0523EDE81FED133A00DDE140 /* WebView.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = WebView.txt; sourceTree = "<group>"; };
+		0523EDEA1FED135000DDE140 /* Controller.swift.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Controller.swift.txt; sourceTree = "<group>"; };
+		0523EDEC1FED136500DDE140 /* global.swift.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = global.swift.txt; sourceTree = "<group>"; };
+		0523EDED1FED136600DDE140 /* Storage.swift.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Storage.swift.txt; sourceTree = "<group>"; };
+		0523EDEE1FED136600DDE140 /* enum.swift.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = enum.swift.txt; sourceTree = "<group>"; };
+		0523EDF61FED164300DDE140 /* empty.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = empty.m; sourceTree = "<group>"; };
+		0523EDFA1FED167700DDE140 /* FileUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUtil.swift; sourceTree = "<group>"; };
+		0523EE021FED16B500DDE140 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		0523EE041FED16C100DDE140 /* VideoSO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoSO.swift; sourceTree = "<group>"; };
+		0523EE061FED16CE00DDE140 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		057F4B151FEBE69A00848CDF /* core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		058053D01FEA191900530661 /* Singularity-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Singularity-Bridging-Header.h"; sourceTree = "<group>"; };
 		058053D11FEA191A00530661 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -324,6 +346,10 @@
 		058053F11FEA3EF500530661 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		058053F31FEA3F7D00530661 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Singularity/main.m; sourceTree = "<group>"; };
 		058053F81FEA467700530661 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Singularity/Info.plist; sourceTree = "<group>"; };
+		05B1AD131FED1AC100E2CAAE /* readme */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme; sourceTree = "<group>"; };
+		05B1AD151FED1AD300E2CAAE /* readme */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme; sourceTree = "<group>"; };
+		05B1AD171FED1AE300E2CAAE /* readme */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme; sourceTree = "<group>"; };
+		05B1AD191FED1B2900E2CAAE /* readme */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* Singularity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Singularity.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -418,6 +444,7 @@
 		0523EDC91FECB08000DDE140 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				0523EDFA1FED167700DDE140 /* FileUtil.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -425,6 +452,7 @@
 		0523EDCA1FECB08500DDE140 /* rn */ = {
 			isa = PBXGroup;
 			children = (
+				05B1AD191FED1B2900E2CAAE /* readme */,
 			);
 			path = rn;
 			sourceTree = "<group>";
@@ -432,11 +460,13 @@
 		0523EDCF1FECB89400DDE140 /* note */ = {
 			isa = PBXGroup;
 			children = (
+				0523EDEE1FED136600DDE140 /* enum.swift.txt */,
+				0523EDEC1FED136500DDE140 /* global.swift.txt */,
+				0523EDED1FED136600DDE140 /* Storage.swift.txt */,
+				0523EDEA1FED135000DDE140 /* Controller.swift.txt */,
+				0523EDE81FED133A00DDE140 /* WebView.txt */,
 				0523EDCD1FECB2E500DDE140 /* note.txt */,
-				0523EDD21FECB91500DDE140 /* WebView.swift.txt */,
 				0523EDD41FECB99100DDE140 /* js.html */,
-				0523EDD61FECBC4100DDE140 /* Controller.swift.txt */,
-				0523EDD81FECC78700DDE140 /* enum.swift.txt */,
 			);
 			path = note;
 			sourceTree = "<group>";
@@ -444,8 +474,33 @@
 		0523EDDA1FECCFD200DDE140 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				0523EE021FED16B500DDE140 /* MainController.swift */,
 			);
 			path = controller;
+			sourceTree = "<group>";
+		};
+		0523EDF31FED153200DDE140 /* videos */ = {
+			isa = PBXGroup;
+			children = (
+				05B1AD171FED1AE300E2CAAE /* readme */,
+			);
+			path = videos;
+			sourceTree = "<group>";
+		};
+		0523EDF41FED153F00DDE140 /* profile */ = {
+			isa = PBXGroup;
+			children = (
+				05B1AD151FED1AD300E2CAAE /* readme */,
+			);
+			path = profile;
+			sourceTree = "<group>";
+		};
+		0523EDF51FED15CE00DDE140 /* objectc */ = {
+			isa = PBXGroup;
+			children = (
+				0523EDF61FED164300DDE140 /* empty.m */,
+			);
+			path = objectc;
 			sourceTree = "<group>";
 		};
 		057F4A691FEBD0AF00848CDF /* Frameworks */ = {
@@ -459,6 +514,8 @@
 		057F4AC91FEBDA0200848CDF /* conf */ = {
 			isa = PBXGroup;
 			children = (
+				0523EDDF1FED02BC00DDE140 /* APIConf.swift */,
+				0523EDE11FED02CE00DDE140 /* Consts.swift */,
 			);
 			path = conf;
 			sourceTree = "<group>";
@@ -466,6 +523,7 @@
 		057F4ACA1FEBDA0D00848CDF /* entity */ = {
 			isa = PBXGroup;
 			children = (
+				0523EE061FED16CE00DDE140 /* Video.swift */,
 			);
 			path = entity;
 			sourceTree = "<group>";
@@ -473,6 +531,7 @@
 		057F4ACB1FEBDA1500848CDF /* so */ = {
 			isa = PBXGroup;
 			children = (
+				0523EE041FED16C100DDE140 /* VideoSO.swift */,
 			);
 			path = so;
 			sourceTree = "<group>";
@@ -480,6 +539,7 @@
 		058053DE1FEA360E00530661 /* base */ = {
 			isa = PBXGroup;
 			children = (
+				05B1AD131FED1AC100E2CAAE /* readme */,
 			);
 			path = base;
 			sourceTree = "<group>";
@@ -487,6 +547,8 @@
 		058053E11FEA37B500530661 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				0523EDF41FED153F00DDE140 /* profile */,
+				0523EDF31FED153200DDE140 /* videos */,
 				058053F01FEA3EF500530661 /* LaunchScreen.xib */,
 				058053D51FEA1F0B00530661 /* Main.storyboard */,
 			);
@@ -498,6 +560,7 @@
 			children = (
 				058053EC1FEA3D3A00530661 /* swift */,
 				058053F61FEA42E000530661 /* resources */,
+				0523EDF51FED15CE00DDE140 /* objectc */,
 			);
 			path = main;
 			sourceTree = "<group>";
@@ -1039,9 +1102,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05B1AD1A1FED1B2900E2CAAE /* readme in Resources */,
+				05B1AD161FED1AD300E2CAAE /* readme in Resources */,
+				05B1AD141FED1AC100E2CAAE /* readme in Resources */,
 				058053F21FEA3EF600530661 /* LaunchScreen.xib in Resources */,
+				0523EDF11FED136600DDE140 /* enum.swift.txt in Resources */,
+				0523EDF01FED136600DDE140 /* Storage.swift.txt in Resources */,
+				0523EDEB1FED135000DDE140 /* Controller.swift.txt in Resources */,
+				05B1AD181FED1AE300E2CAAE /* readme in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				0523EDE91FED133B00DDE140 /* WebView.txt in Resources */,
 				058053D81FEA1FAF00530661 /* Podfile in Resources */,
+				0523EDEF1FED136600DDE140 /* global.swift.txt in Resources */,
 				0523EDD51FECB99100DDE140 /* js.html in Resources */,
 				058053D61FEA1F0B00530661 /* Main.storyboard in Resources */,
 				0523EDCE1FECB2E500DDE140 /* note.txt in Resources */,
@@ -1123,14 +1195,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0523EDE01FED02BC00DDE140 /* APIConf.swift in Sources */,
+				0523EE051FED16C100DDE140 /* VideoSO.swift in Sources */,
+				0523EDF71FED164300DDE140 /* empty.m in Sources */,
 				0523EDCC1FECB0C300DDE140 /* global.swift in Sources */,
-				0523EDD31FECB91500DDE140 /* WebView.swift.txt in Sources */,
-				0523EDD91FECC78700DDE140 /* enum.swift.txt in Sources */,
 				058053D21FEA191A00530661 /* AppDelegate.swift in Sources */,
-				0523EDD71FECBC4100DDE140 /* Controller.swift.txt in Sources */,
 				0523EDDC1FECD47300DDE140 /* ext.swift in Sources */,
+				0523EDE21FED02CE00DDE140 /* Consts.swift in Sources */,
 				058053F41FEA3F7D00530661 /* main.m in Sources */,
+				0523EE031FED16B500DDE140 /* MainController.swift in Sources */,
 				058053E71FEA39A800530661 /* AppDelegate.m in Sources */,
+				0523EE071FED16CE00DDE140 /* Video.swift in Sources */,
+				0523EDFB1FED167700DDE140 /* FileUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,5 @@
+
+UserDefaults.standard.set(18, forKey: CONTENT_FONT_SIZE_KEY)
+UserDefaults.standard.set("", forKey: CONTENT_FONT_TYPE_KEY)
+UserDefaults.standard.set(nil, forKey: "selectedArray")
+UserDefaults.standard.set(nil, forKey: "optionalArray")

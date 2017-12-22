@@ -31,3 +31,54 @@ extension ViewController {
     self.present(alertController, animated: true, completion: nil)
   }
 }
+
+
+#navigationController?.pushViewController(articleDetailVc, animated: true)
+
+
+
+lazy var headerView: JFProfileHeaderView = {
+  let headerView = Bundle.main.loadNibNamed("JFProfileHeaderView", owner: nil, options: nil)?.last as! JFProfileHeaderView
+  headerView.delegate = self
+  headerView.frame = CGRect(x: 0, y: -(SCREEN_HEIGHT * 2 - 265), width: SCREEN_WIDTH, height: SCREEN_HEIGHT * 2)
+  return headerView
+}()
+
+
+
+/**
+ 头像按钮点击
+ */
+func didTappedAvatarButton() {
+  
+  if JFAccountModel.isLogin() {
+    let alertC = UIAlertController()
+    let takeAction = UIAlertAction(title: "拍照上传", style: UIAlertActionStyle.default, handler: { (action) in
+      self.setupImagePicker(.camera)
+      self.present(self.imagePickerC, animated: true, completion: {})
+    })
+    let photoLibraryAction = UIAlertAction(title: "图库选择", style: UIAlertActionStyle.default, handler: { (action) in
+      self.setupImagePicker(.photoLibrary)
+      self.present(self.imagePickerC, animated: true, completion: {})
+    })
+    let albumAction = UIAlertAction(title: "相册选择", style: UIAlertActionStyle.default, handler: { (action) in
+      self.setupImagePicker(.savedPhotosAlbum)
+      self.present(self.imagePickerC, animated: true, completion: {})
+    })
+    let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel, handler: { (action) in
+      
+    })
+    alertC.addAction(takeAction)
+    alertC.addAction(photoLibraryAction)
+    alertC.addAction(albumAction)
+    alertC.addAction(cancelAction)
+    self.present(alertC, animated: true, completion: {})
+  } else {
+    present(JFNavigationController(rootViewController: JFLoginViewController(nibName: "JFLoginViewController", bundle: nil)), animated: true, completion: {
+    })
+  }
+}
+
+
+
+
