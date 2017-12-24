@@ -1,0 +1,16 @@
+
+let background = UIView(frame: CGRect(x: xCursor, y: yCursor, width: tileWidth, height: tileWidth))
+background.layer.cornerRadius = bgRadius
+background.backgroundColor = tileColor
+addSubview(background)
+
+
+@IBAction func hideSettingsView(_ sender: Any) {
+  self.tableViewBottomConstraint.constant = -self.tableView.bounds.height
+  UIView.animate(withDuration: 0.3, animations: {
+  self.backgroundView.alpha = 0
+  self.layoutIfNeeded()
+  }) { _ in
+    self.isHidden = true
+  }
+}

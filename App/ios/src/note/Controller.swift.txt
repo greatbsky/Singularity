@@ -88,3 +88,7 @@ func didTappedAvatarButton() {
 }
 
 
+deinit {
+NotificationCenter.default.removeObserver(self)
+}
+

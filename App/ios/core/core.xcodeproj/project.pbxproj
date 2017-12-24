@@ -11,6 +11,10 @@
 		057F4A611FEBD07700848CDF /* core.h in Headers */ = {isa = PBXBuildFile; fileRef = 057F4A5F1FEBD07700848CDF /* core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		057F4AE21FEBE4B200848CDF /* BaseAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057F4AE11FEBE4B200848CDF /* BaseAppDelegate.swift */; };
 		05B1AD1C1FED1D6C00E2CAAE /* NSStringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B1AD1B1FED1D6C00E2CAAE /* NSStringExt.swift */; };
+		05B4BE231FEE3E8B0048053E /* UIImageViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B4BE221FEE3E8B0048053E /* UIImageViewExt.swift */; };
+		05B4BE251FEE3EDE0048053E /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B4BE241FEE3EDE0048053E /* UIViewExt.swift */; };
+		05B4BE271FEE41200048053E /* AppUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B4BE261FEE41200048053E /* AppUtil.swift */; };
+		05B4BE291FEE44BD0048053E /* UIColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B4BE281FEE44BD0048053E /* UIColorExt.swift */; };
 		EE1E96BE337E9911190640B9 /* Pods_core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A742BAAACAE119D757AEF211 /* Pods_core.framework */; };
 /* End PBXBuildFile section */
 
@@ -21,6 +25,10 @@
 		057F4A601FEBD07700848CDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		057F4AE11FEBE4B200848CDF /* BaseAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAppDelegate.swift; sourceTree = "<group>"; };
 		05B1AD1B1FED1D6C00E2CAAE /* NSStringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSStringExt.swift; sourceTree = "<group>"; };
+		05B4BE221FEE3E8B0048053E /* UIImageViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExt.swift; sourceTree = "<group>"; };
+		05B4BE241FEE3EDE0048053E /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
+		05B4BE261FEE41200048053E /* AppUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtil.swift; sourceTree = "<group>"; };
+		05B4BE281FEE44BD0048053E /* UIColorExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExt.swift; sourceTree = "<group>"; };
 		A742BAAACAE119D757AEF211 /* Pods_core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8CB2B59952C25217053CAE5 /* Pods-core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-core.release.xcconfig"; path = "../Pods/Target Support Files/Pods-core/Pods-core.release.xcconfig"; sourceTree = "<group>"; };
 		FD9319A24B8BE8FE4CFF9867 /* Pods-core.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-core.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-core/Pods-core.debug.xcconfig"; sourceTree = "<group>"; };
@@ -43,6 +51,10 @@
 			children = (
 				0523EDE61FED04CC00DDE140 /* VersionUtil.swift */,
 				05B1AD1B1FED1D6C00E2CAAE /* NSStringExt.swift */,
+				05B4BE221FEE3E8B0048053E /* UIImageViewExt.swift */,
+				05B4BE241FEE3EDE0048053E /* UIViewExt.swift */,
+				05B4BE261FEE41200048053E /* AppUtil.swift */,
+				05B4BE281FEE44BD0048053E /* UIColorExt.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -243,7 +255,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05B4BE231FEE3E8B0048053E /* UIImageViewExt.swift in Sources */,
 				05B1AD1C1FED1D6C00E2CAAE /* NSStringExt.swift in Sources */,
+				05B4BE251FEE3EDE0048053E /* UIViewExt.swift in Sources */,
+				05B4BE271FEE41200048053E /* AppUtil.swift in Sources */,
+				05B4BE291FEE44BD0048053E /* UIColorExt.swift in Sources */,
 				0523EDE71FED04CC00DDE140 /* VersionUtil.swift in Sources */,
 				057F4AE21FEBE4B200848CDF /* BaseAppDelegate.swift in Sources */,
 			);

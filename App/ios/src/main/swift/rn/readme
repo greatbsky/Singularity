@@ -1,2 +1,4 @@
 
 react native相关
+1. rn可调用native的方法及常量，通过callback或promise回调返回参数
+2. rn可注册native事件

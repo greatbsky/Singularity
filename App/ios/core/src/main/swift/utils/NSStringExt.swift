@@ -6,4 +6,12 @@
 //  Copyright © 2017 Architect bian. All rights reserved.
 //
 
-import Foundation
+
+extension NSString {
+    /// 计算文本的高度
+    func getTextHeight(width: CGFloat) -> CGFloat {
+        let size = CGSize(width: width, height: CGFloat(MAXFLOAT))
+        return (self.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [.font: UIFont.systemFont(ofSize: 16)], context: nil).size.height)
+    }
+}
+

@@ -28,6 +28,13 @@
 		0523EE031FED16B500DDE140 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523EE021FED16B500DDE140 /* MainController.swift */; };
 		0523EE051FED16C100DDE140 /* VideoSO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523EE041FED16C100DDE140 /* VideoSO.swift */; };
 		0523EE071FED16CE00DDE140 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523EE061FED16CE00DDE140 /* Video.swift */; };
+		056083431FEF8CE100D629E3 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056083421FEF8CE100D629E3 /* CalendarManager.swift */; };
+		0560836D1FEF907700D629E3 /* CalendarManagerBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0560836C1FEF907700D629E3 /* CalendarManagerBridge.m */; };
+		0560836F1FEFAFC000D629E3 /* Emitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0560836E1FEFAFC000D629E3 /* Emitter.swift */; };
+		056083711FEFB21300D629E3 /* EmitterBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 056083701FEFB21300D629E3 /* EmitterBridge.m */; };
+		056083751FEFC34600D629E3 /* MapViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 056083741FEFC34600D629E3 /* MapViewManager.m */; };
+		056083771FEFD4E700D629E3 /* Scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056083761FEFD4E700D629E3 /* Scroll.swift */; };
+		056083791FEFD73100D629E3 /* ScrollManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 056083781FEFD73100D629E3 /* ScrollManager.m */; };
 		057F4B161FEBE69A00848CDF /* core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 057F4B151FEBE69A00848CDF /* core.framework */; };
 		057F4B171FEBE69A00848CDF /* core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 057F4B151FEBE69A00848CDF /* core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		058053D21FEA191A00530661 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058053D11FEA191A00530661 /* AppDelegate.swift */; };
@@ -40,6 +47,7 @@
 		05B1AD161FED1AD300E2CAAE /* readme in Resources */ = {isa = PBXBuildFile; fileRef = 05B1AD151FED1AD300E2CAAE /* readme */; };
 		05B1AD181FED1AE300E2CAAE /* readme in Resources */ = {isa = PBXBuildFile; fileRef = 05B1AD171FED1AE300E2CAAE /* readme */; };
 		05B1AD1A1FED1B2900E2CAAE /* readme in Resources */ = {isa = PBXBuildFile; fileRef = 05B1AD191FED1B2900E2CAAE /* readme */; };
+		05B4BDFE1FEE32060048053E /* view.txt in Resources */ = {isa = PBXBuildFile; fileRef = 05B4BDFD1FEE32060048053E /* view.txt */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
@@ -336,6 +344,13 @@
 		0523EE021FED16B500DDE140 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		0523EE041FED16C100DDE140 /* VideoSO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoSO.swift; sourceTree = "<group>"; };
 		0523EE061FED16CE00DDE140 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		056083421FEF8CE100D629E3 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
+		0560836C1FEF907700D629E3 /* CalendarManagerBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarManagerBridge.m; sourceTree = "<group>"; };
+		0560836E1FEFAFC000D629E3 /* Emitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emitter.swift; sourceTree = "<group>"; };
+		056083701FEFB21300D629E3 /* EmitterBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmitterBridge.m; sourceTree = "<group>"; };
+		056083741FEFC34600D629E3 /* MapViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewManager.m; sourceTree = "<group>"; };
+		056083761FEFD4E700D629E3 /* Scroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scroll.swift; sourceTree = "<group>"; };
+		056083781FEFD73100D629E3 /* ScrollManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrollManager.m; sourceTree = "<group>"; };
 		057F4B151FEBE69A00848CDF /* core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		058053D01FEA191900530661 /* Singularity-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Singularity-Bridging-Header.h"; sourceTree = "<group>"; };
 		058053D11FEA191A00530661 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -350,6 +365,7 @@
 		05B1AD151FED1AD300E2CAAE /* readme */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme; sourceTree = "<group>"; };
 		05B1AD171FED1AE300E2CAAE /* readme */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme; sourceTree = "<group>"; };
 		05B1AD191FED1B2900E2CAAE /* readme */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme; sourceTree = "<group>"; };
+		05B4BDFD1FEE32060048053E /* view.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = view.txt; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* Singularity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Singularity.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -453,6 +469,13 @@
 			isa = PBXGroup;
 			children = (
 				05B1AD191FED1B2900E2CAAE /* readme */,
+				056083421FEF8CE100D629E3 /* CalendarManager.swift */,
+				0560836C1FEF907700D629E3 /* CalendarManagerBridge.m */,
+				0560836E1FEFAFC000D629E3 /* Emitter.swift */,
+				056083701FEFB21300D629E3 /* EmitterBridge.m */,
+				056083741FEFC34600D629E3 /* MapViewManager.m */,
+				056083761FEFD4E700D629E3 /* Scroll.swift */,
+				056083781FEFD73100D629E3 /* ScrollManager.m */,
 			);
 			path = rn;
 			sourceTree = "<group>";
@@ -467,6 +490,7 @@
 				0523EDE81FED133A00DDE140 /* WebView.txt */,
 				0523EDCD1FECB2E500DDE140 /* note.txt */,
 				0523EDD41FECB99100DDE140 /* js.html */,
+				05B4BDFD1FEE32060048053E /* view.txt */,
 			);
 			path = note;
 			sourceTree = "<group>";
@@ -1103,6 +1127,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				05B1AD1A1FED1B2900E2CAAE /* readme in Resources */,
+				05B4BDFE1FEE32060048053E /* view.txt in Resources */,
 				05B1AD161FED1AD300E2CAAE /* readme in Resources */,
 				05B1AD141FED1AC100E2CAAE /* readme in Resources */,
 				058053F21FEA3EF600530661 /* LaunchScreen.xib in Resources */,
@@ -1201,12 +1226,19 @@
 				0523EDCC1FECB0C300DDE140 /* global.swift in Sources */,
 				058053D21FEA191A00530661 /* AppDelegate.swift in Sources */,
 				0523EDDC1FECD47300DDE140 /* ext.swift in Sources */,
+				0560836D1FEF907700D629E3 /* CalendarManagerBridge.m in Sources */,
 				0523EDE21FED02CE00DDE140 /* Consts.swift in Sources */,
 				058053F41FEA3F7D00530661 /* main.m in Sources */,
+				056083791FEFD73100D629E3 /* ScrollManager.m in Sources */,
+				0560836F1FEFAFC000D629E3 /* Emitter.swift in Sources */,
+				056083751FEFC34600D629E3 /* MapViewManager.m in Sources */,
 				0523EE031FED16B500DDE140 /* MainController.swift in Sources */,
+				056083711FEFB21300D629E3 /* EmitterBridge.m in Sources */,
 				058053E71FEA39A800530661 /* AppDelegate.m in Sources */,
 				0523EE071FED16CE00DDE140 /* Video.swift in Sources */,
 				0523EDFB1FED167700DDE140 /* FileUtil.swift in Sources */,
+				056083431FEF8CE100D629E3 /* CalendarManager.swift in Sources */,
+				056083771FEFD4E700D629E3 /* Scroll.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

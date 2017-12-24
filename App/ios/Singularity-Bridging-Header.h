@@ -4,3 +4,10 @@
 
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+
+#import <React/RCTBridgeModule.h>
+#import <React/RCTConvert.h>
+#import <React/RCTEventEmitter.h>
+#import <React/RCTViewManager.h>
+//#import <React/RCTBubblingEventBloc>
+
