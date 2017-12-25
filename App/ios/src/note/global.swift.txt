@@ -2,3 +2,10 @@
 
 
 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "networkStatusChanged"), object: nil, userInfo: ["networkState" : 0])
+
+//延时1秒执行
+let time: TimeInterval = 1.0
+DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time) {
+//code
+print("1 秒后输出")
+}

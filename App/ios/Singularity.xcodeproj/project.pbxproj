@@ -43,6 +43,11 @@
 		058053E71FEA39A800530661 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 058053E51FEA39A700530661 /* AppDelegate.m */; };
 		058053F21FEA3EF600530661 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 058053F01FEA3EF500530661 /* LaunchScreen.xib */; };
 		058053F41FEA3F7D00530661 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 058053F31FEA3F7D00530661 /* main.m */; };
+		058955CC1FF0E31A00BA6176 /* App.txt in Resources */ = {isa = PBXBuildFile; fileRef = 058955CB1FF0E31A00BA6176 /* App.txt */; };
+		058955F11FF0EE3100BA6176 /* animate.txt in Resources */ = {isa = PBXBuildFile; fileRef = 058955F01FF0EE3100BA6176 /* animate.txt */; };
+		058955F31FF0F15900BA6176 /* constraint.txt in Resources */ = {isa = PBXBuildFile; fileRef = 058955F21FF0F15900BA6176 /* constraint.txt */; };
+		058955F61FF0FD9E00BA6176 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058955F51FF0FD9E00BA6176 /* MyView.swift */; };
+		058955F81FF11ACA00BA6176 /* MyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058955F71FF11ACA00BA6176 /* MyButton.swift */; };
 		05B1AD141FED1AC100E2CAAE /* readme in Resources */ = {isa = PBXBuildFile; fileRef = 05B1AD131FED1AC100E2CAAE /* readme */; };
 		05B1AD161FED1AD300E2CAAE /* readme in Resources */ = {isa = PBXBuildFile; fileRef = 05B1AD151FED1AD300E2CAAE /* readme */; };
 		05B1AD181FED1AE300E2CAAE /* readme in Resources */ = {isa = PBXBuildFile; fileRef = 05B1AD171FED1AE300E2CAAE /* readme */; };
@@ -361,6 +366,11 @@
 		058053F11FEA3EF500530661 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		058053F31FEA3F7D00530661 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Singularity/main.m; sourceTree = "<group>"; };
 		058053F81FEA467700530661 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Singularity/Info.plist; sourceTree = "<group>"; };
+		058955CB1FF0E31A00BA6176 /* App.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = App.txt; sourceTree = "<group>"; };
+		058955F01FF0EE3100BA6176 /* animate.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = animate.txt; sourceTree = "<group>"; };
+		058955F21FF0F15900BA6176 /* constraint.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = constraint.txt; sourceTree = "<group>"; };
+		058955F51FF0FD9E00BA6176 /* MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
+		058955F71FF11ACA00BA6176 /* MyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyButton.swift; sourceTree = "<group>"; };
 		05B1AD131FED1AC100E2CAAE /* readme */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme; sourceTree = "<group>"; };
 		05B1AD151FED1AD300E2CAAE /* readme */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme; sourceTree = "<group>"; };
 		05B1AD171FED1AE300E2CAAE /* readme */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme; sourceTree = "<group>"; };
@@ -491,6 +501,9 @@
 				0523EDCD1FECB2E500DDE140 /* note.txt */,
 				0523EDD41FECB99100DDE140 /* js.html */,
 				05B4BDFD1FEE32060048053E /* view.txt */,
+				058955CB1FF0E31A00BA6176 /* App.txt */,
+				058955F01FF0EE3100BA6176 /* animate.txt */,
+				058955F21FF0F15900BA6176 /* constraint.txt */,
 			);
 			path = note;
 			sourceTree = "<group>";
@@ -571,6 +584,7 @@
 		058053E11FEA37B500530661 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				058955F41FF0FD0C00BA6176 /* components */,
 				0523EDF41FED153F00DDE140 /* profile */,
 				0523EDF31FED153200DDE140 /* videos */,
 				058053F01FEA3EF500530661 /* LaunchScreen.xib */,
@@ -621,6 +635,15 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 			);
 			path = resources;
+			sourceTree = "<group>";
+		};
+		058955F41FF0FD0C00BA6176 /* components */ = {
+			isa = PBXGroup;
+			children = (
+				058955F51FF0FD9E00BA6176 /* MyView.swift */,
+				058955F71FF11ACA00BA6176 /* MyButton.swift */,
+			);
+			path = components;
 			sourceTree = "<group>";
 		};
 		139105B71AF99BAD00B5F7CC /* Products */ = {
@@ -1128,10 +1151,12 @@
 			files = (
 				05B1AD1A1FED1B2900E2CAAE /* readme in Resources */,
 				05B4BDFE1FEE32060048053E /* view.txt in Resources */,
+				058955F11FF0EE3100BA6176 /* animate.txt in Resources */,
 				05B1AD161FED1AD300E2CAAE /* readme in Resources */,
 				05B1AD141FED1AC100E2CAAE /* readme in Resources */,
 				058053F21FEA3EF600530661 /* LaunchScreen.xib in Resources */,
 				0523EDF11FED136600DDE140 /* enum.swift.txt in Resources */,
+				058955CC1FF0E31A00BA6176 /* App.txt in Resources */,
 				0523EDF01FED136600DDE140 /* Storage.swift.txt in Resources */,
 				0523EDEB1FED135000DDE140 /* Controller.swift.txt in Resources */,
 				05B1AD181FED1AE300E2CAAE /* readme in Resources */,
@@ -1139,6 +1164,7 @@
 				0523EDE91FED133B00DDE140 /* WebView.txt in Resources */,
 				058053D81FEA1FAF00530661 /* Podfile in Resources */,
 				0523EDEF1FED136600DDE140 /* global.swift.txt in Resources */,
+				058955F31FF0F15900BA6176 /* constraint.txt in Resources */,
 				0523EDD51FECB99100DDE140 /* js.html in Resources */,
 				058053D61FEA1F0B00530661 /* Main.storyboard in Resources */,
 				0523EDCE1FECB2E500DDE140 /* note.txt in Resources */,
@@ -1228,10 +1254,12 @@
 				0523EDDC1FECD47300DDE140 /* ext.swift in Sources */,
 				0560836D1FEF907700D629E3 /* CalendarManagerBridge.m in Sources */,
 				0523EDE21FED02CE00DDE140 /* Consts.swift in Sources */,
+				058955F81FF11ACA00BA6176 /* MyButton.swift in Sources */,
 				058053F41FEA3F7D00530661 /* main.m in Sources */,
 				056083791FEFD73100D629E3 /* ScrollManager.m in Sources */,
 				0560836F1FEFAFC000D629E3 /* Emitter.swift in Sources */,
 				056083751FEFC34600D629E3 /* MapViewManager.m in Sources */,
+				058955F61FF0FD9E00BA6176 /* MyView.swift in Sources */,
 				0523EE031FED16B500DDE140 /* MainController.swift in Sources */,
 				056083711FEFB21300D629E3 /* EmitterBridge.m in Sources */,
 				058053E71FEA39A800530661 /* AppDelegate.m in Sources */,

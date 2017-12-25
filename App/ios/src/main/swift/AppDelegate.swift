@@ -13,6 +13,18 @@ import core
 class AppDelegate: BaseAppDelegate {
   
   override func didFinishLaunching(_ application: UIApplication, _ launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {
+//    launchRNWindow(launchOptions)
+//    launchNativeWindow(launchOptions)
+  }
+  
+  func launchNativeWindow(_ launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {
+    self.window = self.window ?? UIWindow()
+    self.window!.rootViewController = MainController()
+    self.window!.backgroundColor = .white
+    self.window!.makeKeyAndVisible()
+  }
+  
+  func launchRNWindow(_ launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {
     let jsCodeLocation = RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index", fallbackResource: nil)
     let rootView = RCTRootView(bundleURL: jsCodeLocation, moduleName: "Singularity", initialProperties: nil, launchOptions: launchOptions)
     rootView?.appProperties = ["k": "v"]

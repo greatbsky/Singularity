@@ -1,0 +1,21 @@
+NSLayoutConstraint.activate([
+  v2.leadingAnchor.constraint(equalTo:v1.leadingAnchor),
+  v2.trailingAnchor.constraint(equalTo:v1.trailingAnchor),
+  v2.topAnchor.constraint(equalTo:v1.topAnchor),
+  v2.heightAnchor.constraint(equalToConstant:10),
+  v3.widthAnchor.constraint(equalToConstant:20),
+  v3.heightAnchor.constraint(equalToConstant:20),
+  v3.trailingAnchor.constraint(equalTo:v1.trailingAnchor),
+  v3.bottomAnchor.constraint(equalTo:v1.bottomAnchor)
+])
+if v == nil {
+  v = UIApplication.shared.keyWindow
+}
+for vv in v!.subviews {
+  let arr1 = vv.constraintsAffectingLayout(for:.horizontal)
+  let arr2 = vv.constraintsAffectingLayout(for:.vertical)
+  NSLog("\n\n%@\nH: %@\nV:%@", vv, arr1, arr2);
+  if vv.subviews.count > 0 {
+    self.listConstraints(vv)
+  }
+}

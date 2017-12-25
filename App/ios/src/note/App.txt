@@ -1,0 +1,4 @@
+
+let w = UIApplication.shared.delegate!.window!!
+let w = (UIApplication.shared.delegate as! AppDelegate).window!
+let w = UIApplication.shared.keyWindow!

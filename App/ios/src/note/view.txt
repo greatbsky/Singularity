@@ -14,3 +14,20 @@ addSubview(background)
     self.isHidden = true
   }
 }
+
+
+
+
+lay1.backgroundColor = UIColor(red: 1.0, green: 0.4, blue: 1, alpha: 1).cgColor
+lay1.frame = CGRect(113, 111, 132, 194)
+self.view.layer.addSublayer(lay1)
+
+let r = sender.superview!.convert(sender.frame, to: screen)
+let r = sender.superview!.convert(sender.frame, to: UIScreen.main.coordinateSpace)
+
+
+
+
+
+
+
