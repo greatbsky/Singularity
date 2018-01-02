@@ -79,7 +79,7 @@ extension BaseAppDelegate {
      */
     fileprivate func setupGlobalStyle() {
         UIApplication.shared.isStatusBarHidden = false
-        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
+//        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
     }
     
 }

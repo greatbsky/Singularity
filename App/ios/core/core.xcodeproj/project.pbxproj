@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		051562501FF4D28A00905C79 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0515624F1FF4D28A00905C79 /* BaseViewController.swift */; };
 		0523EDE71FED04CC00DDE140 /* VersionUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523EDE61FED04CC00DDE140 /* VersionUtil.swift */; };
 		057F4A611FEBD07700848CDF /* core.h in Headers */ = {isa = PBXBuildFile; fileRef = 057F4A5F1FEBD07700848CDF /* core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		057F4AE21FEBE4B200848CDF /* BaseAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057F4AE11FEBE4B200848CDF /* BaseAppDelegate.swift */; };
+		05A62DFD1FF2231200631380 /* DeviceUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A62DFC1FF2231200631380 /* DeviceUtil.swift */; };
 		05B1AD1C1FED1D6C00E2CAAE /* NSStringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B1AD1B1FED1D6C00E2CAAE /* NSStringExt.swift */; };
 		05B4BE231FEE3E8B0048053E /* UIImageViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B4BE221FEE3E8B0048053E /* UIImageViewExt.swift */; };
 		05B4BE251FEE3EDE0048053E /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B4BE241FEE3EDE0048053E /* UIViewExt.swift */; };
@@ -19,11 +21,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0515624F1FF4D28A00905C79 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		0523EDE61FED04CC00DDE140 /* VersionUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionUtil.swift; sourceTree = "<group>"; };
 		057F4A5C1FEBD07700848CDF /* core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		057F4A5F1FEBD07700848CDF /* core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = core.h; sourceTree = "<group>"; };
 		057F4A601FEBD07700848CDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		057F4AE11FEBE4B200848CDF /* BaseAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAppDelegate.swift; sourceTree = "<group>"; };
+		05A62DFC1FF2231200631380 /* DeviceUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceUtil.swift; sourceTree = "<group>"; };
 		05B1AD1B1FED1D6C00E2CAAE /* NSStringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSStringExt.swift; sourceTree = "<group>"; };
 		05B4BE221FEE3E8B0048053E /* UIImageViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExt.swift; sourceTree = "<group>"; };
 		05B4BE241FEE3EDE0048053E /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
@@ -55,6 +59,7 @@
 				05B4BE241FEE3EDE0048053E /* UIViewExt.swift */,
 				05B4BE261FEE41200048053E /* AppUtil.swift */,
 				05B4BE281FEE44BD0048053E /* UIColorExt.swift */,
+				05A62DFC1FF2231200631380 /* DeviceUtil.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -116,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				057F4AE11FEBE4B200848CDF /* BaseAppDelegate.swift */,
+				0515624F1FF4D28A00905C79 /* BaseViewController.swift */,
 			);
 			path = base;
 			sourceTree = "<group>";
@@ -256,9 +262,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				05B4BE231FEE3E8B0048053E /* UIImageViewExt.swift in Sources */,
+				05A62DFD1FF2231200631380 /* DeviceUtil.swift in Sources */,
 				05B1AD1C1FED1D6C00E2CAAE /* NSStringExt.swift in Sources */,
 				05B4BE251FEE3EDE0048053E /* UIViewExt.swift in Sources */,
 				05B4BE271FEE41200048053E /* AppUtil.swift in Sources */,
+				051562501FF4D28A00905C79 /* BaseViewController.swift in Sources */,
 				05B4BE291FEE44BD0048053E /* UIColorExt.swift in Sources */,
 				0523EDE71FED04CC00DDE140 /* VersionUtil.swift in Sources */,
 				057F4AE21FEBE4B200848CDF /* BaseAppDelegate.swift in Sources */,

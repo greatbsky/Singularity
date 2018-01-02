@@ -7,17 +7,19 @@
 //
 
 import UIKit
+import core
 
-class MainController : UIViewController {
+class MainController : BaseViewController {
   
-  override var prefersStatusBarHidden: Bool { return true }
+  @IBOutlet weak var logo: UIImageView!
   
   override func viewDidLoad() {
     let v = UIView(frame:CGRect(100,100,50,50))
     v.backgroundColor = .red // small red square
     self.view.addSubview(v) // add it to main view
+    self.logo.image = UIImage(named:"nums")
     delay(2) {
-      print("delay 2")
+      print(self.logo.image!.scale)
     }
   }
   

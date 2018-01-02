@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main Controller-->
+        <scene sceneID="o84-AF-DVF">
+            <objects>
+                <viewController id="qJl-RZ-4fU" customClass="MainController" customModule="Singularity" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="V0b-XU-vWE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to IOS world!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SBW-FJ-KOi">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Drk-8f-6MP">
+                                <rect key="frame" x="30" y="47" width="52" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button1"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onTouchButton1:" destination="qJl-RZ-4fU" eventType="touchUpInside" id="i1c-we-akp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mmg-CL-bXJ">
+                                <rect key="frame" x="127" y="47" width="55" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button2"/>
+                                <connections>
+                                    <action selector="onTouchButton2:" destination="qJl-RZ-4fU" eventType="touchUpInside" id="x2n-1g-7cq"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PC8-Gz-JJJ">
+                                <rect key="frame" x="256" y="0.0" width="119" height="88"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PC8-Gz-JJJ" firstAttribute="top" secondItem="V0b-XU-vWE" secondAttribute="top" id="FX9-xs-H94"/>
+                            <constraint firstItem="osp-Ok-JBA" firstAttribute="bottom" secondItem="SBW-FJ-KOi" secondAttribute="bottom" id="Gwk-Iu-SjF"/>
+                            <constraint firstItem="osp-Ok-JBA" firstAttribute="trailing" secondItem="SBW-FJ-KOi" secondAttribute="trailing" id="LuI-6y-ZMg"/>
+                            <constraint firstItem="SBW-FJ-KOi" firstAttribute="leading" secondItem="osp-Ok-JBA" secondAttribute="leading" id="UDS-oN-Aly"/>
+                            <constraint firstItem="PC8-Gz-JJJ" firstAttribute="trailing" secondItem="osp-Ok-JBA" secondAttribute="trailing" id="njy-Rv-oOQ"/>
+                            <constraint firstItem="SBW-FJ-KOi" firstAttribute="top" secondItem="osp-Ok-JBA" secondAttribute="top" id="oow-kz-5oh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="osp-Ok-JBA"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="logo" destination="PC8-Gz-JJJ" id="0Pr-2O-zzm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rme-Lg-A2C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="149.59999999999999" y="48.125937031484263"/>
+        </scene>
+    </scenes>
+</document>

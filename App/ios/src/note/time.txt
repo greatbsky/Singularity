@@ -1,0 +1,16 @@
+Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(inc), userInfo: nil, repeats: true)
+
+
+    func inc(_ t:Timer) {
+        var val = Float(self.prog3.value)
+        val += 0.1
+        self.prog1.setProgress(val, animated:true) // bug fixed in iOS 7.1
+        self.prog2.setProgress(val, animated:true)
+        self.prog3.value = CGFloat(val)
+        self.prog3.setNeedsDisplay()
+        self.prog4.progress = val
+        if val >= 1.0 {
+            t.invalidate()
+        }
+
+    }

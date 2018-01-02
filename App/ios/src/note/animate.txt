@@ -45,5 +45,149 @@ v3.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin]
   })
 }
 
+UIView.animate(withDuration: 2, delay: 0, options: [.curveLinear, .autoreverse], animations: {
+  let rect = CGRect(origin: .zero, size: CGSize(200, 200))
+  self.yellowView.bounds = rect
+  self.yellowView.mask!.frame = rect
+}) { _ in
+  self.yellowView.bounds = currect
+  self.yellowView.mask!.frame = currect
+}
 
 
+
+
+
+
+class MyLayer : CALayer {
+    override func layoutSublayers() {
+        print("here1")
+        if let subs = self.sublayers {
+            for lay in subs {
+                print(lay.presentation() as Any)
+            }
+        }
+        super.layoutSublayers()
+        print("here2")
+        if let subs = self.sublayers {
+            for lay in subs {
+                print(lay.presentation() as Any)
+            }
+        }
+    }
+}
+class MyView : UIView {
+    override class var layerClass: AnyClass { return MyLayer.self }
+}
+class ViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let lay = CALayer()
+        lay.backgroundColor = UIColor.black.cgColor
+        lay.frame = CGRect(x: 10, y: 10, width: 10, height: 10)
+        self.view.layer.addSublayer(lay)
+        print(lay.presentation() as Any)
+        delay(1) {
+            print(lay.presentation() as Any)
+            print("let's try rerendering")
+            self.view.setNeedsLayout()
+            self.view.layoutIfNeeded()
+            delay(3) {
+                print("let's try animating")
+                let anim = CABasicAnimation(keyPath:"position")
+                anim.duration = 3
+                CATransaction.setCompletionBlock {
+                    print("finished animation")
+                    delay(0.1) {
+                        print(lay.presentation() as Any)
+                    }
+                }
+                anim.toValue = CGPoint(x:100,y:100)
+                lay.add(anim, forKey: nil)
+                delay(0.5) {
+                    print("during animation")
+                    print(lay.presentation() as Any)
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+case 1:
+            let mars = UIImage(named: "Mars")!
+            let empty = UIGraphicsImageRenderer(size:mars.size).image {_ in}
+            
+//            UIGraphicsBeginImageContextWithOptions(mars.size, false, 0)
+//            let empty = UIGraphicsGetImageFromCurrentImageContext()!
+//            UIGraphicsEndImageContext()
+            
+            let arr = [mars, empty, mars, empty, mars]
+            let iv = UIImageView(image:empty)
+            iv.frame.origin = CGPoint(100,100)
+            self.view.addSubview(iv)
+            
+            iv.animationImages = arr
+            iv.animationDuration = 2
+            iv.animationRepeatCount = 1
+            delay(2) {
+                iv.startAnimating()
+            }
+
+        case 2:
+            
+            var arr = [UIImage]()
+            let w : CGFloat = 18
+            for i in 0 ..< 6 {
+                let r = UIGraphicsImageRenderer(size:CGSize(w,w))
+                arr += [r.image {
+                    ctx in
+                    let con = ctx.cgContext
+                    con.setFillColor(UIColor.red.cgColor)
+                    let ii = CGFloat(i)
+                    con.addEllipse(in:CGRect(0+ii,0+ii,w-ii*2,w-ii*2))
+                    con.fillPath()
+                }]
+
+//                UIGraphicsBeginImageContextWithOptions(CGSize(w,w), false, 0)
+//                let con = UIGraphicsGetCurrentContext()!
+//                con.setFillColor(UIColor.red().cgColor)
+//                let ii = CGFloat(i)
+//                con.addEllipse(inRect:CGRect(0+ii,0+ii,w-ii*2,w-ii*2))
+//                con.fillPath()
+//                let im = UIGraphicsGetImageFromCurrentImageContext()!
+//                UIGraphicsEndImageContext()
+//                arr += [im]
+            }
+            let im = UIImage.animatedImage(with:arr, duration:0.5)
+            let b = UIButton(type:.system)
+            b.setTitle("Howdy", for:.normal)
+            b.setImage(im, for:.normal)
+            b.center = CGPoint(100,200)
+            b.sizeToFit()
+            self.view.addSubview(b)
+
+
+
+self.v.layer.removeAllAnimations()
+
+
+let e = UIVisualEffectView(effect: nil)
+e.frame = CGRect(0,50,300,50)
+self.view.addSubview(e)
+delay(4) {
+print("start")
+UIView.animate(withDuration:4, animations: {
+    e.effect = UIBlurEffect(style:.light)
+  }, completion: {
+    _ in // yuckkk
+    UIView.animate(withDuration:4) {
+    e.frame = CGRect(50,50,0,0)
+  }
+  })
+}

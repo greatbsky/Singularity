@@ -18,11 +18,19 @@ class Scroll: UIScrollView {
   @objc
   public override init(frame: CGRect) {
     super.init(frame: frame)
-    let label = UILabel(frame:CGRect(x:10, y:20, width:300, height:100))
-    label.text = "hi world!"
+    let label = UILabel(frame:CGRect(x:10, y:20, width:300, height:300))
+    label.text = "hi world!00000000"
     self.addSubview(label)
     self.isUserInteractionEnabled = true
     self.isScrollEnabled = true
+    self.bounces = true
+    self.contentSize = self.subviews[0].bounds.size
+//    self.contentSize = CGSize(1000, 1000)
+    if #available(iOS 11.0, *) {
+      self.contentInsetAdjustmentBehavior = .always
+    } else {
+      // Fallback on earlier versions
+    }
 //    self.delegate = self as! UIScrollViewDelegate
 //    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureAction))
 //    tapGesture.numberOfTapsRequired = 1

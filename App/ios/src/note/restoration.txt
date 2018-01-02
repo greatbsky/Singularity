@@ -1,0 +1,134 @@
+
+import UIKit
+
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    var window: UIWindow?
+
+
+    func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        self.window!.restorationIdentifier = "window"
+        self.window!.makeKeyAndVisible()
+        return true
+    }
+    
+    func application(_ application: UIApplication, shouldSaveApplicationState coder: NSCoder) -> Bool {
+        return false
+    }
+
+    func application(_ application: UIApplication, shouldRestoreApplicationState coder: NSCoder) -> Bool {
+        return false
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+import UIKit
+
+class ViewController: UIViewController, UIViewControllerRestoration {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+
+    @IBAction func doPresent(_ sender: Any) {
+        let sheet = UIAlertController(title: "Pep", message: "Pick a Pep boy:", preferredStyle: .actionSheet)
+        for boy in ["Manny", "Moe", "Jack"] {
+            sheet.addAction(UIAlertAction(title:boy, style: .default) { _ in
+                self.present(boy:boy)
+            })
+        }
+        sheet.addAction(UIAlertAction(title:"Cancel", style: .cancel))
+        self.present(sheet, animated:true)
+    }
+    
+    func present(boy:String) {
+        let vc2 = ViewController2()
+        vc2.boy = boy
+        vc2.restorationIdentifier = "vc2"
+        vc2.restorationClass = type(of:self)
+        self.present(vc2, animated: true)
+    }
+    
+    static func viewController(withRestorationIdentifierPath identifierComponents: [Any], coder: NSCoder) -> UIViewController? {
+        let vc2 = ViewController2()
+        vc2.restorationIdentifier = "vc2"
+        vc2.restorationClass = self
+        return vc2
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+import UIKit
+
+class ViewController2: UIViewController {
+        
+    var boy : String?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = .white
+        self.finishInterface()
+    }
+    
+    func finishInterface() {
+        if let boy = self.boy {
+            print("adding image view!")
+            let im = UIImageView(image: UIImage(named:boy.lowercased()))
+            self.view.addSubview(im)
+            // finish positioning image view
+            im.frame.origin = CGPoint(x:30,y:30)
+            let tap = UITapGestureRecognizer(target: self, action: #selector(tapped))
+            im.addGestureRecognizer(tap)
+            im.isUserInteractionEnabled = true
+        }
+    }
+    
+    override func encodeRestorableState(with coder: NSCoder) {
+        coder.encode(self.boy, forKey: "boy")
+    }
+    
+    override func decodeRestorableState(with coder: NSCoder) {
+        if let boy = coder.decodeObject(forKey: "boy") as? String {
+            self.boy = boy
+        }
+    }
+    
+    override func applicationFinishedRestoringState() {
+        print("finished restoration")
+        self.finishInterface()
+    }
+
+    @objc func tapped(_ : UITapGestureRecognizer) {
+        self.dismiss(animated: true)
+    }
+    
+}
+
+
+
+
+
+

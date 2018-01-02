@@ -1,0 +1,337 @@
+
+
+
+
+
+import UIKit
+
+/*
+
+Same as previous example, proving that it works under autolayout
+(this is part of what I meant when I said it was robust)
+
+*/
+
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
+class ViewController : UIViewController, UIScrollViewDelegate {
+    @IBOutlet var sv : UIScrollView!
+    @IBOutlet var iv : UIImageView!
+    var didSetup = false
+    var oldBounces = false
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if !self.didSetup {
+            self.didSetup = true
+            self.centerView() // unsure why, but without this we jump on first zoom
+            // doing it in ViewDidLayoutSubviews isn't good enough for some reason
+        }
+    }
+    
+    
+    func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
+        self.oldBounces = scrollView.bounces
+        scrollView.bounces = false
+    }
+    
+    func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
+        scrollView.bounces = self.oldBounces
+    }
+    
+    func centerView() {
+        let sv = self.sv!
+        let v = self.viewForZooming(in:sv)!
+        // normal result is that iv.center should be center of v
+        var c = CGPoint(v.bounds.midX,v.bounds.midY)
+        // but if dimension is smaller, we will move to center of scroll view
+        let csv = CGPoint(sv.bounds.midX,sv.bounds.midY)
+        // for x, center in s.v. only if width is smaller
+        if sv.contentSize.width < sv.bounds.width {
+            let c2 = v.convert(csv, from: sv)
+            c.x = c2.x
+        } else {
+            // offset content to be horizontally centered itself
+            sv.contentOffset.x = (sv.contentSize.width - sv.bounds.width) / 2.0
+        }
+        // for y, always keep centered
+        let c2 = v.convert(csv, from: sv)
+        c.y = c2.y
+        // and set image view's center
+        iv.center = c
+    }
+    
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        self.centerView()
+    }
+    
+    // image view is zoomable
+
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return scrollView.viewWithTag(999)
+    }
+    
+    // image view is also zoomable by double-tapping
+    
+    @IBAction func tapped(_ tap : UIGestureRecognizer) {
+        let sv = self.sv!
+        if sv.zoomScale < 1 {
+            sv.setZoomScale(1, animated:true)
+        }
+        else if sv.zoomScale < sv.maximumZoomScale {
+            sv.setZoomScale(sv.maximumZoomScale, animated:true)
+        }
+        else {
+            sv.setZoomScale(sv.minimumZoomScale, animated:true)
+        }
+        print(sv.contentOffset)
+    }
+
+}
+
+class MyTappableView : UIView {
+    override func hitTest(_ point: CGPoint, with event: UIEvent!) -> UIView? {
+        if let result = super.hitTest(point, with:event) {
+            return result
+        }
+        for sub in self.subviews.reversed() {
+            let pt = self.convert(point, to:sub)
+            if let result = sub.hitTest(pt, with:event) {
+                return result
+            }
+        }
+        return nil
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+import UIKit
+
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
+class ViewController : UIViewController, UIScrollViewDelegate {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let sv = UIScrollView()
+        sv.backgroundColor = .white
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(sv)
+        
+        NSLayoutConstraint.activate([
+            sv.topAnchor.constraint(equalTo:self.view.topAnchor),
+            sv.bottomAnchor.constraint(equalTo:self.view.bottomAnchor),
+            sv.leadingAnchor.constraint(equalTo:self.view.leadingAnchor),
+            sv.trailingAnchor.constraint(equalTo:self.view.trailingAnchor),
+            ])
+        
+        let v = UIView() // content view
+        sv.addSubview(v)
+
+        var y : CGFloat = 10
+        var maxw : CGFloat = 0
+        for i in 0 ..< 30 {
+            let lab = UILabel()
+            lab.text = "This is label \(i+1)"
+            lab.sizeToFit()
+            lab.frame.origin = CGPoint(10,y)
+            v.addSubview(lab)
+            y += lab.bounds.size.height + 10
+            maxw = max(maxw, lab.frame.maxX + 10)
+        }
+        
+        // set content view frame and content size explicitly
+        v.frame = CGRect(0,0,maxw,y)
+        sv.contentSize = v.frame.size
+
+        
+        v.tag = 999 // *
+        sv.minimumZoomScale = 1.0
+        sv.maximumZoomScale = 2.0
+        sv.delegate = self
+        
+        sv.contentInsetAdjustmentBehavior = .always // work around launch offset bug
+
+    }
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return scrollView.viewWithTag(999)
+    }
+    
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        var which : Int {return 1} // 1 to add some interesting logging :)
+        switch which {
+        case 1:
+            print(scrollView.bounds.size) // this is constant
+            print(scrollView.contentSize) // this is changing
+            let v = self.viewForZooming(in:scrollView)!
+            print(v.bounds.size) // this is constant
+            print(v.frame.size) // this is changing (and here it matches the content size)
+            print()
+        default : break
+        }
+    }
+
+    
+    
+}
+
+
+
+
+
+
+
+
+import UIKit
+
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
+
+class ViewController : UIViewController {
+    @IBOutlet var sv : UIScrollView!
+    @IBOutlet var flag : UIImageView!
+    @IBOutlet weak var map: UIImageView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.sv.contentSize = self.map.bounds.size
+        self.sv.contentInsetAdjustmentBehavior = .never
+    }
+    
+    @IBAction func dragging (_ p: UIPanGestureRecognizer) {
+        let v = p.view!
+        switch p.state {
+        case .began, .changed:
+            let delta = p.translation(in:v.superview!)
+            v.center.x += delta.x
+            v.center.y += delta.y
+            p.setTranslation(.zero, in: v.superview)
+//            if p.state == .began {break}
+//            return; // uncomment to prevent autoscroll
+            // autoscroll
+            let sv = self.sv!
+            let loc = p.location(in:sv)
+            let f = sv.bounds
+            var off = sv.contentOffset
+            let sz = sv.contentSize
+            var c = v.center
+            // to the right
+            if loc.x > f.maxX - 30 {
+                let margin = sz.width - sv.bounds.maxX
+                if margin > 6 {
+                    off.x += 5
+                    sv.contentOffset = off
+                    c.x += 5
+                    v.center = c
+                    self.keepDragging(p)
+                }
+            }
+            // to the left
+            if loc.x < f.origin.x + 30 {
+                let margin = off.x
+                if margin > 6 {
+                    off.x -= 5
+                    sv.contentOffset = off
+                    c.x -= 5
+                    v.center = c
+                    self.keepDragging(p)
+                }
+            }
+            // to the bottom
+            if loc.y > f.maxY - 30 {
+                let margin = sz.height - sv.bounds.maxY
+                if margin > 6 {
+                    off.y += 5
+                    sv.contentOffset = off
+                    c.y += 5
+                    v.center = c
+                    self.keepDragging(p)
+                }
+            }
+            // to the top
+            if loc.y < f.origin.y + 30 {
+                let margin = off.y
+                if margin > 6 {
+                    off.y -= 5
+                    sv.contentOffset = off
+                    c.y -= 5
+                    v.center = c
+                    self.keepDragging(p)
+                }
+            }
+
+        default: break
+        }
+    }
+    
+    func keepDragging (_ p: UIPanGestureRecognizer) {
+        // the delay here, combined with the change in offset, determines the speed of autoscrolling
+        let del = 0.1
+        delay(del) {
+            self.dragging(p)
+        }
+    }
+    
+}
+
+
+
+

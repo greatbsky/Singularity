@@ -1,0 +1,22 @@
+
+let mars = UIImage(named:"Mars")!
+var marsTiled = UIImage()
+
+marsTiled = mars.resizableImage(withCapInsets: UIEdgeInsetsMake(
+                                                  mars.size.height / 4.0,
+                                                  mars.size.width / 4.0,
+                                                  mars.size.height / 4.0,
+                                                  mars.size.width / 4.0
+                                                  ), resizingMode: .stretch)
+
+
+@IBOutlet var b : UIButton!
+@IBOutlet var tbi : UITabBarItem!
+if let window = UIApplication.shared.delegate!.window! {
+     window.tintColor = UIColor.red
+}
+let im = UIImage(named:"Smiley")!.withRenderingMode(.alwaysTemplate)
+self.b.setBackgroundImage(im, for: .normal)
+let im2 = UIImage(named:"smiley2")!.withRenderingMode(.alwaysOriginal)
+self.tbi.image = im2
+

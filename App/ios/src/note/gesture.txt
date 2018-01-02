@@ -1,0 +1,321 @@
+
+
+
+class ViewController: UIViewController {
+    @IBOutlet weak var v: UIView!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let p = UIPanGestureRecognizer(target: self, action: #selector(dragging))
+        self.v.addGestureRecognizer(p)
+    }
+    
+    let which = 2
+
+    @objc func dragging(_ p : UIPanGestureRecognizer) {
+        let v = p.view!
+        let dest = CGPoint(self.view.bounds.width/2, self.view.bounds.height - v.frame.height/2)
+        switch p.state {
+        case .began, .changed:
+            let delta = p.translation(in:v.superview)
+            var c = v.center
+            c.x += delta.x; c.y += delta.y
+            v.center = c
+            p.setTranslation(.zero, in: v.superview)
+        case .ended, .cancelled:
+            switch which {
+            case 1:
+                let anim = UIViewPropertyAnimator(duration: 0.4, timingParameters: UISpringTimingParameters(dampingRatio: 0.6, initialVelocity: .zero))
+                anim.addAnimations {
+                    v.center = dest
+                }
+                anim.startAnimation()
+            case 2:
+                let vel = p.velocity(in: v.superview!)
+                // vel is a CGPoint, not a CGVector
+                // moreover, it is measured in points per second
+                // but a spring initial velocity is a CGVector...
+                // and it is measured with respect to the animation distance
+                let c = v.center
+                let distx = abs(c.x - dest.x)
+                let disty = abs(c.y - dest.y)
+                let anim = UIViewPropertyAnimator(duration: 0.4, timingParameters: UISpringTimingParameters(dampingRatio: 0.6, initialVelocity: CGVector(vel.x/distx, vel.y/disty)))
+                anim.addAnimations {
+                    v.center = dest
+                }
+                anim.startAnimation()
+            default: break
+            }
+        default: break
+        }
+    }
+
+
+}
+
+
+
+
+
+
+
+
+class ViewController : UIViewController {
+    var anim : UIDynamicAnimator!
+    var att : UIAttachmentBehavior!
+    
+    @IBAction func dragging(_ p: UIPanGestureRecognizer) {
+        switch p.state {
+        case .began:
+            self.anim = UIDynamicAnimator(referenceView:self.view)
+            self.anim.delegate = self
+            let loc = p.location(ofTouch:0, in:p.view)
+            print(loc)
+            let cen = CGPoint(p.view!.bounds.midX, p.view!.bounds.midY)
+            print(cen)
+            let off = UIOffsetMake(loc.x-cen.x, loc.y-cen.y)
+            print(off)
+            let anchor = p.location(ofTouch:0, in:self.view)
+            let att = UIAttachmentBehavior(item:p.view!,
+                offsetFromCenter:off, attachedToAnchor:anchor)
+            self.anim.addBehavior(att)
+            self.att = att
+        case .changed:
+            self.att.anchorPoint = p.location(ofTouch:0, in: self.view)
+        default:
+            print("done")
+            self.anim = nil
+        }
+    }
+}
+
+extension ViewController : UIDynamicAnimatorDelegate {
+    func dynamicAnimatorDidPause(_ animator: UIDynamicAnimator) {
+        print("pause")
+    }
+    func dynamicAnimatorWillResume(_ animator: UIDynamicAnimator) {
+        print("resume")
+    }
+
+}
+
+
+
+
+
+
+    @IBAction func tapped(_ g:UITapGestureRecognizer) {
+        let p = g.location(ofTouch:0, in: g.view)
+        let v = g.view?.hitTest(p, with: nil)
+        if let v = v as? UIImageView {
+            UIView.animate(withDuration:0.2, delay: 0,
+                options: .autoreverse,
+                animations: {
+                    v.transform = CGAffineTransform(scaleX:1.1, y:1.1)
+                }, completion: {
+                    _ in
+                    v.transform = .identity
+                })
+        }
+    }
+
+
+
+
+
+
+
+
+class MyView: UIView {
+    weak var passthruView : UIView?
+    override func hitTest(_ point: CGPoint, with e: UIEvent?) -> UIView? {
+        if let pv = self.passthruView {
+            let pt = pv.convert(point, from: self)
+            if pv.point(inside: pt, with: e) {
+                return nil
+            }
+        }
+        return super.hitTest(point, with: e)
+    }
+}
+
+class ViewController: UIViewController {
+    @IBOutlet weak var b: UIButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let v = MyView()
+        v.passthruView = self.b
+        self.view.addSubview(v)
+        v.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            v.topAnchor.constraint(equalTo: self.view.topAnchor),
+            v.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            v.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            v.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+        ])
+        
+        
+    }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import UIKit
+
+class ViewController : UIViewController {
+    @IBOutlet var v : UIView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // tests to prove that a multi-edge edge g.r. doesn't work at all
+        
+        let e = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(edge))
+        e.edges = [.bottom, .left]
+        // self.view.addGestureRecognizer(e)
+        
+        let e2 = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(edge2))
+        e2.edges = .left
+        self.view.addGestureRecognizer(e2)
+
+        
+        // view that can be single-tapped, double-tapped, or dragged
+        
+        let t2 = UITapGestureRecognizer(target:self, action:#selector(doubleTap))
+        t2.numberOfTapsRequired = 2
+        self.v.addGestureRecognizer(t2)
+        
+        let t1 = UITapGestureRecognizer(target:self, action:#selector(singleTap))
+        t1.require(toFail:t2) // *
+        self.v.addGestureRecognizer(t1)
+        
+        var which : Int { return 2 }
+
+        switch which {
+        case 1:
+            let p = UIPanGestureRecognizer(target: self, action: #selector(dragging))
+            self.v.addGestureRecognizer(p)
+        case 2:
+            let p = HorizPanGestureRecognizer(target: self, action: #selector(dragging))
+            self.v.addGestureRecognizer(p)
+            let p2 = VertPanGestureRecognizer(target: self, action: #selector(dragging))
+            self.v.addGestureRecognizer(p2)
+
+        default: break
+        }
+    }
+    
+    @objc func edge () {
+        print("edge")
+    }
+    
+    @objc func edge2 () {
+        print("edge2")
+    }
+
+    
+    @objc func singleTap () {
+        print("single tap")
+    }
+    @objc func doubleTap () {
+        print("double tap")
+    }
+    
+    @objc func dragging(_ p : UIPanGestureRecognizer) {
+        let v = p.view!
+        switch p.state {
+        case .began, .changed:
+            let delta = p.translation(in:v.superview)
+            var c = v.center
+            c.x += delta.x; c.y += delta.y
+            v.center = c
+            p.setTranslation(.zero, in: v.superview)
+        default: break
+        }
+    }
+
+}
+
+
+
+
+
+
+
+import UIKit
+// and note use secondary import, essential to import hidden methods
+import UIKit.UIGestureRecognizerSubclass
+
+class HorizPanGestureRecognizer : UIPanGestureRecognizer {
+    var origLoc : CGPoint!
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with e: UIEvent) {
+        self.origLoc = touches.first!.location(in:self.view!.superview)
+        super.touchesBegan(touches, with:e)
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with e: UIEvent) {
+        if self.state == .possible {
+            let loc = touches.first!.location(in:self.view!.superview)
+            let deltaX = abs(loc.x - self.origLoc.x)
+            let deltaY = abs(loc.y - self.origLoc.y)
+            if deltaY >= deltaX {
+                self.state = .failed
+            }
+        }
+        super.touchesMoved(touches, with:e)
+    }
+    
+    override func translation(in view: UIView?) -> CGPoint {
+        var proposedTranslation = super.translation(in:view)
+        proposedTranslation.y = 0
+        return proposedTranslation
+    }
+
+}
+
+class VertPanGestureRecognizer : UIPanGestureRecognizer {
+    var origLoc : CGPoint!
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with e: UIEvent) {
+        self.origLoc = touches.first!.location(in:self.view!.superview)
+        super.touchesBegan(touches, with:e)
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with e: UIEvent) {
+        if self.state == .possible {
+            let loc = touches.first!.location(in:self.view!.superview)
+            let deltaX = abs(loc.x - self.origLoc.x)
+            let deltaY = abs(loc.y - self.origLoc.y)
+            if deltaX >= deltaY {
+                self.state = .failed
+            }
+        }
+        super.touchesMoved(touches, with:e)
+    }
+    
+    override func translation(in view: UIView?) -> CGPoint {
+        var proposedTranslation = super.translation(in:view)
+        proposedTranslation.x = 0
+        return proposedTranslation
+    }
+
+}
+

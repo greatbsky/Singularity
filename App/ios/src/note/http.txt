@@ -1,0 +1,291 @@
+
+
+
+
+import UIKit
+
+class ViewController: UIViewController, URLSessionDataDelegate {
+
+    @IBOutlet var iv : UIImageView!
+    var task : URLSessionDataTask!
+    var data = Data()
+    
+    lazy var session : URLSession = {
+        let config = URLSessionConfiguration.ephemeral
+        config.allowsCellularAccess = false
+        let session = URLSession(configuration: config, delegate: self, delegateQueue: .main)
+        return session
+        }()
+    
+    @IBAction func doHTTP (_ sender: Any!) {
+        if self.task != nil {
+            return
+        }
+        self.iv.image = nil
+        self.data.count = 0 // *
+        let s = "https://www.apeth.net/matt/images/phoenixnewest.jpg"
+        let url = URL(string:s)!
+        let req = URLRequest(url:url)
+        let task = self.session.dataTask(with:req) // *
+        self.task = task
+        task.resume()
+        
+    }
+    
+    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
+        // do something with the data here!
+        self.data.append(data)
+        print("received \(data.count) bytes of data; total \(self.data.count)")
+    }
+    
+    
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        print("completed: error: \(error)")
+        self.task = nil
+        if error == nil {
+            DispatchQueue.main.async {
+                self.iv.image = UIImage(data:self.data)
+            }
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.session.finishTasksAndInvalidate()
+        self.task = nil
+    }
+    
+    deinit {
+        print("farewell")
+    }
+    
+
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import UIKit
+
+class ViewController: UIViewController {
+
+    @IBOutlet var iv : UIImageView!
+    
+    @IBAction func doSimpleHTTP (_ sender: Any!) {
+        self.iv.image = nil
+        let s = "https://www.apeth.net/matt/images/phoenixnewest.jpg"
+        let url = URL(string:s)!
+        let session = URLSession.shared
+        let task = session.downloadTask(with:url) { loc, resp, err in
+            print("here")
+            guard err == nil else {
+                print(err as Any)
+                return
+            }
+            let status = (resp as! HTTPURLResponse).statusCode
+            print("response status: \(status)")
+            guard status == 200 else {
+                print(status)
+                return
+            }
+            if let loc = loc, let d = try? Data(contentsOf:loc) {
+                let im = UIImage(data:d)
+                DispatchQueue.main.async {
+                    self.iv.image = im
+                    print("done")
+                }
+            }
+        }
+        // just demonstrating syntax
+        task.priority = URLSessionTask.defaultPriority
+        task.resume()
+    }
+    
+    // -------------------
+    
+    // just showing some "return a value" strategies
+    // this can never work
+    func doSomeNetworking() -> UIImage? {
+        let s = "https://www.apeth.net/matt/images/phoenixnewest.jpg"
+        let url = URL(string:s)!
+        var image : UIImage? = nil
+        let session = URLSession.shared
+        let task = session.downloadTask(with:url) { loc, resp, err in
+            if let loc = loc, let d = try? Data(contentsOf:loc) {
+                let im = UIImage(data:d)
+                image = im
+            }
+        }
+        task.resume()
+        return image
+    }
+    // but this can
+    func doSomeNetworking2(callBackWithImage: @escaping (UIImage?) -> Void) {
+        let s = "https://www.apeth.net/matt/images/phoenixnewest.jpg"
+        let url = URL(string:s)!
+        let session = URLSession.shared
+        let task = session.downloadTask(with:url) { loc, resp, err in
+            if let loc = loc, let d = try? Data(contentsOf:loc) {
+                let im = UIImage(data:d)
+                callBackWithImage(im)
+            }
+        }
+        task.resume()
+    }
+    func test() {
+        doSomeNetworking2 { im in
+            DispatchQueue.main.async {
+                self.iv.image = im
+            }
+        }
+    }
+
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import UIKit
+
+class ViewController: UIViewController {
+    
+    @IBOutlet var iv : UIImageView!
+    
+    lazy var configuration : URLSessionConfiguration = {
+        let config = URLSessionConfiguration.ephemeral
+        config.allowsCellularAccess = false
+        config.urlCache = nil
+        return config
+        }()
+    
+    lazy var downloader : MyDownloader = {
+        return MyDownloader(configuration:self.configuration)
+        }()
+    
+    @IBAction func doDownload (_ sender: Any!) {
+        self.iv.image = nil
+        let s = "https://www.nasa.gov/sites/default/files/styles/1600x1200_autoletterbox/public/pia17474_1.jpg"
+        let url = URL(string:s)!
+        self.downloader.download(url:url) { url in
+            if let url = url, let d = try? Data(contentsOf: url) {
+                let im = UIImage(data:d)
+                self.iv.image = im
+            }
+        }
+    }
+    
+    deinit {
+        // self.downloader.cancelAllTasks()
+        print("view controller dealloc")
+    }
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+import UIKit
+
+let isMain = false // try false to move delegate methods onto a background thread
+
+typealias MyDownloaderCompletion = (URL!) -> ()
+
+class MyDownloader: NSObject {
+    let config : URLSessionConfiguration
+    let q = OperationQueue()
+    lazy var session : URLSession = {
+        let queue = (isMain ? .main : self.q)
+        return URLSession(configuration:self.config, delegate:MyDownloaderDelegate(), delegateQueue:queue)
+    }()
+    init(configuration config:URLSessionConfiguration) {
+        self.config = config
+        super.init()
+    }
+    
+    @discardableResult
+    func download(url:URL, completionHandler ch : MyDownloaderCompletion) -> URLSessionTask {
+        let req = NSMutableURLRequest(url:url)
+        URLProtocol.setProperty(ch, forKey:"ch", in:req)
+        let task = self.session.downloadTask(with:req as URLRequest)
+        task.resume()
+        return task
+    }
+    
+    private class MyDownloaderDelegate : NSObject, URLSessionDownloadDelegate {
+        func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo url: URL) {
+            let req = downloadTask.originalRequest!
+            let ch = URLProtocol.property(forKey:"ch", in:req) as! MyDownloaderCompletion
+            if isMain {
+                ch(url)
+            } else {
+                DispatchQueue.main.sync {
+                    ch(url)
+                }
+            }
+        }
+        deinit {
+            print("farewell from Delegate")
+        }
+    }
+
+    
+//    func cancelAllTasks() {
+//        self.session.invalidateAndCancel()
+//    }
+    
+    deinit {
+        print("farewell from MyDownloader")
+        self.session.invalidateAndCancel()
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+

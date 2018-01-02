@@ -19,3 +19,14 @@ for vv in v!.subviews {
     self.listConstraints(vv)
   }
 }
+
+
+
+iv.center = iv.superview!.bounds.center // see above
+
+// position using constraints
+iv.translatesAutoresizingMaskIntoConstraints = false
+NSLayoutConstraint.activate([
+iv.centerXAnchor.constraint(equalTo:iv.superview!.centerXAnchor),
+iv.centerYAnchor.constraint(equalTo:iv.superview!.centerYAnchor)
+])

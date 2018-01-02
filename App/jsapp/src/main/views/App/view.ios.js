@@ -76,6 +76,30 @@ export default class App extends Component<{}> {
               <Text>hi, world! ^_^</Text>
               <Text>hi, world! ^_^</Text>
               <Text>hi, world! ^_^</Text>
+              <Text>hi, world! ^_^</Text>
+              <Text>hi, world! ^_^</Text>
+              <Text>hi, world! ^_^</Text>
+              <Text>hi, world! ^_^</Text>
+                <Text>hi, world! ^_^</Text>
+                <Text>hi, world! ^_^</Text>
+                <Text>hi, world! ^_^</Text>
+                <Text>hi, world! ^_^</Text>
+                  <Text>hi, world! ^_^</Text>
+                  <Text>hi, world! ^_^</Text>
+                  <Text>hi, world! ^_^</Text>
+                  <Text>hi, world! ^_^</Text>
+                  <Text>hi, world! ^_^</Text>
+                  <Text>hi, world! ^_^</Text>
+                  <Text>hi, world! ^_^</Text>
+                  <Text>hi, world! ^_^</Text>
+                    <Text>hi, world! ^_^</Text>
+                    <Text>hi, world! ^_^</Text>
+                    <Text>hi, world! ^_^</Text>
+                    <Text>hi, world! ^_^</Text>
+                      <Text>hi, world! ^_^</Text>
+                      <Text>hi, world! ^_^</Text>
+                      <Text>hi, world! ^_^</Text>
+                      <Text>hi, world! ^_^</Text>
         </Scroll>
       </View>
     );

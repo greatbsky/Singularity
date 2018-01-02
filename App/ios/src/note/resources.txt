@@ -1,0 +1,4 @@
+
+
+//    self.logo.image = UIImage(contentsOfFile: Bundle.main.path(forResource: "rootimg", ofType: "png")!)
+

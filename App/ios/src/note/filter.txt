@@ -1,0 +1,110 @@
+
+import UIKit
+
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
+
+
+class ViewController : UIViewController {
+    @IBOutlet var iv : UIImageView!
+    let context = CIContext()
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+                
+        let moi = UIImage(named:"Moi")!
+        let moici = CIImage(image:moi)!
+        let moiextent = moici.extent
+        
+        let center = CIVector(x: moiextent.width/2.0, y: moiextent.height/2.0)
+        
+        let smallerDimension = min(moiextent.width, moiextent.height)
+        let largerDimension = max(moiextent.width, moiextent.height)
+        
+        // first filter
+        let grad = CIFilter(name: "CIRadialGradient")!
+        grad.setValue(center, forKey:"inputCenter")
+        grad.setValue(smallerDimension/2.0 * 0.85, forKey:"inputRadius0")
+        grad.setValue(largerDimension/2.0, forKey:"inputRadius1")
+        let gradimage = grad.outputImage!
+
+        // second filter
+        let blendimage = moici.applyingFilter(
+            "CIBlendWithMask", parameters: [
+                "inputMaskImage":gradimage
+            ])
+        
+        // two ways to obtain final bitmap; third way, claimed to work, does not
+        
+        var which : Int { return 1 }
+        
+        switch which {
+        case 1:
+            let moicg = self.context.createCGImage(blendimage, from: moiextent)!
+            self.iv.image = UIImage(cgImage: moicg)
+        case 2:
+            let r = UIGraphicsImageRenderer(size:moiextent.size)
+            self.iv.image = r.image {
+                _ in
+                UIImage(ciImage: blendimage).draw(in:moiextent)
+            }
+        case 3:
+            self.iv.image = UIImage(ciImage: blendimage, scale: 1, orientation: .up) // nope
+            delay(0.1) {
+                self.iv.setNeedsDisplay() // nope
+                self.iv.layer.displayIfNeeded() // nope
+            }
+        default: break
+        }
+        
+    }
+
+}
+
+
+
+
+
+
+
+
+
+class ViewController: UIViewController {
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    let v1 = UIView(frame:CGRect(113, 111, 132, 194))
+    v1.backgroundColor = UIColor(red: 1, green: 0.4, blue: 1, alpha: 1)
+    let v2 = UIView(frame:CGRect(41, 56, 132, 194))
+    v2.backgroundColor = UIColor(red: 0.5, green: 1, blue: 0, alpha: 1)
+    let v3 = UIView(frame:CGRect(43, 197, 160, 230))
+    v3.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 1)
+    self.view.addSubview(v1)
+    v1.addSubview(v2)
+    self.view.addSubview(v3)
+
+    let blur = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
+    blur.frame = self.view.bounds
+    blur.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+    let vib = UIVisualEffectView(effect: UIVibrancyEffect(
+    blurEffect: blur.effect as! UIBlurEffect))
+    let lab = UILabel()
+    lab.text = "Hello, world!"
+    lab.sizeToFit()
+    vib.frame = lab.frame
+    vib.contentView.addSubview(lab)
+    vib.center = CGPoint(blur.bounds.midX, blur.bounds.midY)
+    vib.autoresizingMask = [.flexibleTopMargin, .flexibleBottomMargin,
+    .flexibleLeftMargin, .flexibleRightMargin]
+    blur.contentView.addSubview(vib)
+    self.view.addSubview(blur)
+  }
+
+}
+
+
+

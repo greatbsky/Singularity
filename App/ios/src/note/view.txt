@@ -27,6 +27,10 @@ let r = sender.superview!.convert(sender.frame, to: UIScreen.main.coordinateSpac
 
 
 
+let v1 = self.view.viewWithTag(1)! // playback
+let v2 = self.view.viewWithTag(2)! // nothing, but it's inside 1
+let v3 = self.view.viewWithTag(3)! // forced rtl
+let v4 = self.view.viewWithTag(4)! // nothing, but it's inside 3
 
 
 

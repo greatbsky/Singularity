@@ -1,0 +1,1484 @@
+
+
+
+
+import UIKit
+
+class RootViewController : UITableViewController {
+    
+    override func tableView(_ tv: UITableView, cellForRowAt ix: IndexPath) -> UITableViewCell {
+        
+        // we can still modify the cell as long as we fetch it from super
+        let cell = super.tableView(tv, cellForRowAt:ix)
+        
+        // supply checkmarks as necessary
+        let ud = UserDefaults.standard
+        
+        NSLog("about to update %@", cell.textLabel!.text!)
+        cell.accessoryType = .none
+        if let title = self.tableView(tv, titleForHeaderInSection:ix.section) {
+            if let label = ud.object(forKey:title) as? String {
+                if label == cell.textLabel!.text {
+                    cell.accessoryType = .checkmark
+                }
+            }
+        }
+        return cell
+    }
+    
+    func log(tv:UITableView, ip:IndexPath, phrase:String) {
+        NSLog("%@", "========")
+        NSLog("%@ %@", phrase, tv.cellForRow(at:ip)!.textLabel!.text!)
+        NSLog("cell highlighted? %@", "\(tv.cellForRow(at:ip)!.isHighlighted)")
+        NSLog("label highlighted? %@", "\(tv.cellForRow(at:ip)!.textLabel!.isHighlighted)")
+    }
+    
+    override func tableView(_ tv: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        log(tv: tv, ip: indexPath, phrase: "should highlight")
+        
+        DispatchQueue.main.async {
+            NSLog("%@", "callback from should highlight")
+            }
+        
+        return true // try false to test this feature
+    }
+    
+    override func tableView(_ tv: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        log(tv: tv, ip: indexPath, phrase: "did highlight")
+    }
+    
+    override func tableView(_ tv: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        log(tv: tv, ip: indexPath, phrase: "did unhighlight")
+        
+        DispatchQueue.main.async {
+            NSLog("%@", "callback from did unhighlight")
+            }
+    }
+    
+    override func tableView(_ tv: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        log(tv: tv, ip: indexPath, phrase: "will select")
+        
+        return indexPath
+    }
+    
+    override func tableView(_ tv: UITableView, willDeselectRowAt indexPath: IndexPath) -> IndexPath? {
+        log(tv: tv, ip: indexPath, phrase: "will deselect")
+        
+        return indexPath
+    }
+    
+    override func tableView(_ tv: UITableView, didSelectRowAt ix: IndexPath) {
+        log(tv: tv, ip: ix, phrase: "did select")
+        
+        let ud = UserDefaults.standard
+        let setting = tv.cellForRow(at:ix)!.textLabel!.text
+        let header = self.tableView(tv, titleForHeaderInSection:ix.section)!
+        ud.setValue(setting, forKey:header)
+        
+        NSLog("%@", "about to reload!")
+        tv.reloadData() // deselect all cells, reassign checkmark as needed
+
+    }
+    
+    override func tableView(_ tv: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        NSLog("did deselect %@", tv.cellForRow(at:indexPath)!.textLabel!.text!)
+    }
+    
+    // just proving this stuff works even in a grouped style table
+    
+    /*
+
+
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let v = UIView()
+        v.backgroundColor = .clear
+        // v.backgroundColor = .yellow
+        // tableView.backgroundColor = .green
+        return v
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let v = UIView()
+        v.backgroundColor = .blue
+        return v
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 100
+    }
+
+*/
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import UIKit
+
+class Cell : UITableViewCell {
+    @IBOutlet weak var lab : UILabel!
+}
+
+class RootViewController : UITableViewController {
+    var trivia : [String]!
+    
+    override var prefersStatusBarHidden : Bool {
+        return true
+    }
+    
+    let cellID = "Cell"
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let url = Bundle.main.url(forResource:"trivia", withExtension: "txt")
+        let s = try! String(contentsOf:url!)
+        let arr = s.components(separatedBy:"\n")
+        self.trivia = Array(arr.dropLast())
+        
+        self.tableView.register(UINib(nibName: "Cell", bundle: nil), forCellReuseIdentifier: self.cellID)
+        // both these lines are needed
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        // what's new in iOS 11 is that you don't even have to supply an estimated height!
+        // it too can be automatic
+        if #available(iOS 11.0, *) {
+            self.tableView.estimatedRowHeight = UITableViewAutomaticDimension
+            print(self.tableView.estimatedRowHeight)
+        } else {
+            self.tableView.estimatedRowHeight = 40
+        }
+        // basically, if the estimated height is zero, you have opted _out_ of variable height
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.trivia.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath) as! Cell
+        cell.backgroundColor = .white
+        cell.lab.text = self.trivia[indexPath.row]
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if tableView.indexPathForSelectedRow == indexPath {
+            tableView.deselectRow(at:indexPath, animated:false)
+            return nil
+        }
+        return indexPath
+    }
+    
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        // return 30
+//        return UITableViewAutomaticDimension
+//    }
+//
+//    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 0
+////        return 100
+//        return UITableViewAutomaticDimension
+//    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import UIKit
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
+
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
+class RootViewController: UITableViewController {
+    
+    let cellID = "Cell"
+    
+    var pep : [String]! = ["Manny", "Moe", "Jack"] // pretend model might not be ready
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // so this is still legal; you can give a tvc a refresh control in iOS 10
+        // however, what's new is that this is _actually_ the table's refresh control
+//        self.refreshControl = UIRefreshControl()
+//        self.refreshControl!.addTarget(self, action: #selector(doRefresh), for: .valueChanged)
+//        print(self.tableView!.refreshControl)
+        
+        // so you can write it like this instead:
+        
+        self.tableView.refreshControl = UIRefreshControl()
+        self.tableView.refreshControl!.addTarget(self, action: #selector(doRefresh), for: .valueChanged)
+        
+        // moreover, when you do, your code just keeps on working;
+        // this is also still the table view controller's refresh control!
+        
+        // showing that the refresh control's background color covers the table's background
+        let v = UIView()
+        v.backgroundColor = .yellow
+        self.tableView.backgroundView = v
+        self.tableView.refreshControl?.backgroundColor = .green
+        
+        // self.edgesForExtendedLayout = []
+        self.edgesForExtendedLayout = .all
+        if #available(iOS 11.0, *) {
+            self.tableView.contentInsetAdjustmentBehavior = .always
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = true
+        }
+        
+        self.tableView.tintColor = .red
+        // proving that the refresh control is unaffected
+        // self.tableView.refreshControl?.tintColor = .yellow
+    }
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        if self.pep == nil {
+            return 0
+        }
+        return 1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.pep.count
+    }
+    
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath) 
+
+        cell.textLabel!.text = pep[indexPath.row]
+        return cell
+    }
+
+    @IBAction func doRefresh(_ sender: Any) {
+        print("refreshing...")
+        delay(3) {
+            (sender as! UIRefreshControl).endRefreshing()
+            print("done")
+        }
+    }
+
+    @IBAction func doRefreshManually(_ sender: Any) {
+        // all this talk of `self.refreshControl` works, even though we didn't assign this way
+        // NB I failed to notice that my old code wasn't working because of the content inset
+        // NB also iOS 10 vs iOS 11, in iOS 11 it's the adjusted content inset
+        
+        // another weird thing; it fails the second time, because after the first time...
+        // the refresh control seems to take on a zero height!
+        // okay, made it work by forcing the refresh control back to its real size
+        
+        if #available(iOS 11.0, *) {
+            self.refreshControl!.sizeToFit()
+            let top = self.tableView.adjustedContentInset.top
+            let y = self.refreshControl!.frame.maxY + top
+            self.tableView.setContentOffset(CGPoint(0, -y), animated:true)
+        } else {
+            self.refreshControl!.sizeToFit()
+            let top = self.tableView.contentInset.top
+            let y = self.refreshControl!.frame.maxY + top
+            self.tableView.setContentOffset(CGPoint(0, -y), animated:true)
+        }
+
+        self.refreshControl!.beginRefreshing()
+        self.doRefresh(self.refreshControl!)
+    }
+}
+
+
+
+
+
+
+
+import UIKit
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
+
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
+class RootViewController: UITableViewController {
+    
+    let cellID = "Cell"
+    
+    var pep : [String]! = ["Manny", "Moe", "Jack"] // pretend model might not be ready
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.title = "Big Title"
+        
+        // can be configured in nib editor, but let's do it here
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl!.addTarget(self, action: #selector(doRefresh), for: .valueChanged)
+        
+        // this is also still the table view controller's refresh control
+        // this works properly only in a table view controller context anyway
+        
+        let v = UIView()
+        v.backgroundColor = .yellow
+        self.tableView.backgroundView = v
+        // don't do this! you'll get a horrible mess
+//        self.tableView.refreshControl?.backgroundColor = .green
+        
+        // it is also absolutely essential that the table view controller
+        // extends its view up behind the navigation bar!
+        // again, can do this in nib editor
+        
+        self.edgesForExtendedLayout = .all
+//        
+        self.tableView.contentInsetAdjustmentBehavior = .always
+        
+//         self.navigationItem.largeTitleDisplayMode = .never
+        
+        
+    }
+    
+    
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        if self.pep == nil {
+            return 0
+        }
+        return 1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.pep.count
+    }
+    
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath) 
+
+        cell.textLabel!.text = pep[indexPath.row]
+        return cell
+    }
+
+    @IBAction func doRefresh(_ sender: Any) {
+        print("refreshing...")
+        delay(3) {
+            (sender as! UIRefreshControl).endRefreshing()
+            print("done")
+        }
+    }
+    
+    @IBAction func doRefreshManually(_ sender: Any) {
+        // I find it odd that you still have to do this, but hey
+        // also bar stays too big; I don't like that but I don't see what I can do about it
+        
+        self.refreshControl!.sizeToFit()
+        let top = self.tableView.adjustedContentInset.top
+        let y = self.refreshControl!.frame.maxY + top
+        self.tableView.setContentOffset(CGPoint(0, -y), animated:true)
+
+        self.refreshControl!.beginRefreshing()
+        self.doRefresh(self.refreshControl!)
+    }
+}
+
+
+
+
+
+
+
+
+
+import UIKit
+
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
+
+class RootViewController : UITableViewController {
+    struct Section {
+        var sectionName : String
+        var rowData : [String]
+    }
+    var sections : [Section]!
+    
+    override var prefersStatusBarHidden : Bool {
+        return true
+    }
+    
+    let cellID = "Cell"
+    let headerID = "Header"
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let s = try! String(
+            contentsOfFile: Bundle.main.path(
+                forResource: "states", ofType: "txt")!)
+        let states = s.components(separatedBy:"\n")
+        let d = Dictionary(grouping: states) {String($0.prefix(1))}
+        self.sections = Array(d).sorted{$0.key < $1.key}.map {
+            Section(sectionName: $0.key, rowData: $0.value)
+        }
+        
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.cellID)
+        self.tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: self.headerID)
+        
+        self.tableView.sectionIndexColor = .white
+        self.tableView.sectionIndexBackgroundColor = .red
+        self.tableView.sectionIndexTrackingBackgroundColor = .blue
+        // not useful in this situation
+        // self.tableView.separatorEffect = UIBlurEffect(style: .Dark)
+        
+        // NEW in iOS 11!
+        // if we say both of these, internal constraints do the sizing
+        // (as long as the delegate doesn't override us)
+//        self.tableView.sectionHeaderHeight = UITableViewAutomaticDimension
+//        self.tableView.estimatedSectionHeaderHeight = UITableViewAutomaticDimension
+        
+        // showing that indicators are killed by index
+        // self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, 50)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // self.tableView.flashScrollIndicators()
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return self.sections.count
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.sections[section].rowData.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath) 
+        let s = self.sections[indexPath.section].rowData[indexPath.row]
+        cell.textLabel!.text = s
+        
+        // this part is not in the book, it's just for fun
+        var stateName = s
+        stateName = stateName.lowercased()
+        stateName = stateName.replacingOccurrences(of: " ", with:"")
+        stateName = "flag_\(stateName).gif"
+        let im = UIImage(named: stateName)
+        cell.imageView!.image = im
+        
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return ""
+        return nil
+        return self.sections[section].sectionName
+    }
+
+    // this is more "interesting"
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let h = tableView.dequeueReusableHeaderFooterView(withIdentifier: self.headerID)!
+        h.tintColor = .red
+        if h.viewWithTag(1) == nil {
+            print("configuring a new header view") // only called about 8 times
+
+            h.backgroundView = UIView()
+            h.backgroundView?.backgroundColor = .black
+            let lab = UILabel()
+            lab.tag = 1
+            lab.font = UIFont(name:"Georgia-Bold", size:22)
+            lab.textColor = .green
+            lab.backgroundColor = .clear
+            h.contentView.addSubview(lab)
+            let v = UIImageView()
+            v.tag = 2
+            v.backgroundColor = .black
+            v.image = UIImage(named:"us_flag_small.gif")
+            h.contentView.addSubview(v)
+            lab.translatesAutoresizingMaskIntoConstraints = false
+            v.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                NSLayoutConstraint.constraints(withVisualFormat:"H:|-5-[lab(25)]-10-[v(40)]",
+                    metrics:nil, views:["v":v, "lab":lab]),
+                NSLayoutConstraint.constraints(withVisualFormat:"V:|[v]|",
+                    metrics:nil, views:["v":v]),
+                NSLayoutConstraint.constraints(withVisualFormat:"V:|[lab]|",
+                    metrics:nil, views:["lab":lab])
+                ].flatMap{$0})
+            
+            // uncomment to see bug where button does not inherit superview's tint color
+            // ooooh, bug is fixed
+//            let b = UIButton(type:.system)
+//            b.setTitle("Howdy", for:.normal)
+//            b.sizeToFit()
+//            print(b.tintColor, h.tintColor)
+//            h.contentView.addSubview(b)
+        }
+        let lab = h.contentView.viewWithTag(1) as! UILabel
+        lab.text = self.sections[section].sectionName
+        // print(h.backgroundView?.backgroundColor)
+        // h.textLabel!.text = "THIS IS A TEST"
+        return h
+        
+    }
+    
+    // this seems to be unnecessary!
+    // that's because it's configured in the nib
+    // but if we do implement it, we have to behave sensibly
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        // return 0
+        return 22
+        // return UITableViewAutomaticDimension
+    }
+    
+    /*
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    print(view) // prove we are reusing header views
+    }
+    */
+    
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        // return nil
+        return self.sections.map{$0.sectionName}
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+import UIKit
+
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
+class RootViewController : UITableViewController {
+    let cellID = "Cell"
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.tableView.register(MyCell.self, forCellReuseIdentifier: self.cellID)
+//        self.tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15)
+        self.tableView.rowHeight = 58
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 20
+    }
+    
+    /*
+    As promised, the cell will never be nil and doesn't need to be an Optional.
+    But we must find another test to decide whether initial configuration is needed
+    (i.e. is this a blank empty new cell or is it reused, so that it was configured
+    in a previous call to cellForRow).
+*/
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath) as! MyCell
+        if cell.textLabel!.numberOfLines != 2 { // never previously configured
+            cell.textLabel!.font = UIFont(name:"Helvetica-Bold", size:16)
+            cell.textLabel!.lineBreakMode = .byWordWrapping
+            cell.textLabel!.numberOfLines = 6
+        }
+        
+        cell.textLabel!.text = "The author of this book, who would rather be out dirt biking"
+        
+        // shrink apparent size of image
+        let im = UIImage(named:"moi.png")!
+        let r = UIGraphicsImageRenderer(size:CGSize(36,36))
+        let im2 = r.image {
+            _ in im.draw(in:CGRect(0,0,36,36))
+        }
+
+        
+        cell.imageView!.image = im2
+        cell.imageView!.contentMode = .center
+        
+        print(cell.separatorInset)
+        
+        return cell
+    }
+    
+    /*
+    You can see we are using the nib, because the table view has a green background.
+*/
+    
+
+}
+
+
+
+
+
+
+
+
+import UIKit
+
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
+
+
+
+
+import UIKit
+
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
+class RootViewController : UITableViewController {
+    
+    let cellID = "Cell"
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.tableView.register(UINib(nibName:"MyCell", bundle:nil), forCellReuseIdentifier: self.cellID) // *
+        self.tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15)
+        // self.tableView.rowHeight = 58 // *
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 20
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier:self.cellID, for: indexPath) 
+
+        // can refer to subviews by their tags
+        // subview positioning configured by constraints in the nib!
+        
+        let lab = cell.viewWithTag(2) as! UILabel
+        lab.text = "The author of this book, who would rather be out dirt biking"
+        
+        let iv = cell.viewWithTag(1) as! UIImageView
+        // shrink apparent size of image
+        let im = UIImage(named:"moi.png")!
+        
+        let r = UIGraphicsImageRenderer(size:CGSize(36,36))
+        let im2 = r.image {
+            _ in im.draw(in:CGRect(0,0,36,36))
+        }
+        
+        iv.image = im2
+        iv.contentMode = .center
+        
+        return cell
+    }
+    
+    
+
+}
+
+
+
+
+
+
+
+
+import UIKit
+
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
+class RootViewController : UITableViewController {
+    
+    let cellID = "Cell"
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.tableView.register(UINib(nibName:"MyCell", bundle:nil), forCellReuseIdentifier: self.cellID) // *
+        self.tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15)
+        // self.tableView.rowHeight = 58 // *
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 20
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath) as! MyCell
+
+        // can refer to subviews by their tags
+        // subview positioning configured by constraints in the nib!
+        
+        let lab = cell.theLabel! // * NB new IUO rules
+        lab.text = "The author of this book, who would rather be out dirt biking"
+        
+        let iv = cell.theImageView! // * NB new IUO rules
+        // shrink apparent size of image
+        let im = UIImage(named:"moi.png")!
+        
+        let r = UIGraphicsImageRenderer(size:CGSize(36,36))
+        let im2 = r.image {
+            _ in im.draw(in:CGRect(0,0,36,36))
+        }
+                
+        iv.image = im2
+        iv.contentMode = .center
+        
+        return cell
+    }
+    
+    
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import UIKit
+
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
+class RootViewController : UITableViewController {
+    
+    let cellID = "Cell"
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Don't register anything! But the cell id must match the storyboard
+        // self.tableView.register(UINib(nibName:"MyCell", bundle:nil), forCellReuseIdentifier: self.cellID)
+        // self.tableView.register(MyCell.self, forCellReuseIdentifier: self.cellID)
+        self.tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15)
+        // self.tableView.rowHeight = 58 // *
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 20
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath) as! MyCell
+
+        // can refer to subviews by their tags
+        // subview positioning configured by constraints in the nib!
+        
+        let lab = cell.theLabel! // *
+        lab.text = "The author of this book, who would rather be out dirt biking"
+        
+        let iv = cell.theImageView! // *
+        
+        // shrink apparent size of image
+        let im = UIImage(named:"moi.png")!
+        let r = UIGraphicsImageRenderer(size:CGSize(36,36))
+        let im2 = r.image {
+            _ in im.draw(in:CGRect(0,0,36,36))
+        }
+                
+        iv.image = im2
+        iv.contentMode = .center
+        
+        return cell
+    }
+    
+    
+
+}
+
+
+
+
+
+
+
+
+import UIKit
+
+// cell subclass exists solely so that we can pick up subviews by name instead of tag number
+
+class MyCell : UITableViewCell {
+    @IBOutlet var theLabel : UILabel!
+    @IBOutlet var theImageView : UIImageView!
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import UIKit
+
+extension CGRect {
+    init(_ x:CGFloat, _ y:CGFloat, _ w:CGFloat, _ h:CGFloat) {
+        self.init(x:x, y:y, width:w, height:h)
+    }
+}
+extension CGSize {
+    init(_ width:CGFloat, _ height:CGFloat) {
+        self.init(width:width, height:height)
+    }
+}
+extension CGPoint {
+    init(_ x:CGFloat, _ y:CGFloat) {
+        self.init(x:x, y:y)
+    }
+}
+extension CGVector {
+    init (_ dx:CGFloat, _ dy:CGFloat) {
+        self.init(dx:dx, dy:dy)
+    }
+}
+
+
+
+class RootViewController : UITableViewController {
+    
+    let cellID = "Cell"
+    
+    var cells = 0
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.tableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15)
+        self.tableView.rowHeight = 58 // *
+        
+        self.tableView.prefetchDataSource = self
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1000 // make a lot of rows this time!
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        print("will", indexPath.row)
+    }
+    
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        print("did end", indexPath.row)
+    }
+    
+    // cellForRowAt can be called even if we are not immediately about to show
+    // only will tells you that we are really about to show
+    // we can prefetch data for an entire screenfull of adjacent cells...
+    // but they are not created, and cellForRowAt will still need to configure them
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("cell", indexPath.row)
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath) as! MyCell
+
+        let lab = cell.theLabel!
+        // prove that many rows does not mean many cell objects
+        lab.text = "Row \(indexPath.row) of section \(indexPath.section)"
+        if lab.tag != 999 {
+            lab.tag = 999
+            self.cells += 1; print("New cell \(self.cells)")
+        }
+
+        
+        let iv = cell.theImageView!
+        
+        // shrink apparent size of image
+        let im = UIImage(named:"moi.png")!
+        
+        let r = UIGraphicsImageRenderer(size:CGSize(36,36))
+        let im2 = r.image {
+            _ in im.draw(in:CGRect(0,0,36,36))
+        }
+        
+        iv.image = im2
+        iv.contentMode = .center
+
+        
+        return cell
+    }
+    
+    
+}
+
+extension RootViewController : UITableViewDataSourcePrefetching {
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        print("prefetch", indexPaths)
+    }
+}
+
+
+
+
+
+
+
+
+
+
+import UIKit
+
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    let when = DispatchTime.now() + delay
+    DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
+}
+
+
+class RootViewController : UITableViewController {
+    
+    struct Section {
+        var sectionName : String
+        var rowData : [String]
+    }
+    var sections : [Section]!
+
+    override var prefersStatusBarHidden : Bool {
+        return true
+    }
+    
+    let cellID = "Cell"
+	let headerID = "Header"
+    
+    override func viewDidLoad() {
+        let s = try! String(
+            contentsOfFile: Bundle.main.path(
+                forResource: "states", ofType: "txt")!)
+        let states = s.components(separatedBy:"\n")
+        let d = Dictionary(grouping: states) {String($0.prefix(1))}
+        self.sections = Array(d).sorted{$0.key < $1.key}.map {
+            Section(sectionName: $0.key, rowData: $0.value)
+        }
+
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.cellID)
+        self.tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: self.headerID)
+        
+        self.tableView.sectionIndexColor = .white
+        self.tableView.sectionIndexBackgroundColor = .red
+        self.tableView.sectionIndexTrackingBackgroundColor = .blue
+        
+        var which : Int { return 0 } // 0 for manual, 1 for built-in edit button
+        switch which {
+        case 0:
+            let b = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(doEdit))
+            self.navigationItem.rightBarButtonItem = b
+        case 1:
+            break
+            self.navigationItem.rightBarButtonItem = self.editButtonItem // badda-bing, badda-boom
+        default:break
+        }
+        
+        
+    }
+    
+    @objc func doEdit(_ sender: Any?) {
+        var which : UIBarButtonSystemItem
+        if !self.tableView.isEditing {
+            self.tableView.setEditing(true, animated:true)
+            which = .done
+        } else {
+            self.tableView.setEditing(false, animated:true)
+            which = .edit
+        }
+        let b = UIBarButtonItem(barButtonSystemItem: which, target: self, action: #selector(doEdit))
+        self.navigationItem.rightBarButtonItem = b
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return self.sections.count
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.sections[section].rowData.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID, for: indexPath)
+        let s = self.sections[indexPath.section].rowData[indexPath.row]
+        cell.textLabel!.text = s
+        
+        var stateName = s
+        stateName = stateName.lowercased()
+        stateName = stateName.replacingOccurrences(of:" ", with:"")
+        stateName = "flag_\(stateName).gif"
+        let im = UIImage(named: stateName)
+        cell.imageView!.image = im
+        
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView {
+        let h = tableView
+            .dequeueReusableHeaderFooterView(withIdentifier: self.headerID)!
+        if h.viewWithTag(1) == nil {
+            
+            h.backgroundView = UIView()
+            h.backgroundView?.backgroundColor = .black
+            let lab = UILabel()
+            lab.tag = 1
+            lab.font = UIFont(name:"Georgia-Bold", size:22)
+            lab.textColor = .green
+            lab.backgroundColor = .clear
+            h.contentView.addSubview(lab)
+            let v = UIImageView()
+            v.tag = 2
+            v.backgroundColor = .black
+            v.image = UIImage(named:"us_flag_small.gif")
+            h.contentView.addSubview(v)
+            lab.translatesAutoresizingMaskIntoConstraints = false
+            v.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                NSLayoutConstraint.constraints(withVisualFormat:
+                    "H:|-5-[lab(25)]-10-[v(40)]",
+                    metrics:nil, views:["v":v, "lab":lab]),
+                NSLayoutConstraint.constraints(withVisualFormat:
+                    "V:|[v]|",
+                    metrics:nil, views:["v":v]),
+                NSLayoutConstraint.constraints(withVisualFormat:
+                    "V:|[lab]|",
+                    metrics:nil, views:["lab":lab])
+                ].flatMap{$0})
+        }
+        let lab = h.contentView.viewWithTag(1) as! UILabel
+        lab.text = self.sections[section].sectionName
+        return h
+    }
+    
+    
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return self.sections.map{$0.sectionName}
+    }
+
+    override func tableView(_ tableView: UITableView,
+                            commit editingStyle: UITableViewCellEditingStyle,
+                            forRowAt ip: IndexPath) {
+        // had to split into two batches on iOS 11, filed a bug about that
+        switch editingStyle {
+        case .delete:
+            if #available(iOS 11.0, *) {
+                self.sections[ip.section].rowData.remove(at:ip.row)
+                tableView.performBatchUpdates({
+                    tableView.deleteRows(at:[ip], with: .automatic)
+                }) {_ in
+                    if self.sections[ip.section].rowData.count == 0 {
+                        self.sections.remove(at:ip.section)
+                        tableView.performBatchUpdates ({
+                            tableView.deleteSections(
+                                IndexSet(integer: ip.section), with:.fade)
+                        })
+                    }
+                }
+            } else {
+                tableView.beginUpdates()
+                self.sections[ip.section].rowData.remove(at:ip.row)
+                tableView.deleteRows(at:[ip], with:.left)
+                if self.sections[ip.section].rowData.count == 0 {
+                    self.sections.remove(at:ip.section)
+                    tableView.deleteSections(
+                        IndexSet(integer: ip.section), with:.right)
+                }
+                tableView.endUpdates()
+            }
+        default: break
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        // if indexPath.row == 0 { return false }
+        return true
+    }
+    
+    // prevent swipe-to-edit
+    
+//    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+//            return tableView.isEditing ? .delete : .none
+//    }
+    
+}
+
+
+
+
+
+
+
+
+
+import UIKit
+
+class RootViewController : UITableViewController, UITextFieldDelegate {
+    var name = ""
+    var numbers = [String]()
+    
+    let cellID = "Cell"
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.name = "Matt Neuburg"
+        self.numbers = ["(123) 456-7890"]
+        self.tableView.allowsSelection = false
+        
+        self.tableView.register(UINib(nibName: "MyCell", bundle: nil), forCellReuseIdentifier: self.cellID)
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return 1
+        }
+        return self.numbers.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellID,
+            for: indexPath) as! MyCell
+        
+        switch indexPath.section {
+        case 0:
+            cell.textField.text = self.name
+        case 1:
+            cell.textField.text = self.numbers[indexPath.row]
+            cell.textField.keyboardType = .numbersAndPunctuation
+        default: break
+        }
+        cell.textField.delegate = self
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        if indexPath.section == 1 {
+            let ct = self.tableView(tableView, numberOfRowsInSection:indexPath.section)
+            if ct-1 == indexPath.row {
+                return .insert
+            }
+            return .delete;
+        }
+        return .none
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String {
+        if section == 0 {
+            return "Name"
+        }
+        return "Number"
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return false
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        // some cell's text field has finished editing; which cell?
+        var v : UIView = textField
+        repeat { v = v.superview! } while !(v is UITableViewCell)
+        // another way to say:
+//        var v : UIView
+//        for v = textField; !(v is UITableViewCell); v = v.superview! {}
+        let cell = v as! MyCell
+        // update data model to match
+        let ip = self.tableView.indexPath(for:cell)!
+        if ip.section == 1 {
+            self.numbers[ip.row] = cell.textField.text!
+        } else if ip.section == 0 {
+            self.name = cell.textField.text!
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section == 1 {
+            return true
+        }
+        return false
+    }
+    
+    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to toIndexPath: IndexPath) {
+        let s = self.numbers[fromIndexPath.row]
+        self.numbers.remove(at:fromIndexPath.row)
+        self.numbers.insert(s, at:toIndexPath.row)
+        tableView.reloadData() // to get plus and minus buttons to redraw themselves
+    }
+    
+    override func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+        tableView.endEditing(true)
+        if proposedDestinationIndexPath.section == 0 {
+            return IndexPath(row:0, section:1)
+        }
+        return proposedDestinationIndexPath
+    }
+    
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section == 1 && self.numbers.count > 1 {
+            return true
+        }
+        return false
+    }
+    
+    override func tableView(_ tv: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt ip: IndexPath) {
+        tv.endEditing(true) // user can click minus/plus while still editing
+        // so we must force saving to the model
+        if editingStyle == .insert {
+            self.numbers += [""]
+            let ct = self.numbers.count
+            if #available(iOS 11.0, *) {
+                tv.performBatchUpdates({
+                    tv.insertRows(at:
+                        [IndexPath(row:ct-1, section:1)], with:.automatic)
+                    tv.reloadRows(at:
+                        [IndexPath(row:ct-2, section:1)], with:.automatic)
+                }) { _ in
+                    let cell = self.tableView.cellForRow(at:
+                        IndexPath(row:ct-1, section:1))
+                    (cell as! MyCell).textField.becomeFirstResponder()
+                }
+            } else {
+                tv.beginUpdates()
+                tv.insertRows(at:
+                    [IndexPath(row:ct-1, section:1)],
+                                     with:.automatic)
+                tv.reloadRows(at:
+                    [IndexPath(row:ct-2, section:1)],
+                                     with:.automatic)
+                tv.endUpdates()
+                // crucial that this next bit be *outside* the updates block
+                let cell = self.tableView.cellForRow(at:
+                    IndexPath(row:ct-1, section:1))
+                (cell as! MyCell).textField.becomeFirstResponder()
+            }
+        }
+        if editingStyle == .delete {
+            
+            self.numbers.remove(at:ip.row)
+
+            if #available(iOS 11.0, *) {
+                tv.performBatchUpdates({
+                    tv.deleteRows(at:[ip], with:.automatic)
+                    tv.reloadSections(IndexSet(integer:1), with:.automatic)
+                })
+            } else {
+                tv.beginUpdates()
+                tv.deleteRows(at:
+                    [ip], with:.automatic)
+                tv.reloadSections(
+                    IndexSet(integer:1), with:.automatic)
+                tv.endUpdates()
+            }
+            
+        }
+    }
+    
+}
+

@@ -1,0 +1,104 @@
+
+class ViewController: UIViewController {
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        print(self.view.bounds.size)
+        print(self.navigationController!.view.bounds.size)
+    }
+    
+    private var hide = false
+    
+    override var prefersStatusBarHidden : Bool {
+        return self.hide
+    }
+
+    @IBAction func doButton(_ sender: Any) {
+        self.hide = !self.hide
+        UIView.animate(withDuration:0.4) {
+            self.setNeedsStatusBarAppearanceUpdate()
+            self.view.layoutIfNeeded()
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+class ViewController: UIViewController {
+    
+    @IBAction func doButton(_ sender: Any) {
+        print(self.view.bounds.size)
+        let nav = self.navigationController!
+        nav.isNavigationBarHidden = !nav.isNavigationBarHidden
+        delay(1) {
+            print("size did in fact change")
+            print(self.view.bounds.size)
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NotificationCenter.default.addObserver(
+            forName: .UIApplicationWillChangeStatusBarOrientation,
+            object: nil, queue: nil) { n in
+                print("status bar will change orientation from",
+                      UIApplication.shared.statusBarOrientation.rawValue,
+                      "to",
+                      n.userInfo?[UIApplicationStatusBarOrientationUserInfoKey] as Any)
+        }
+        NotificationCenter.default.addObserver(
+            forName: .UIApplicationDidChangeStatusBarOrientation,
+            object: nil, queue: nil) { n in
+                print("status bar did change orientation from",
+                      n.userInfo?[UIApplicationStatusBarOrientationUserInfoKey] as Any,
+                      "to",
+                      UIApplication.shared.statusBarOrientation.rawValue)
+        }
+        
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to:size, with: coordinator)
+        print("size will transition")
+        print(size)
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        print("trait collection changed")
+    }
+    
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransition(to:newCollection, with: coordinator)
+        print("trait collection will transition")
+    }
+    
+    override func updateViewConstraints() {
+        super.updateViewConstraints()
+        print("update view constraints")
+    }
+    
+    override func viewWillLayoutSubviews() {
+        print("will layout")
+    }
+    
+    override func viewDidLayoutSubviews() {
+        print("did layout")
+    }
+    
+    
+}
+
+
+
+
+

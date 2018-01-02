@@ -57,9 +57,11 @@ export default class extends Component<{}> {
         return (
             <Provider store={this.store}>
                 <PersistGate persistor={this.persistor}>
-                    <StatusBar backgroundColor='#1c73b6' translucent={false} />
-                    {content}
-                    {newMsg}
+                    <View style={{ flex: 1, flexGrow: 1, paddingTop: 30, flexDirection: 'column'}}>
+                        <StatusBar backgroundColor='#000000' translucent={false} />
+                        {content}
+                        {newMsg}
+                    </View>
                 </PersistGate>
             </Provider>
         );
