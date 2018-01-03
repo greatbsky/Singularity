@@ -49,6 +49,9 @@
 		05B1AD161FED1AD300E2CAAE /* readme in Resources */ = {isa = PBXBuildFile; fileRef = 05B1AD151FED1AD300E2CAAE /* readme */; };
 		05B1AD181FED1AE300E2CAAE /* readme in Resources */ = {isa = PBXBuildFile; fileRef = 05B1AD171FED1AE300E2CAAE /* readme */; };
 		05B1AD1A1FED1B2900E2CAAE /* readme in Resources */ = {isa = PBXBuildFile; fileRef = 05B1AD191FED1B2900E2CAAE /* readme */; };
+		05BBC44C1FFC9BB200D50EF1 /* TestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BBC44B1FFC9BB200D50EF1 /* TestController.swift */; };
+		05BBC4721FFCB57D00D50EF1 /* test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05BBC4711FFCB57D00D50EF1 /* test.storyboard */; };
+		05BBC50F1FFCE11300D50EF1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05BBC5111FFCE11300D50EF1 /* Localizable.strings */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
@@ -368,6 +371,10 @@
 		05B1AD151FED1AD300E2CAAE /* readme */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme; sourceTree = "<group>"; };
 		05B1AD171FED1AE300E2CAAE /* readme */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme; sourceTree = "<group>"; };
 		05B1AD191FED1B2900E2CAAE /* readme */ = {isa = PBXFileReference; lastKnownFileType = text; path = readme; sourceTree = "<group>"; };
+		05BBC44B1FFC9BB200D50EF1 /* TestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestController.swift; sourceTree = "<group>"; };
+		05BBC4711FFCB57D00D50EF1 /* test.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = test.storyboard; sourceTree = "<group>"; };
+		05BBC5101FFCE11300D50EF1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		05BBC5121FFCE16C00D50EF1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* Singularity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Singularity.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -483,13 +490,6 @@
 			path = rn;
 			sourceTree = "<group>";
 		};
-		0523EDCF1FECB89400DDE140 /* note */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = note;
-			sourceTree = "<group>";
-		};
 		0523EDDA1FECCFD200DDE140 /* controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -498,6 +498,7 @@
 				05AA62111FF3A72C000F4F62 /* VideoController.swift */,
 				05AA62131FF3A748000F4F62 /* ProfileController.swift */,
 				051562511FF4E52900905C79 /* DetailController.swift */,
+				05BBC44B1FFC9BB200D50EF1 /* TestController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -570,6 +571,7 @@
 		058053E11FEA37B500530661 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				05BBC4701FFCB54800D50EF1 /* test */,
 				058955F41FF0FD0C00BA6176 /* components */,
 				0523EDF41FED153F00DDE140 /* profile */,
 				0523EDF31FED153200DDE140 /* videos */,
@@ -610,7 +612,6 @@
 		058053EF1FEA3D7800530661 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				0523EDCF1FECB89400DDE140 /* note */,
 				058053EA1FEA3CFA00530661 /* main */,
 			);
 			path = src;
@@ -621,6 +622,7 @@
 			children = (
 				057C52011FFB8CB100C4D4B4 /* cup.jpg */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
+				05BBC5111FFCE11300D50EF1 /* Localizable.strings */,
 			);
 			path = resources;
 			sourceTree = "<group>";
@@ -632,6 +634,14 @@
 				058955F71FF11ACA00BA6176 /* MyButton.swift */,
 			);
 			path = components;
+			sourceTree = "<group>";
+		};
+		05BBC4701FFCB54800D50EF1 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				05BBC4711FFCB57D00D50EF1 /* test.storyboard */,
+			);
+			path = test;
 			sourceTree = "<group>";
 		};
 		139105B71AF99BAD00B5F7CC /* Products */ = {
@@ -823,6 +833,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
@@ -1142,11 +1153,13 @@
 				05B1AD141FED1AC100E2CAAE /* readme in Resources */,
 				05AA620E1FF3A47B000F4F62 /* Main.storyboard in Resources */,
 				058053F21FEA3EF600530661 /* LaunchScreen.xib in Resources */,
+				05BBC4721FFCB57D00D50EF1 /* test.storyboard in Resources */,
 				057C52251FFB8CB100C4D4B4 /* cup.jpg in Resources */,
 				05B1AD181FED1AE300E2CAAE /* readme in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				058053D81FEA1FAF00530661 /* Podfile in Resources */,
 				058053D61FEA1F0B00530661 /* Main01.storyboard in Resources */,
+				05BBC50F1FFCE11300D50EF1 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1175,10 +1188,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Singularity/Pods-Singularity-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1249,6 +1266,7 @@
 				057C52271FFB8DE900C4D4B4 /* NotifyManager.swift in Sources */,
 				0523EDFB1FED167700DDE140 /* FileUtil.swift in Sources */,
 				056083431FEF8CE100D629E3 /* CalendarManager.swift in Sources */,
+				05BBC44C1FFC9BB200D50EF1 /* TestController.swift in Sources */,
 				056083771FEFD4E700D629E3 /* Scroll.swift in Sources */,
 				05AA62141FF3A748000F4F62 /* ProfileController.swift in Sources */,
 			);
@@ -1263,6 +1281,15 @@
 				058053F11FEA3EF500530661 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		05BBC5111FFCE11300D50EF1 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				05BBC5101FFCE11300D50EF1 /* en */,
+				05BBC5121FFCE16C00D50EF1 /* zh-Hans */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1318,6 +1345,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1360,6 +1388,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;

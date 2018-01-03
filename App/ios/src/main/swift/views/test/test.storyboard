@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="w30-Su-KPG">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--测试-->
+        <scene sceneID="ddK-cN-i8n">
+            <objects>
+                <viewController title="测试" id="w30-Su-KPG" customClass="TestController" customModule="Singularity" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GX7-q9-kgd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rx3-5C-hVb">
+                                <rect key="frame" x="0.0" y="20" width="375" height="218"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dts-bT-xQd">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                                        <state key="normal" title="通知"/>
+                                        <connections>
+                                            <action selector="doNotify:" destination="w30-Su-KPG" eventType="touchUpInside" id="8Yr-Zn-JXr"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nLe-u0-Y7j">
+                                        <rect key="frame" x="0.0" y="30" width="375" height="30"/>
+                                        <state key="normal" title="发送请求"/>
+                                        <connections>
+                                            <action selector="request:" destination="w30-Su-KPG" eventType="touchUpInside" id="r74-Te-mgl"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h1p-Ph-50G">
+                                        <rect key="frame" x="0.0" y="60" width="375" height="30"/>
+                                        <state key="normal" title="下载"/>
+                                        <connections>
+                                            <action selector="download:" destination="w30-Su-KPG" eventType="touchUpInside" id="pUi-fM-hvn"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rts-bx-hOe">
+                                        <rect key="frame" x="0.0" y="90" width="375" height="128"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rx3-5C-hVb" firstAttribute="top" secondItem="yct-Sc-Q7X" secondAttribute="top" id="bmo-KD-aq7"/>
+                            <constraint firstItem="yct-Sc-Q7X" firstAttribute="trailing" secondItem="rx3-5C-hVb" secondAttribute="trailing" id="djl-Le-E69"/>
+                            <constraint firstItem="rx3-5C-hVb" firstAttribute="leading" secondItem="yct-Sc-Q7X" secondAttribute="leading" id="y99-PW-CWf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yct-Sc-Q7X"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="测试" id="TxU-vn-URr"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="img" destination="Rts-bx-hOe" id="Dqc-1P-bTI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z6f-Lh-K9Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1335" y="493"/>
+        </scene>
+    </scenes>
+</document>

@@ -19,9 +19,7 @@ class AppDelegate: BaseAppDelegate {
 //    launchRNWindow(launchOptions)
 //    launchNativeWindow(launchOptions)
     launchMainStoryboard()
-    setAppearance()
-    let center = UNUserNotificationCenter.current()
-    center.delegate = self.notifyManager
+    UNUserNotificationCenter.current().delegate = self.notifyManager
   }
   
   func launchMainStoryboard() {
@@ -44,11 +42,6 @@ class AppDelegate: BaseAppDelegate {
     rootVC.view = rootView
     window?.rootViewController = rootVC
     window?.makeKeyAndVisible()
-  }
-  
-  func setAppearance() {
-    UITabBarItem.appearance().setTitleTextAttributes([.font:UIFont(name:"Avenir-Heavy", size:14)!], for:.normal)
-    
   }
   
 }

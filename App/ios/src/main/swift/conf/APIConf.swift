@@ -6,4 +6,6 @@
 //  Copyright © 2017 Facebook. All rights reserved.
 //
 
-import Foundation
+public struct APIConf {
+  static let hostDefault = "http://192.168.2.1:9000/"
+}

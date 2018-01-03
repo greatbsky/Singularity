@@ -1,0 +1,10 @@
+/* 
+  global.strings
+  Singularity
+
+  Created by Architect bian on 3/1/2018.
+  Copyright © 2018 Facebook. All rights reserved.
+*/
+"no_network" = "网络不可用";
+"I_known" = "知道了";
+"please_check_network" = "请检查您的网络连接";

@@ -7,22 +7,36 @@
 //
 
 import UIKit
+import Reachability
+import UserNotifications
 
 open class BaseAppDelegate: UIResponder, UIApplicationDelegate {
   
   open var window: UIWindow?
+  open let reachability = Reachability()!
   
   open func didFinishLaunching(_ application: UIApplication, _ launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {
 
   }
+
+  open func requestAuthoritation() {
+    UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { ok, err in
+        if err != nil {
+            return
+        }
+        if ok {
+        }
+    }
+  }
   
   open func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-    didFinishLaunching(application, launchOptions);
-    setupGlobalData();
-    setupKeyBoardManager();
-    setupGlobalStyle();
-    setupReachability();
+    didFinishLaunching(application, launchOptions)
+    setupGlobalData()
+    setupKeyBoardManager()
+    setupGlobalStyle()
+    setupReachability()
     print(VersionUtil.isNewVersion())
+    requestAuthoritation() // 安装后第一次打开app
     return true
   }
   
@@ -57,7 +71,30 @@ extension BaseAppDelegate {
      */
     fileprivate func setupReachability() {
         // 发出网络改变通知
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged), name: .reachabilityChanged, object: reachability)
+        do {
+            try reachability.startNotifier()
+        } catch{
+            print("could not start reachability notifier")
+        }
+    }
+    
+    @objc fileprivate func reachabilityChanged(note: Notification) {
+        let reachability = note.object as! Reachability
+        switch reachability.connection {
+        case .wifi:
+            print("Reachable via WiFi")
+        case .cellular:
+            print("Reachable via Cellular")
+        case .none:
+            print("Network not reachable")
+            
+            let alert = UIAlertController(title: local("no_network"),
+                                          message: local("please_check_network"),
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: local("I_known"), style: .default))
+            self.window?.rootViewController?.present(alert, animated: true)
+        }
     }
     
     /**
@@ -80,6 +117,7 @@ extension BaseAppDelegate {
     fileprivate func setupGlobalStyle() {
         UIApplication.shared.isStatusBarHidden = false
 //        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
+        UITabBarItem.appearance().setTitleTextAttributes([.font:UIFont(name:"Avenir-Heavy", size:14)!], for:.normal)
     }
     
 }

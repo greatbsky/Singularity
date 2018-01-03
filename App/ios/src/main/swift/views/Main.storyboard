@@ -94,14 +94,6 @@
                                     <segue destination="i1R-gd-sWJ" kind="showDetail" id="1o3-1j-ZSC"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dts-bT-xQd">
-                                <rect key="frame" x="112" y="342" width="31" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="通知"/>
-                                <connections>
-                                    <action selector="doNotify:" destination="xRQ-KM-e5b" eventType="touchUpInside" id="YZo-ru-pqF"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -157,12 +149,23 @@
                     <connections>
                         <segue destination="xRQ-KM-e5b" kind="relationship" relationship="viewControllers" id="x21-Qy-CVC"/>
                         <segue destination="42u-3f-Ggu" kind="relationship" relationship="viewControllers" id="UZE-wX-trS"/>
+                        <segue destination="7wb-uM-9d0" kind="relationship" relationship="viewControllers" id="vsX-Oj-rg2"/>
                         <segue destination="yer-d6-E4z" kind="relationship" relationship="viewControllers" id="1Gb-Kx-jKP"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AgE-S6-iMU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-881" y="-229"/>
+        </scene>
+        <!--test-->
+        <scene sceneID="Yst-Hx-6RD">
+            <objects>
+                <viewControllerPlaceholder storyboardName="test" id="7wb-uM-9d0" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Zjj-PH-DcU"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tSX-NG-2cA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1335" y="493"/>
         </scene>
     </scenes>
 </document>

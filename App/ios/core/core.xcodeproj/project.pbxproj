@@ -17,6 +17,8 @@
 		05B4BE251FEE3EDE0048053E /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B4BE241FEE3EDE0048053E /* UIViewExt.swift */; };
 		05B4BE271FEE41200048053E /* AppUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B4BE261FEE41200048053E /* AppUtil.swift */; };
 		05B4BE291FEE44BD0048053E /* UIColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B4BE281FEE44BD0048053E /* UIColorExt.swift */; };
+		05BBC44A1FFC92D200D50EF1 /* HttpUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BBC4491FFC92D200D50EF1 /* HttpUtil.swift */; };
+		05BBC51E1FFCE82A00D50EF1 /* BaseGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BBC51D1FFCE82A00D50EF1 /* BaseGlobal.swift */; };
 		EE1E96BE337E9911190640B9 /* Pods_core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A742BAAACAE119D757AEF211 /* Pods_core.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +35,8 @@
 		05B4BE241FEE3EDE0048053E /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
 		05B4BE261FEE41200048053E /* AppUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtil.swift; sourceTree = "<group>"; };
 		05B4BE281FEE44BD0048053E /* UIColorExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExt.swift; sourceTree = "<group>"; };
+		05BBC4491FFC92D200D50EF1 /* HttpUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpUtil.swift; sourceTree = "<group>"; };
+		05BBC51D1FFCE82A00D50EF1 /* BaseGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseGlobal.swift; sourceTree = "<group>"; };
 		A742BAAACAE119D757AEF211 /* Pods_core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8CB2B59952C25217053CAE5 /* Pods-core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-core.release.xcconfig"; path = "../Pods/Target Support Files/Pods-core/Pods-core.release.xcconfig"; sourceTree = "<group>"; };
 		FD9319A24B8BE8FE4CFF9867 /* Pods-core.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-core.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-core/Pods-core.debug.xcconfig"; sourceTree = "<group>"; };
@@ -60,6 +64,7 @@
 				05B4BE261FEE41200048053E /* AppUtil.swift */,
 				05B4BE281FEE44BD0048053E /* UIColorExt.swift */,
 				05A62DFC1FF2231200631380 /* DeviceUtil.swift */,
+				05BBC4491FFC92D200D50EF1 /* HttpUtil.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -104,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				057F4ACF1FEBDA5400848CDF /* swift */,
+				05BBC5131FFCE3B600D50EF1 /* resources */,
 			);
 			path = main;
 			sourceTree = "<group>";
@@ -111,6 +117,7 @@
 		057F4ACF1FEBDA5400848CDF /* swift */ = {
 			isa = PBXGroup;
 			children = (
+				05BBC51C1FFCE81400D50EF1 /* global */,
 				0523EDE51FED04A300DDE140 /* utils */,
 				057F4AD01FEBDA5A00848CDF /* base */,
 			);
@@ -124,6 +131,21 @@
 				0515624F1FF4D28A00905C79 /* BaseViewController.swift */,
 			);
 			path = base;
+			sourceTree = "<group>";
+		};
+		05BBC5131FFCE3B600D50EF1 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		05BBC51C1FFCE81400D50EF1 /* global */ = {
+			isa = PBXGroup;
+			children = (
+				05BBC51D1FFCE82A00D50EF1 /* BaseGlobal.swift */,
+			);
+			path = global;
 			sourceTree = "<group>";
 		};
 		8D30902A36B0880D60383277 /* Pods */ = {
@@ -199,6 +221,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
 			);
 			mainGroup = 057F4A521FEBD07700848CDF;
 			productRefGroup = 057F4A5D1FEBD07700848CDF /* Products */;
@@ -261,7 +284,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05BBC51E1FFCE82A00D50EF1 /* BaseGlobal.swift in Sources */,
 				05B4BE231FEE3E8B0048053E /* UIImageViewExt.swift in Sources */,
+				05BBC44A1FFC92D200D50EF1 /* HttpUtil.swift in Sources */,
 				05A62DFD1FF2231200631380 /* DeviceUtil.swift in Sources */,
 				05B1AD1C1FED1D6C00E2CAAE /* NSStringExt.swift in Sources */,
 				05B4BE251FEE3EDE0048053E /* UIViewExt.swift in Sources */,
@@ -280,6 +305,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -340,6 +366,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

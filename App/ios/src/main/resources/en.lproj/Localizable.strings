@@ -1,0 +1,10 @@
+/* 
+  global.strings
+  Singularity
+
+  Created by Architect bian on 3/1/2018.
+  Copyright © 2018 Facebook. All rights reserved.
+*/
+"no_network" = "no Internet connection";
+"I_known" = "I known";
+"please_check_network" = "Checking the network cables, modem and router";
