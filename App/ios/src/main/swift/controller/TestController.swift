@@ -11,17 +11,36 @@ import core
 import UserNotifications
 import Alamofire
 import SVProgressHUD
+import SDWebImage
+import RxSwift
+import RxCocoa
 
 class TestController : BaseViewController {
   
   @IBOutlet weak var img: UIImageView!
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    SVProgressHUD.show()
-    delay(6) {
-      SVProgressHUD.dismiss()
-    }
+  @IBOutlet weak var img2: UIImageView!
+  
+    @IBOutlet weak var txtNum: UITextField!
+    @IBOutlet weak var label: UILabel!
+    
+    override func viewDidLoad() {
+      super.viewDidLoad()
+      SVProgressHUD.show()
+      delay(6) {
+        SVProgressHUD.dismiss()
+      }
+      img2.sd_setImage(with: URL(string: "http://d.hiphotos.baidu.com/image/pic/item/838ba61ea8d3fd1ffa1179293a4e251f95ca5f8d.jpg"), placeholderImage: UIImage(named: "placeholder.jpg"),
+                       completed: { (image, error, cache, url) in
+                        print(image!)
+                        })
+      txtNum.rx.text.map(){text -> String in
+        print(text!)
+        if(text == nil) {
+          return ""
+        } else {
+          return text!
+        }}.bind(to: label.rx.text)
   }
   
   @IBAction func doNotify(_ sender: UIButton) {
@@ -73,9 +92,7 @@ class TestController : BaseViewController {
         
         if response.error == nil, let imagePath = response.destinationURL?.path {
           let image = UIImage(contentsOfFile: imagePath)
-          DispatchQueue.main.sync {
-            self.img.image = image
-          }
+          self.img.image = image
         }
     }
   }

@@ -22,6 +22,7 @@
 		0523EE031FED16B500DDE140 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523EE021FED16B500DDE140 /* MainController.swift */; };
 		0523EE051FED16C100DDE140 /* VideoSO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523EE041FED16C100DDE140 /* VideoSO.swift */; };
 		0523EE071FED16CE00DDE140 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523EE061FED16CE00DDE140 /* Video.swift */; };
+		0549A4511FFDEE4B003EAD14 /* placeholder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0549A42D1FFDEE4B003EAD14 /* placeholder.jpg */; };
 		056083431FEF8CE100D629E3 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056083421FEF8CE100D629E3 /* CalendarManager.swift */; };
 		0560836D1FEF907700D629E3 /* CalendarManagerBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0560836C1FEF907700D629E3 /* CalendarManagerBridge.m */; };
 		0560836F1FEFAFC000D629E3 /* Emitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0560836E1FEFAFC000D629E3 /* Emitter.swift */; };
@@ -342,6 +343,7 @@
 		0523EE021FED16B500DDE140 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		0523EE041FED16C100DDE140 /* VideoSO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoSO.swift; sourceTree = "<group>"; };
 		0523EE061FED16CE00DDE140 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		0549A42D1FFDEE4B003EAD14 /* placeholder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = placeholder.jpg; sourceTree = "<group>"; };
 		056083421FEF8CE100D629E3 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		0560836C1FEF907700D629E3 /* CalendarManagerBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarManagerBridge.m; sourceTree = "<group>"; };
 		0560836E1FEFAFC000D629E3 /* Emitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emitter.swift; sourceTree = "<group>"; };
@@ -621,6 +623,7 @@
 			isa = PBXGroup;
 			children = (
 				057C52011FFB8CB100C4D4B4 /* cup.jpg */,
+				0549A42D1FFDEE4B003EAD14 /* placeholder.jpg */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				05BBC5111FFCE11300D50EF1 /* Localizable.strings */,
 			);
@@ -1157,6 +1160,7 @@
 				057C52251FFB8CB100C4D4B4 /* cup.jpg in Resources */,
 				05B1AD181FED1AE300E2CAAE /* readme in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				0549A4511FFDEE4B003EAD14 /* placeholder.jpg in Resources */,
 				058053D81FEA1FAF00530661 /* Podfile in Resources */,
 				058053D61FEA1F0B00530661 /* Main01.storyboard in Resources */,
 				05BBC50F1FFCE11300D50EF1 /* Localizable.strings in Resources */,
@@ -1188,13 +1192,21 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Singularity/Pods-Singularity-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
