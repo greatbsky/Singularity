@@ -22,6 +22,8 @@
 		0523EE031FED16B500DDE140 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523EE021FED16B500DDE140 /* MainController.swift */; };
 		0523EE051FED16C100DDE140 /* VideoSO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523EE041FED16C100DDE140 /* VideoSO.swift */; };
 		0523EE071FED16CE00DDE140 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523EE061FED16CE00DDE140 /* Video.swift */; };
+		05402F8A1FFF7A1000F09DEF /* AppAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05402F891FFF7A1000F09DEF /* AppAPI.swift */; };
+		05402FB21FFF8B7400F09DEF /* AppSO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05402FB11FFF8B7400F09DEF /* AppSO.swift */; };
 		0549A4511FFDEE4B003EAD14 /* placeholder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0549A42D1FFDEE4B003EAD14 /* placeholder.jpg */; };
 		056083431FEF8CE100D629E3 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056083421FEF8CE100D629E3 /* CalendarManager.swift */; };
 		0560836D1FEF907700D629E3 /* CalendarManagerBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 0560836C1FEF907700D629E3 /* CalendarManagerBridge.m */; };
@@ -343,6 +345,8 @@
 		0523EE021FED16B500DDE140 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		0523EE041FED16C100DDE140 /* VideoSO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoSO.swift; sourceTree = "<group>"; };
 		0523EE061FED16CE00DDE140 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		05402F891FFF7A1000F09DEF /* AppAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAPI.swift; sourceTree = "<group>"; };
+		05402FB11FFF8B7400F09DEF /* AppSO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSO.swift; sourceTree = "<group>"; };
 		0549A42D1FFDEE4B003EAD14 /* placeholder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = placeholder.jpg; sourceTree = "<group>"; };
 		056083421FEF8CE100D629E3 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		0560836C1FEF907700D629E3 /* CalendarManagerBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalendarManagerBridge.m; sourceTree = "<group>"; };
@@ -529,6 +533,14 @@
 			path = objectc;
 			sourceTree = "<group>";
 		};
+		05402FAE1FFF81ED00F09DEF /* api */ = {
+			isa = PBXGroup;
+			children = (
+				05402F891FFF7A1000F09DEF /* AppAPI.swift */,
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
 		057F4A691FEBD0AF00848CDF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -558,6 +570,7 @@
 			isa = PBXGroup;
 			children = (
 				0523EE041FED16C100DDE140 /* VideoSO.swift */,
+				05402FB11FFF8B7400F09DEF /* AppSO.swift */,
 			);
 			path = so;
 			sourceTree = "<group>";
@@ -597,6 +610,7 @@
 		058053EC1FEA3D3A00530661 /* swift */ = {
 			isa = PBXGroup;
 			children = (
+				05402FAE1FFF81ED00F09DEF /* api */,
 				058053DE1FEA360E00530661 /* base */,
 				0523EDA51FECB06700DDE140 /* global */,
 				057F4AC91FEBDA0200848CDF /* conf */,
@@ -1193,21 +1207,35 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Singularity/Pods-Singularity-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
+				"${BUILT_PRODUCTS_DIR}/IBAnimatable/IBAnimatable.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/pop/pop.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IBAnimatable.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/pop.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1273,8 +1301,10 @@
 				056083711FEFB21300D629E3 /* EmitterBridge.m in Sources */,
 				058053E71FEA39A800530661 /* AppDelegate.m in Sources */,
 				051562521FF4E52900905C79 /* DetailController.swift in Sources */,
+				05402FB21FFF8B7400F09DEF /* AppSO.swift in Sources */,
 				0523EE071FED16CE00DDE140 /* Video.swift in Sources */,
 				05AA62101FF3A6ED000F4F62 /* HomeController.swift in Sources */,
+				05402F8A1FFF7A1000F09DEF /* AppAPI.swift in Sources */,
 				057C52271FFB8DE900C4D4B4 /* NotifyManager.swift in Sources */,
 				0523EDFB1FED167700DDE140 /* FileUtil.swift in Sources */,
 				056083431FEF8CE100D629E3 /* CalendarManager.swift in Sources */,

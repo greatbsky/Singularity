@@ -1,7 +1,19 @@
 PODS:
   - Alamofire (4.6.0)
   - FLAnimatedImage (1.0.12)
+  - IBAnimatable (5.0.0)
+  - IQKeyboardManagerSwift (5.0.7)
+  - Moya (10.0.1):
+    - Moya/Core (= 10.0.1)
+  - Moya/Core (10.0.1):
+    - Alamofire (~> 4.1)
+    - Result (~> 3.0)
+  - Moya/RxSwift (10.0.1):
+    - Moya/Core
+    - RxSwift (~> 4.0)
+  - pop (1.0.10)
   - ReachabilitySwift (4.1.0)
+  - Result (3.2.4)
   - RxCocoa (4.0.0):
     - RxSwift (~> 4.0)
   - RxSwift (4.0.0)
@@ -11,26 +23,42 @@ PODS:
   - SDWebImage/GIF (4.2.2):
     - FLAnimatedImage (~> 1.0)
     - SDWebImage/Core
+  - SnapKit (4.0.0)
   - SVProgressHUD (2.2.2)
+  - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.6)
+  - IBAnimatable
+  - IQKeyboardManagerSwift (~> 5.0)
+  - Moya
+  - Moya/RxSwift
+  - pop (~> 1.0)
   - ReachabilitySwift
   - RxCocoa (~> 4.0)
   - RxSwift (~> 4.0)
   - SDWebImage (~> 4.0)
   - SDWebImage/GIF
+  - SnapKit (~> 4.0)
   - SVProgressHUD
+  - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
+  IBAnimatable: aa2286a9cf8fb4ae2e1be85c5287ae56143b024f
+  IQKeyboardManagerSwift: 30fb3a61de1af53a95e02b80fb54ed0a19d5ede5
+  Moya: 9e621707ff754eeb51ff3ec51a3d54e517c0733a
+  pop: 82ca6b068ce9278fd350fd9dd09482a0ce9492e6
   ReachabilitySwift: 6849231cd4e06559f3b9ef4a97a0a0f96d41e09f
+  Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   RxCocoa: d62846ca96495d862fa4c59ea7d87e5031d7340e
   RxSwift: fd680d75283beb5e2559486f3c0ff852f0d35334
   SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
+  SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 765c2a3577b3ca80f4bfa8ec97357332f4aa5cd1
+PODFILE CHECKSUM: 2dc91306e0691e2ed922c83884b5cd89cbe17f85
 
 COCOAPODS: 1.3.1

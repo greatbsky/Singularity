@@ -9,6 +9,7 @@
 import UIKit
 import Reachability
 import UserNotifications
+import IQKeyboardManagerSwift
 
 open class BaseAppDelegate: UIResponder, UIApplicationDelegate {
   
@@ -108,7 +109,7 @@ extension BaseAppDelegate {
      配置键盘管理者
      */
     fileprivate func setupKeyBoardManager() {
-//        IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.sharedManager().enable = true
     }
     
     /**

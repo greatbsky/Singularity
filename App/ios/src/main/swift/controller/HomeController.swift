@@ -17,6 +17,7 @@ class HomeController : BaseViewController, UIToolbarDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.toolbar.delegate = self
+    AppSO.initial("v1.0.0")
   }
   
   @IBAction func doItem(_ sender: Any) {

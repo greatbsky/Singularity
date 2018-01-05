@@ -14,6 +14,10 @@ import SVProgressHUD
 import SDWebImage
 import RxSwift
 import RxCocoa
+import SnapKit
+import SwiftyJSON
+import pop
+import IBAnimatable
 
 class TestController : BaseViewController {
   
@@ -23,6 +27,9 @@ class TestController : BaseViewController {
   
     @IBOutlet weak var txtNum: UITextField!
     @IBOutlet weak var label: UILabel!
+    
+    @IBOutlet weak var myview: AnimatableView!
+    
     
     override func viewDidLoad() {
       super.viewDidLoad()
@@ -41,6 +48,42 @@ class TestController : BaseViewController {
         } else {
           return text!
         }}.bind(to: label.rx.text)
+      let box = UIView()
+      box.backgroundColor = UIColor.blue
+      self.view.addSubview(box)
+      box.snp.makeConstraints { (make) -> Void in
+        make.edges.equalTo(txtNum).inset(UIEdgeInsetsMake(50, 0, -50, 0))
+      }
+      let jsonString = "{\"k\": \"v\"}"
+      if let dataFromString = jsonString.data(using: .utf8, allowLossyConversion: false) {
+        var json:JSON!
+        do { json = try JSON(data: dataFromString) }
+        catch { print("Error JSON: \(error)") }
+        print(json["k"].string!)
+      }
+      
+      let animation = POPSpringAnimation(propertyNamed: kPOPLayerScaleXY)
+      animation!.toValue = NSValue(cgSize: CGSize(width: 1.1, height: 1.1))
+      animation!.springBounciness = 10 //[0-20] 弹力 越大则震动幅度越大
+      animation!.springSpeed = 20 //[0-20] 速度 越大则动画结束越快'CGSizeMake' is unavailable
+      self.view.backgroundColor = UIColor.red
+      self.view.layer.pop_add(animation, forKey: "scaleXY")
+      
+//      self.myview.animate(.squeezeFade(way: .in, direction: .down))
+//        .delay(5)
+//        .then(.pop(repeatCount: 1))
+//        .delay(5)
+//        .then(.shake(repeatCount: 1))
+//        .delay(5)
+//        .then(.squeeze(way: .in, direction: .down))
+//        .delay(5)
+//        .then(.wobble(repeatCount: 1))
+//        .delay(5)
+//        .then(.flip(along: .x))
+//        .delay(5)
+//        .then(.flip(along: .y))
+//        .delay(5)
+//        .then(.slideFade(way: .out, direction: .down))
   }
   
   @IBAction func doNotify(_ sender: UIButton) {

@@ -6,6 +6,7 @@ project 'Singularity.xcodeproj'
 use_frameworks!
 pod 'Alamofire', '~> 4.6'
 pod 'ReachabilitySwift'
+pod 'IQKeyboardManagerSwift', '~> 5.0'
 
 target 'Singularity' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
@@ -15,8 +16,14 @@ target 'Singularity' do
   pod 'SVProgressHUD'
   pod 'SDWebImage', '~> 4.0'
   pod 'SDWebImage/GIF'
-  pod 'RxSwift',    '~> 4.0'
-  pod 'RxCocoa',    '~> 4.0'
+  pod 'RxSwift', '~> 4.0'
+  pod 'RxCocoa', '~> 4.0'
+  pod 'SnapKit', '~> 4.0'
+  pod 'SwiftyJSON'
+  pod 'Moya'
+  pod 'Moya/RxSwift'
+  pod 'pop', '~> 1.0'
+  pod 'IBAnimatable'
 
 end
 
