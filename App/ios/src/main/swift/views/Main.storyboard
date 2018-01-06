@@ -94,6 +94,29 @@
                                     <segue destination="i1R-gd-sWJ" kind="showDetail" id="1o3-1j-ZSC"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ji-9e-fwg">
+                                <rect key="frame" x="179" y="303" width="62" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="插入数据"/>
+                                <connections>
+                                    <action selector="insert:" destination="xRQ-KM-e5b" eventType="touchUpInside" id="dJI-R6-cuH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="01C-D9-Bnb">
+                                <rect key="frame" x="171" y="370" width="62" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="读取数据"/>
+                                <connections>
+                                    <action selector="query:" destination="xRQ-KM-e5b" eventType="touchUpInside" id="kTT-kr-srs"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="sdfg resul t......" textAlignment="natural" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TJh-cI-zMi">
+                                <rect key="frame" x="179" y="428" width="144" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -105,12 +128,13 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="首页" id="yCN-su-7JB"/>
                     <connections>
+                        <outlet property="result" destination="TJh-cI-zMi" id="Etv-IJ-bP6"/>
                         <outlet property="toolbar" destination="hMu-cO-8WD" id="Vib-ks-2LQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E8E-ex-nJP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="70" y="-561"/>
+            <point key="canvasLocation" x="69.599999999999994" y="-561.76911544227892"/>
         </scene>
         <!--Detail Controller-->
         <scene sceneID="gdl-dr-Sbh">

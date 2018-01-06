@@ -29,7 +29,7 @@ class NotifyManager : NSObject {
   
   private func doAuthorization() {
     let center = UNUserNotificationCenter.current()
-    center.requestAuthorization(options: [.alert, .sound]) { ok, err in
+    center.requestAuthorization(options: [.alert, .sound, .badge]) { ok, err in
       if err != nil {
         return
       }

@@ -24,6 +24,7 @@ target 'Singularity' do
   pod 'Moya/RxSwift'
   pod 'pop', '~> 1.0'
   pod 'IBAnimatable'
+  pod 'FMDB'
 
 end
 

@@ -26,4 +26,5 @@ func delay(_ delay:Double, closure:@escaping ()->()) {
 
 struct G {
   public static var window = UIApplication.shared.delegate!.window!!
+  public static let db = SQLiteManager.shareInstance
 }

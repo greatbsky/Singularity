@@ -23,5 +23,18 @@ class HomeController : BaseViewController, UIToolbarDelegate {
   @IBAction func doItem(_ sender: Any) {
     
   }
+
+  @IBOutlet weak var result: UILabel!
+  @IBAction func insert(_ sender: Any) {
+    let video = Video(uid: "uid001", title: "新闻观察", url: "http://www.xxx.com")
+    let r = video.insert()
+    result.text = String(r)
+  }
+  
+  @IBAction func query(_ sender: Any) {
+    let video = Video(uid: "uid001", title: "", url: "")
+    video.getOne()
+    result.text = video.url
+  }
   
 }

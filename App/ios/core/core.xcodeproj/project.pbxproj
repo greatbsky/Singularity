@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		051562501FF4D28A00905C79 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0515624F1FF4D28A00905C79 /* BaseViewController.swift */; };
 		0523EDE71FED04CC00DDE140 /* VersionUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0523EDE61FED04CC00DDE140 /* VersionUtil.swift */; };
+		056A4DD32000AE1000EA6249 /* StringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056A4DD22000AE1000EA6249 /* StringExt.swift */; };
 		057F4A611FEBD07700848CDF /* core.h in Headers */ = {isa = PBXBuildFile; fileRef = 057F4A5F1FEBD07700848CDF /* core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		057F4AE21FEBE4B200848CDF /* BaseAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057F4AE11FEBE4B200848CDF /* BaseAppDelegate.swift */; };
 		05A62DFD1FF2231200631380 /* DeviceUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A62DFC1FF2231200631380 /* DeviceUtil.swift */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		0515624F1FF4D28A00905C79 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		0523EDE61FED04CC00DDE140 /* VersionUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionUtil.swift; sourceTree = "<group>"; };
+		056A4DD22000AE1000EA6249 /* StringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExt.swift; sourceTree = "<group>"; };
 		057F4A5C1FEBD07700848CDF /* core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		057F4A5F1FEBD07700848CDF /* core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = core.h; sourceTree = "<group>"; };
 		057F4A601FEBD07700848CDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -37,6 +39,7 @@
 		05B4BE281FEE44BD0048053E /* UIColorExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExt.swift; sourceTree = "<group>"; };
 		05BBC4491FFC92D200D50EF1 /* HttpUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpUtil.swift; sourceTree = "<group>"; };
 		05BBC51D1FFCE82A00D50EF1 /* BaseGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseGlobal.swift; sourceTree = "<group>"; };
+		05E7B6482000B5C800904E26 /* module.map */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.module-map"; path = module.map; sourceTree = "<group>"; };
 		A742BAAACAE119D757AEF211 /* Pods_core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8CB2B59952C25217053CAE5 /* Pods-core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-core.release.xcconfig"; path = "../Pods/Target Support Files/Pods-core/Pods-core.release.xcconfig"; sourceTree = "<group>"; };
 		FD9319A24B8BE8FE4CFF9867 /* Pods-core.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-core.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-core/Pods-core.debug.xcconfig"; sourceTree = "<group>"; };
@@ -65,6 +68,7 @@
 				05B4BE281FEE44BD0048053E /* UIColorExt.swift */,
 				05A62DFC1FF2231200631380 /* DeviceUtil.swift */,
 				05BBC4491FFC92D200D50EF1 /* HttpUtil.swift */,
+				056A4DD22000AE1000EA6249 /* StringExt.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -91,6 +95,7 @@
 		057F4A5E1FEBD07700848CDF /* core */ = {
 			isa = PBXGroup;
 			children = (
+				05E7B6492000BDC300904E26 /* ocmodules */,
 				057F4A5F1FEBD07700848CDF /* core.h */,
 				057F4A601FEBD07700848CDF /* Info.plist */,
 			);
@@ -146,6 +151,14 @@
 				05BBC51D1FFCE82A00D50EF1 /* BaseGlobal.swift */,
 			);
 			path = global;
+			sourceTree = "<group>";
+		};
+		05E7B6492000BDC300904E26 /* ocmodules */ = {
+			isa = PBXGroup;
+			children = (
+				05E7B6482000B5C800904E26 /* module.map */,
+			);
+			path = ocmodules;
 			sourceTree = "<group>";
 		};
 		8D30902A36B0880D60383277 /* Pods */ = {
@@ -294,6 +307,7 @@
 				051562501FF4D28A00905C79 /* BaseViewController.swift in Sources */,
 				05B4BE291FEE44BD0048053E /* UIColorExt.swift in Sources */,
 				0523EDE71FED04CC00DDE140 /* VersionUtil.swift in Sources */,
+				056A4DD32000AE1000EA6249 /* StringExt.swift in Sources */,
 				057F4AE21FEBE4B200848CDF /* BaseAppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -420,6 +434,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FD9319A24B8BE8FE4CFF9867 /* Pods-core.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -436,6 +451,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_INCLUDE_PATHS = ./core/ocmodules;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -446,6 +462,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E8CB2B59952C25217053CAE5 /* Pods-core.release.xcconfig */;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
@@ -462,6 +479,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_INCLUDE_PATHS = ./core/ocmodules;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

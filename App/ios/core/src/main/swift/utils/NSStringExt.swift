@@ -5,16 +5,7 @@
 //  Created by Architect bian on 22/12/2017.
 //  Copyright © 2017 Architect bian. All rights reserved.
 //
-extension String {
-    public var urlEscaped: String {
-        return addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
-    }
-    
-    public var utf8Encoded: Data {
-        return data(using: .utf8)!
-    }
-    
-}
+
 
 extension NSString {
     /// 计算文本的高度

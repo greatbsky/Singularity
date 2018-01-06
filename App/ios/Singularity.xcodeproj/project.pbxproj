@@ -32,6 +32,8 @@
 		056083751FEFC34600D629E3 /* MapViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 056083741FEFC34600D629E3 /* MapViewManager.m */; };
 		056083771FEFD4E700D629E3 /* Scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056083761FEFD4E700D629E3 /* Scroll.swift */; };
 		056083791FEFD73100D629E3 /* ScrollManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 056083781FEFD73100D629E3 /* ScrollManager.m */; };
+		056A4DCF2000AAF200EA6249 /* SQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056A4DCE2000AAF200EA6249 /* SQLiteManager.swift */; };
+		056A4DD12000ACBC00EA6249 /* DBConf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 056A4DD02000ACBC00EA6249 /* DBConf.swift */; };
 		057C52251FFB8CB100C4D4B4 /* cup.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 057C52011FFB8CB100C4D4B4 /* cup.jpg */; };
 		057C52271FFB8DE900C4D4B4 /* NotifyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057C52261FFB8DE900C4D4B4 /* NotifyManager.swift */; };
 		057F4B161FEBE69A00848CDF /* core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 057F4B151FEBE69A00848CDF /* core.framework */; };
@@ -55,6 +57,7 @@
 		05BBC44C1FFC9BB200D50EF1 /* TestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BBC44B1FFC9BB200D50EF1 /* TestController.swift */; };
 		05BBC4721FFCB57D00D50EF1 /* test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05BBC4711FFCB57D00D50EF1 /* test.storyboard */; };
 		05BBC50F1FFCE11300D50EF1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 05BBC5111FFCE11300D50EF1 /* Localizable.strings */; };
+		05E7B64B2000C0CF00904E26 /* VideoDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05E7B64A2000C0CF00904E26 /* VideoDao.swift */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
@@ -355,6 +358,8 @@
 		056083741FEFC34600D629E3 /* MapViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewManager.m; sourceTree = "<group>"; };
 		056083761FEFD4E700D629E3 /* Scroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scroll.swift; sourceTree = "<group>"; };
 		056083781FEFD73100D629E3 /* ScrollManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrollManager.m; sourceTree = "<group>"; };
+		056A4DCE2000AAF200EA6249 /* SQLiteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteManager.swift; sourceTree = "<group>"; };
+		056A4DD02000ACBC00EA6249 /* DBConf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBConf.swift; sourceTree = "<group>"; };
 		057C52011FFB8CB100C4D4B4 /* cup.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cup.jpg; sourceTree = "<group>"; };
 		057C52261FFB8DE900C4D4B4 /* NotifyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifyManager.swift; sourceTree = "<group>"; };
 		057F4B151FEBE69A00848CDF /* core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -381,6 +386,7 @@
 		05BBC4711FFCB57D00D50EF1 /* test.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = test.storyboard; sourceTree = "<group>"; };
 		05BBC5101FFCE11300D50EF1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		05BBC5121FFCE16C00D50EF1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		05E7B64A2000C0CF00904E26 /* VideoDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDao.swift; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* Singularity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Singularity.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -541,6 +547,15 @@
 			path = api;
 			sourceTree = "<group>";
 		};
+		056A4DAA2000AABE00EA6249 /* dao */ = {
+			isa = PBXGroup;
+			children = (
+				056A4DCE2000AAF200EA6249 /* SQLiteManager.swift */,
+				05E7B64A2000C0CF00904E26 /* VideoDao.swift */,
+			);
+			path = dao;
+			sourceTree = "<group>";
+		};
 		057F4A691FEBD0AF00848CDF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -554,6 +569,7 @@
 			children = (
 				0523EDDF1FED02BC00DDE140 /* APIConf.swift */,
 				0523EDE11FED02CE00DDE140 /* Consts.swift */,
+				056A4DD02000ACBC00EA6249 /* DBConf.swift */,
 			);
 			path = conf;
 			sourceTree = "<group>";
@@ -586,6 +602,7 @@
 		058053E11FEA37B500530661 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				05E7B66F2000CEDC00904E26 /* home */,
 				05BBC4701FFCB54800D50EF1 /* test */,
 				058955F41FF0FD0C00BA6176 /* components */,
 				0523EDF41FED153F00DDE140 /* profile */,
@@ -615,6 +632,7 @@
 				0523EDA51FECB06700DDE140 /* global */,
 				057F4AC91FEBDA0200848CDF /* conf */,
 				057F4ACA1FEBDA0D00848CDF /* entity */,
+				056A4DAA2000AABE00EA6249 /* dao */,
 				057F4ACB1FEBDA1500848CDF /* so */,
 				0523EDDA1FECCFD200DDE140 /* controller */,
 				058053E11FEA37B500530661 /* views */,
@@ -659,6 +677,13 @@
 				05BBC4711FFCB57D00D50EF1 /* test.storyboard */,
 			);
 			path = test;
+			sourceTree = "<group>";
+		};
+		05E7B66F2000CEDC00904E26 /* home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = home;
 			sourceTree = "<group>";
 		};
 		139105B71AF99BAD00B5F7CC /* Products */ = {
@@ -1207,6 +1232,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Singularity/Pods-Singularity-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
+				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
 				"${BUILT_PRODUCTS_DIR}/IBAnimatable/IBAnimatable.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
@@ -1224,6 +1250,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IBAnimatable.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
@@ -1302,13 +1329,16 @@
 				058053E71FEA39A800530661 /* AppDelegate.m in Sources */,
 				051562521FF4E52900905C79 /* DetailController.swift in Sources */,
 				05402FB21FFF8B7400F09DEF /* AppSO.swift in Sources */,
+				05E7B64B2000C0CF00904E26 /* VideoDao.swift in Sources */,
 				0523EE071FED16CE00DDE140 /* Video.swift in Sources */,
 				05AA62101FF3A6ED000F4F62 /* HomeController.swift in Sources */,
 				05402F8A1FFF7A1000F09DEF /* AppAPI.swift in Sources */,
 				057C52271FFB8DE900C4D4B4 /* NotifyManager.swift in Sources */,
 				0523EDFB1FED167700DDE140 /* FileUtil.swift in Sources */,
+				056A4DD12000ACBC00EA6249 /* DBConf.swift in Sources */,
 				056083431FEF8CE100D629E3 /* CalendarManager.swift in Sources */,
 				05BBC44C1FFC9BB200D50EF1 /* TestController.swift in Sources */,
+				056A4DCF2000AAF200EA6249 /* SQLiteManager.swift in Sources */,
 				056083771FEFD4E700D629E3 /* Scroll.swift in Sources */,
 				05AA62141FF3A748000F4F62 /* ProfileController.swift in Sources */,
 			);

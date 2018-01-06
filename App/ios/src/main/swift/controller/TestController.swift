@@ -100,6 +100,7 @@ class TestController : BaseViewController {
       content.attachments = [att]
     }
     (UIApplication.shared.delegate as! AppDelegate).notifyManager.notify(String("asdfeww"), content)
+    
   }
   
   
