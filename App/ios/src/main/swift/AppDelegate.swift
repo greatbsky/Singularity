@@ -16,9 +16,9 @@ class AppDelegate: BaseAppDelegate {
   let notifyManager = NotifyManager()
   
   override func didFinishLaunching(_ application: UIApplication, _ launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {
-//    launchRNWindow(launchOptions)
-//    launchNativeWindow(launchOptions)
-    launchMainStoryboard()
+    launchRNWindow(launchOptions)
+    //launchNativeWindow(launchOptions)
+    //launchMainStoryboard()
     UNUserNotificationCenter.current().delegate = self.notifyManager
   }
   

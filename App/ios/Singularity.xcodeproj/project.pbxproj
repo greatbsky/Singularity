@@ -39,14 +39,14 @@
 		057F4B161FEBE69A00848CDF /* core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 057F4B151FEBE69A00848CDF /* core.framework */; };
 		057F4B171FEBE69A00848CDF /* core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 057F4B151FEBE69A00848CDF /* core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		058053D21FEA191A00530661 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058053D11FEA191A00530661 /* AppDelegate.swift */; };
-		058053D61FEA1F0B00530661 /* Main01.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 058053D51FEA1F0B00530661 /* Main01.storyboard */; };
+		058053D61FEA1F0B00530661 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 058053D51FEA1F0B00530661 /* Main.storyboard */; };
 		058053D81FEA1FAF00530661 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 058053D71FEA1FAF00530661 /* Podfile */; };
 		058053E71FEA39A800530661 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 058053E51FEA39A700530661 /* AppDelegate.m */; };
 		058053F21FEA3EF600530661 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 058053F01FEA3EF500530661 /* LaunchScreen.xib */; };
 		058053F41FEA3F7D00530661 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 058053F31FEA3F7D00530661 /* main.m */; };
 		058955F61FF0FD9E00BA6176 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058955F51FF0FD9E00BA6176 /* MyView.swift */; };
 		058955F81FF11ACA00BA6176 /* MyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058955F71FF11ACA00BA6176 /* MyButton.swift */; };
-		05AA620E1FF3A47B000F4F62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05AA620D1FF3A47B000F4F62 /* Main.storyboard */; };
+		05AA620E1FF3A47B000F4F62 /* Main01.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05AA620D1FF3A47B000F4F62 /* Main01.storyboard */; };
 		05AA62101FF3A6ED000F4F62 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AA620F1FF3A6ED000F4F62 /* HomeController.swift */; };
 		05AA62121FF3A72C000F4F62 /* VideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AA62111FF3A72C000F4F62 /* VideoController.swift */; };
 		05AA62141FF3A748000F4F62 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AA62131FF3A748000F4F62 /* ProfileController.swift */; };
@@ -365,7 +365,7 @@
 		057F4B151FEBE69A00848CDF /* core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		058053D01FEA191900530661 /* Singularity-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Singularity-Bridging-Header.h"; sourceTree = "<group>"; };
 		058053D11FEA191A00530661 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		058053D51FEA1F0B00530661 /* Main01.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main01.storyboard; sourceTree = "<group>"; };
+		058053D51FEA1F0B00530661 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		058053D71FEA1FAF00530661 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		058053E51FEA39A700530661 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Singularity/AppDelegate.m; sourceTree = "<group>"; };
 		058053E61FEA39A700530661 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Singularity/AppDelegate.h; sourceTree = "<group>"; };
@@ -374,7 +374,7 @@
 		058053F81FEA467700530661 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Singularity/Info.plist; sourceTree = "<group>"; };
 		058955F51FF0FD9E00BA6176 /* MyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
 		058955F71FF11ACA00BA6176 /* MyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyButton.swift; sourceTree = "<group>"; };
-		05AA620D1FF3A47B000F4F62 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		05AA620D1FF3A47B000F4F62 /* Main01.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main01.storyboard; sourceTree = "<group>"; };
 		05AA620F1FF3A6ED000F4F62 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		05AA62111FF3A72C000F4F62 /* VideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoController.swift; sourceTree = "<group>"; };
 		05AA62131FF3A748000F4F62 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
@@ -608,8 +608,8 @@
 				0523EDF41FED153F00DDE140 /* profile */,
 				0523EDF31FED153200DDE140 /* videos */,
 				058053F01FEA3EF500530661 /* LaunchScreen.xib */,
-				058053D51FEA1F0B00530661 /* Main01.storyboard */,
-				05AA620D1FF3A47B000F4F62 /* Main.storyboard */,
+				058053D51FEA1F0B00530661 /* Main.storyboard */,
+				05AA620D1FF3A47B000F4F62 /* Main01.storyboard */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -1193,7 +1193,7 @@
 				05B1AD1A1FED1B2900E2CAAE /* readme in Resources */,
 				05B1AD161FED1AD300E2CAAE /* readme in Resources */,
 				05B1AD141FED1AC100E2CAAE /* readme in Resources */,
-				05AA620E1FF3A47B000F4F62 /* Main.storyboard in Resources */,
+				05AA620E1FF3A47B000F4F62 /* Main01.storyboard in Resources */,
 				058053F21FEA3EF600530661 /* LaunchScreen.xib in Resources */,
 				05BBC4721FFCB57D00D50EF1 /* test.storyboard in Resources */,
 				057C52251FFB8CB100C4D4B4 /* cup.jpg in Resources */,
@@ -1201,7 +1201,7 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				0549A4511FFDEE4B003EAD14 /* placeholder.jpg in Resources */,
 				058053D81FEA1FAF00530661 /* Podfile in Resources */,
-				058053D61FEA1F0B00530661 /* Main01.storyboard in Resources */,
+				058053D61FEA1F0B00530661 /* Main.storyboard in Resources */,
 				05BBC50F1FFCE11300D50EF1 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
