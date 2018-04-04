@@ -3,13 +3,14 @@ package com.singularity.rn.views;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.TintContextWrapper;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.events.RCTEventEmitter;
 import com.singularity.rn.E;
 
@@ -41,8 +42,11 @@ public class ImageDemo extends android.support.v7.widget.AppCompatImageView {
             public void onClick(View v) {
                 WritableMap event = Arguments.createMap();
                 event.putString("message", "You click me");
-                ReactContext reactContext = (ReactContext) ((TintContextWrapper) getContext()).getBaseContext();
-                reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(getId(), E.Click, event);
+                if (getContext() instanceof ReactContext) {
+                    ReactContext reactContext = (ReactContext) getContext();
+                    reactContext.getJSModule(RCTEventEmitter.class).receiveEvent(getId(), E.Click, event);
+                }
+
             }
         });
     }
@@ -63,6 +67,7 @@ public class ImageDemo extends android.support.v7.widget.AppCompatImageView {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         ImgUtil.showRoundCorner(this, this.uri, this.borderRadius);
+        this.uri = null;
     }
 
 }

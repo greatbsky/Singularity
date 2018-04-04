@@ -29,6 +29,7 @@ public class ImgUtil {
     }
 
     public static void showRoundCorner(ImageView view, String url, int radius) {
+        if (url == null) return;
         Log.d("Glide", url);
         GlideRequest<Drawable> request = GlideApp.with(Global.appContext).load(url).centerCrop();
         if (radius > 0) {
